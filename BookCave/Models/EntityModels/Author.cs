@@ -7,6 +7,6 @@ namespace BookCave.Models.EntityModels
         public int Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
-        public List<int> BookIdList { get; set; }
+        public List<BookIdItem> BookIdList { get; set; }
     }
 }

@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 namespace BookCave.Models.EntityModels
 {
-    public class BookCave
+    public class Book
     {
         public int Id { get; set; }
         public string Title { get; set; }

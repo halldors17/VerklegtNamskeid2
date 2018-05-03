@@ -32,16 +32,21 @@ namespace BookCave
         {
             var db = new DataContext();
 
-            //check if the database table is empty
-            if(!db.Employees.Any())
+            //check if a specific table in the database table is empty
+            if(!db.Authors.Any())
             {
-                var initialEmployeee = new List<Employee>()
+                var initialAuthors = new List<Author>()
                 {
-                    new Employee { username = "employee_1", password = "1234"},
-                    new Employee { username = "employee_2", password = "5678"}
+                    new Author { Name = "Patrick Rothfuss", 
+                    Description = "Patrick James Rothfuss (born June 6, 1973) is an American writer of epic fantasy.", 
+                    BookIdList = new List<BookIdItem>(){ new BookIdItem(){ BookId = 1 }, new BookIdItem(){ BookId = 2 }, new BookIdItem(){ BookId = 3 }}},
+                    
+                    new Author { Name = "Patrick Ness", 
+                    Description = "Patrick Ness (born 17 October 1971) is a British-American author, journalist, lecturer, and screenwriter.", 
+                    BookIdList = new List<BookIdItem>(){ new BookIdItem(){ BookId = 4 }, new BookIdItem(){ BookId = 5 }, new BookIdItem(){ BookId = 5 }}},
                 };
 
-                db.AddRange(initialEmployeee);
+                db.AddRange(initialAuthors);
                 db.SaveChanges();
             }
         }
