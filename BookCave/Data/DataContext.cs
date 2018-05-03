@@ -1,9 +1,12 @@
+using BookCave.Models.EntityModels;
 using Microsoft.EntityFrameworkCore;
 
 namespace BookCave.Data
 {
     public class DataContext : DbContext
     {
+        public DbSet<Employee> Employees { get; set; }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder
