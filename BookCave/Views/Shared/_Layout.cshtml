@@ -18,7 +18,7 @@
 </head>
 <body>
     <nav class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
+        <div class="container-fluid">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="sr-only">Toggle navigation</span>
@@ -30,10 +30,14 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
+                    <li><a asp-area="" asp-controller="Home" asp-action="About">Categories</a></li>
+                    <li><a asp-area="" asp-controller="Home" asp-action="Discount">Discount</a></li>
+                    <li><a asp-area="" asp-controller="Home" asp-action="Top10">Top 10</a></li>
                 </ul>
+                </ul class= "nav navbar-nav navbar-right">
+                    <li><a asp-area="" asp-controller="Home" asp-action="About">About the book cave</a></li>
+                    <li><a asp-area="" asp-controller="Home" asp-action="About">Log in</a></li>
+                <ul>
             </div>
         </div>
     </nav>

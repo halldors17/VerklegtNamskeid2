@@ -15,7 +15,14 @@ namespace BookCave.Controllers
         {
             return View();
         }
-
+        public IActionResult Top10()
+        {
+            return View();
+        }
+        public IActionResult Discount()
+        {
+            return View();
+        }
         public IActionResult About()
         {
             ViewData["Message"] = "Your application description page.";
