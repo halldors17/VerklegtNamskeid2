@@ -1,4 +1,4 @@
-namespace BookCave.Data.EntityModels
+namespace BookCave.Models.EntityModels
 {
     public class Category
     {
