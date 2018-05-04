@@ -22,9 +22,13 @@ namespace BookCave.Controllers
         {
             if(ModelState.IsValid)
             {
-                
+                return RedirectToAction("Index", "Home");
             }
             return View(login);
+        }
+        public IActionResult Register() {
+            
+            return View();
         }
         public IActionResult Error()
         {
