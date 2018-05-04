@@ -18,7 +18,7 @@ namespace BookCave
         {
             var host = BuildWebHost(args);
             //to initialize the database
-            //SeedData();
+            SeedData();
             host.Run();
         }
 
@@ -47,6 +47,27 @@ namespace BookCave
                 };
 
                 db.AddRange(initialAuthors);
+                db.SaveChanges();
+            }
+
+             //check if a book table in the database table is empty
+            if(!db.Books.Any())
+            {
+                var initialBooks = new List<Book>()
+                {
+                    new Book {
+                        Title = "The Name of the Wind",
+                        AuthorIdList = new List<AuthorIdItem>(){ new AuthorIdItem(){ AuthorId = 1 }},
+                        Publisher = "Penguin Group DAW ", YearPublished = 2007, Price = 25, 
+                        LanguageList = new List<LanguageItem>(){ new LanguageItem(){ Language = "English" }},
+                        Pages = 662, Minutes = 1675, Audio = true, Ebook = true, Paperback = true, 
+                        CategoryIdList = new List<CategoryIdItem>(){ new CategoryIdItem(){ CategoryId = 1 }},
+                        Description = "A high-action story written with a poet's hand, The Name of the Wind is a masterpiece that will transport readers into the body and mind of a wizard.",
+                        Stock = 1000
+                    }
+                };
+
+                db.AddRange(initialBooks);
                 db.SaveChanges();
             }
         }

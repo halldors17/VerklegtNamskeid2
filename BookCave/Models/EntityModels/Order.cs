@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace BookCave.Models.EntityModels
 {
@@ -11,6 +12,6 @@ namespace BookCave.Models.EntityModels
         public int Price { get; set; }
         public DateTime PaidDate { get; set; }
         public int CustomerId { get; set; }
-        public OrderItem OrderItem { get; set;}
+        public List<OrderItem> OrderItems { get; set; }
     }
 }

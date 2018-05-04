@@ -11,36 +11,15 @@ using System;
 namespace BookCave.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20180504115953_orderTable_added")]
+    partial class orderTable_added
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "2.0.2-rtm-10011")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-            modelBuilder.Entity("BookCave.Models.EntityModels.Account", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("Email");
-
-                    b.Property<string>("Image");
-
-                    b.Property<string>("Password");
-
-                    b.Property<int?>("ShippingId");
-
-                    b.Property<string>("Username");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ShippingId");
-
-                    b.ToTable("Accounts");
-                });
 
             modelBuilder.Entity("BookCave.Models.EntityModels.Author", b =>
                 {
@@ -109,23 +88,11 @@ namespace BookCave.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int?>("AccountId");
-
-                    b.Property<int?>("AccountId1");
-
-                    b.Property<int?>("AccountId2");
-
                     b.Property<int?>("AuthorId");
 
                     b.Property<int>("BookId");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("AccountId");
-
-                    b.HasIndex("AccountId1");
-
-                    b.HasIndex("AccountId2");
 
                     b.HasIndex("AuthorId");
 
@@ -158,24 +125,6 @@ namespace BookCave.Migrations
                     b.HasIndex("BookId");
 
                     b.ToTable("CategoryIdItem");
-                });
-
-            modelBuilder.Entity("BookCave.Models.EntityModels.Customer", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<int?>("CartId");
-
-                    b.Property<int?>("ShippingId");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CartId");
-
-                    b.HasIndex("ShippingId");
-
-                    b.ToTable("Customers");
                 });
 
             modelBuilder.Entity("BookCave.Models.EntityModels.Employee", b =>
@@ -237,8 +186,6 @@ namespace BookCave.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int?>("AccountId");
-
                     b.Property<int>("BookId");
 
                     b.Property<int>("OrderId");
@@ -248,8 +195,6 @@ namespace BookCave.Migrations
                     b.Property<int>("Quantity");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("AccountId");
 
                     b.HasIndex("OrderId");
 
@@ -274,13 +219,6 @@ namespace BookCave.Migrations
                     b.ToTable("ShippingInfo");
                 });
 
-            modelBuilder.Entity("BookCave.Models.EntityModels.Account", b =>
-                {
-                    b.HasOne("BookCave.Models.EntityModels.ShippingInfo", "Shipping")
-                        .WithMany()
-                        .HasForeignKey("ShippingId");
-                });
-
             modelBuilder.Entity("BookCave.Models.EntityModels.AuthorIdItem", b =>
                 {
                     b.HasOne("BookCave.Models.EntityModels.Book")
@@ -290,18 +228,6 @@ namespace BookCave.Migrations
 
             modelBuilder.Entity("BookCave.Models.EntityModels.BookIdItem", b =>
                 {
-                    b.HasOne("BookCave.Models.EntityModels.Account")
-                        .WithMany("Cart")
-                        .HasForeignKey("AccountId");
-
-                    b.HasOne("BookCave.Models.EntityModels.Account")
-                        .WithMany("FavoriteBooks")
-                        .HasForeignKey("AccountId1");
-
-                    b.HasOne("BookCave.Models.EntityModels.Account")
-                        .WithMany("WishList")
-                        .HasForeignKey("AccountId2");
-
                     b.HasOne("BookCave.Models.EntityModels.Author")
                         .WithMany("BookIdList")
                         .HasForeignKey("AuthorId");
@@ -312,17 +238,6 @@ namespace BookCave.Migrations
                     b.HasOne("BookCave.Models.EntityModels.Book")
                         .WithMany("CategoryIdList")
                         .HasForeignKey("BookId");
-                });
-
-            modelBuilder.Entity("BookCave.Models.EntityModels.Customer", b =>
-                {
-                    b.HasOne("BookCave.Models.EntityModels.OrderItem", "Cart")
-                        .WithMany()
-                        .HasForeignKey("CartId");
-
-                    b.HasOne("BookCave.Models.EntityModels.ShippingInfo", "Shipping")
-                        .WithMany()
-                        .HasForeignKey("ShippingId");
                 });
 
             modelBuilder.Entity("BookCave.Models.EntityModels.LanguageItem", b =>
@@ -341,10 +256,6 @@ namespace BookCave.Migrations
 
             modelBuilder.Entity("BookCave.Models.EntityModels.OrderItem", b =>
                 {
-                    b.HasOne("BookCave.Models.EntityModels.Account")
-                        .WithMany("History")
-                        .HasForeignKey("AccountId");
-
                     b.HasOne("BookCave.Models.EntityModels.Order")
                         .WithMany("OrderItems")
                         .HasForeignKey("OrderId")
