@@ -70,6 +70,22 @@ namespace BookCave
                 db.AddRange(initialBooks);
                 db.SaveChanges();
             }
+
+            if(!db.Orders.Any())
+            {
+                var initialOrders = new List<Order>()
+                {
+                    new Order {
+                        OrderDate = new DateTime(2018,04,30), 
+                        ShippingInfo = new ShippingInfo { Street = "Dúfnahólar 10", City = "Reykjavík", PostalCode = 111, Country = "Ísland" },
+                        Status = "Paid", Price = 30, PaidDate = new DateTime(2018,04,30), CustomerId = 1, 
+                        OrderItems = new List<OrderItem>(){ new OrderItem(){ OrderId = 1, BookId = 1, Quantity = 1, Price = 30 }}
+                    }
+                };
+
+                db.AddRange(initialOrders);
+                db.SaveChanges();
+            }
         }
     }
 }
