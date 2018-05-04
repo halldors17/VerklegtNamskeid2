@@ -20,5 +20,6 @@ namespace BookCave.Models.EntityModels
         public string Description { get; set; }
         public string Image { get; set; }
         public int Stock { get; set; }
+        public string Image { get; set; }
     }
 }
