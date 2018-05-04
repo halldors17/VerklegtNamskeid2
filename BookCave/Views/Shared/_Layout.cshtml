@@ -18,28 +18,41 @@
 </head>
 <body>
     <nav class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">BookCave</a>
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li><a asp-area="" asp-controller="Home" asp-action="About">Categories</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="Discount">Discount</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="Top10">Top 10</a></li>
-                </ul>
-                </ul class= "nav navbar-nav navbar-right">
-                    <li><a asp-area="" asp-controller="Home" asp-action="About">About the book cave</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="About">Log in</a></li>
-                <ul>
-            </div>
+    <div class="container-fluid">
+        <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">BookCave</a>
         </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+            <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Categories <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+                <li>Item 1</li>
+                <li>Item 2</li>
+                <li>Item 3</li>
+            </ul>
+            </li>
+            <li><a asp-area="" asp-controller="Home" asp-action="Discount">Discount</a></li>
+            <li><a asp-area="" asp-controller="Home" asp-action="Top10">Top 10</a></li>
+        </ul>
+        <form class="navbar-form navbar-left">
+            <div class="form-group">
+            <input type="text" class="form-control" placeholder="Search">
+            </div>
+            <button type="submit" class="btn btn-default">Search</button>
+        </form>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a asp-area="" asp-controller="Home" asp-action="About">About the book cave</a></li>
+            <li><a asp-area="" asp-controller="Home" asp-action="About">Log in <span class="glyphicon glyphicon-user"></span></a></li>
+        </ul>
+        </div>
+    </div>
     </nav>
     <div class="container body-content">
         @RenderBody()
