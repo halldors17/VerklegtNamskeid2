@@ -32,7 +32,7 @@ namespace BookCave
         {
             var db = new DataContext();
 
-            //check if a authors table in the database table is empty
+            //check if the authors table in the database table is empty
             if(!db.Authors.Any())
             {
                 var initialAuthors = new List<Author>()
@@ -50,7 +50,7 @@ namespace BookCave
                 db.SaveChanges();
             }
 
-             //check if a book table in the database table is empty
+             //check if the books table in the database table is empty
             if(!db.Books.Any())
             {
                 var initialBooks = new List<Book>()
@@ -63,7 +63,7 @@ namespace BookCave
                         Pages = 994, Minutes = 2569, Audio = true, Ebook = true, Paperback = true, 
                         CategoryIdList = new List<CategoryIdItem>(){ new CategoryIdItem(){ CategoryId = 1 }},
                         Description = "In The Wise Man's Fear, Kvothe takes his first steps on the path of the hero and learns how difficult life can be when a man becomes a legend in his own time.",
-                        Stock = 1000
+                        Stock = 1000, Rating = 4.58
                     }
                 };
 
@@ -71,6 +71,7 @@ namespace BookCave
                 db.SaveChanges();
             }
 
+            //check if the orders table in the database table is empty
             if(!db.Orders.Any())
             {
                 var initialOrders = new List<Order>()

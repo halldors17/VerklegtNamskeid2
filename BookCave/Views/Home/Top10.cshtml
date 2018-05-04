@@ -1,1 +1,16 @@
+@model List<BookCave.Models.ViewModels.BookListViewModel>
+
 <h1>Top 10</h1>
+
+<div>
+<ol>
+    @foreach(var book in @Model)
+    {
+        <li class="list-inline-item">
+            <img src="@book.Image" height="100" width="60" /><br>
+            @book.Title<br>
+            @book.Price $
+        </li>
+    }
+  </ol>
+</div>
