@@ -11,9 +11,10 @@ using System;
 namespace BookCave.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20180504120009_accountTable_added")]
+    partial class accountTable_added
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -160,24 +161,6 @@ namespace BookCave.Migrations
                     b.ToTable("CategoryIdItem");
                 });
 
-            modelBuilder.Entity("BookCave.Models.EntityModels.Customer", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<int?>("CartId");
-
-                    b.Property<int?>("ShippingId");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CartId");
-
-                    b.HasIndex("ShippingId");
-
-                    b.ToTable("Customers");
-                });
-
             modelBuilder.Entity("BookCave.Models.EntityModels.Employee", b =>
                 {
                     b.Property<int>("Id")
@@ -312,17 +295,6 @@ namespace BookCave.Migrations
                     b.HasOne("BookCave.Models.EntityModels.Book")
                         .WithMany("CategoryIdList")
                         .HasForeignKey("BookId");
-                });
-
-            modelBuilder.Entity("BookCave.Models.EntityModels.Customer", b =>
-                {
-                    b.HasOne("BookCave.Models.EntityModels.OrderItem", "Cart")
-                        .WithMany()
-                        .HasForeignKey("CartId");
-
-                    b.HasOne("BookCave.Models.EntityModels.ShippingInfo", "Shipping")
-                        .WithMany()
-                        .HasForeignKey("ShippingId");
                 });
 
             modelBuilder.Entity("BookCave.Models.EntityModels.LanguageItem", b =>

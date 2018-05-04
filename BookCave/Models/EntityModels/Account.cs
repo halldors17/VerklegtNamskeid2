@@ -9,10 +9,10 @@ namespace BookCave.Models.EntityModels
         public string Password { get; set; }
         public string Email { get; set; }
         public ShippingInfo Shipping { get; set; }
-        public string image { get; set; }
-        public List<int> Cart { get; set; }
-        public List<int> FavoriteBooks { get; set; }
-        public List<int> WishList { get; set; }
-        public OrderItem history { get; set; }
+        public string Image { get; set; }
+        public List<BookIdItem> Cart { get; set; }
+        public List<BookIdItem> FavoriteBooks { get; set; }
+        public List<BookIdItem> WishList { get; set; }
+        public List<OrderItem> History { get; set; }
     } 
 }
