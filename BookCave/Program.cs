@@ -56,13 +56,13 @@ namespace BookCave
                 var initialBooks = new List<Book>()
                 {
                     new Book {
-                        Title = "The Name of the Wind",
+                        Title = "The Wise Man's Fear",
                         AuthorIdList = new List<AuthorIdItem>(){ new AuthorIdItem(){ AuthorId = 1 }},
-                        Publisher = "Penguin Group DAW ", YearPublished = 2007, Price = 25, 
+                        Publisher = "DAW Books", YearPublished = 2011, Price = 35, 
                         LanguageList = new List<LanguageItem>(){ new LanguageItem(){ Language = "English" }},
-                        Pages = 662, Minutes = 1675, Audio = true, Ebook = true, Paperback = true, 
+                        Pages = 994, Minutes = 2569, Audio = true, Ebook = true, Paperback = true, 
                         CategoryIdList = new List<CategoryIdItem>(){ new CategoryIdItem(){ CategoryId = 1 }},
-                        Description = "A high-action story written with a poet's hand, The Name of the Wind is a masterpiece that will transport readers into the body and mind of a wizard.",
+                        Description = "In The Wise Man's Fear, Kvothe takes his first steps on the path of the hero and learns how difficult life can be when a man becomes a legend in his own time.",
                         Stock = 1000
                     }
                 };
