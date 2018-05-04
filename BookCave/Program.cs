@@ -32,7 +32,7 @@ namespace BookCave
         {
             var db = new DataContext();
 
-            //check if a specific table in the database table is empty
+            //check if a authors table in the database table is empty
             if(!db.Authors.Any())
             {
                 var initialAuthors = new List<Author>()
