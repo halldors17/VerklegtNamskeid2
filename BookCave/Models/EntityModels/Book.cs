@@ -18,6 +18,7 @@ namespace BookCave.Models.EntityModels
         public bool Paperback { get; set; }
         public List<CategoryIdItem> CategoryIdList { get; set; }
         public string Description { get; set; }
+        public string Image { get; set; }
         public int Stock { get; set; }
     }
 }
