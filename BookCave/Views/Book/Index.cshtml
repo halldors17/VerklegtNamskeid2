@@ -5,9 +5,9 @@
     @foreach(var book in @Model)
     {
         <div>
-            <p>@book.Image</p>
+            <p><img src="@book.Image" height="100" width="60" /></p>
             <p>@book.Title</p>
-            <p>@book.Price</p>
+            <p>@book.Price $</p>
         </div>
     }
 </div>
