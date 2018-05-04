@@ -1,0 +1,16 @@
+@model BookCave.Models.ViewModels.LoginViewModel
+
+<form action="post" class="form-inline">
+    <div asp-validation-summary="All"></div>
+    <div>
+        <label asp-for="Username"></label>
+        <input asp-for="Username" class="form-control">
+        <span asp-validation-for="Username"></span>
+    </div>
+    <div>
+        <label asp-for="Password"></label>
+        <input asp-for="Password" class="form-control">
+        <span asp-validation-for="Password"></span>
+    </div>
+    <div><input type="submit" value="Log in" class="btn btn-default"></div>
+</form>
