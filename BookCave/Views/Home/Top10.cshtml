@@ -2,15 +2,15 @@
 
 <h1>Top 10</h1>
 
-<div>
-<ol>
-    @foreach(var book in @Model)
-    {
-        <li class="list-inline-item">
-            <img src="@book.Image" height="100" width="60" /><br>
-            @book.Title<br>
-            @book.Price $
-        </li>
-    }
-  </ol>
+<div class="container">
+    <div class="row"></div>
+        @foreach(var book in @Model)
+        {
+            <div class="col-lg-2 cl-md-2 col-sm-3 col-xs-6 text-center">
+                <img src="@book.Image"  height="200" width="120" /><br>
+                @book.Title<br>
+                @book.Price $
+            </div>
+        }
+    </div>
 </div>
