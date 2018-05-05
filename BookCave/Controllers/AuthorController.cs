@@ -12,10 +12,12 @@ namespace BookCave.Controllers
     public class AuthorController : Controller
     {
         private AuthorService _authorService;
+        
         public AuthorController()
         {
             _authorService = new AuthorService();
         }
+        
         public IActionResult Index()
         {
             var authors = _authorService.GetAllAuthors();
