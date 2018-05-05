@@ -29,7 +29,7 @@ namespace BookCave.Repositories
         public List<BookListViewModel> GetBooksByRating()
         {
             var books = (from b in _db.Books
-                    orderby b.Rating
+                    orderby b.Rating descending
                     select new BookListViewModel {
                         Id = b.Id,
                         Image = b.Image,

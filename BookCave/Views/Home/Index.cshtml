@@ -1,16 +1,15 @@
-﻿<h1>Forsíða</h1>
-<div class="jumbotron">
-    <ul class="list-inline">
-        <li class="list-inline-item">Book</li>
-        <li class="list-inline-item">Book</li>
-        <li class="list-inline-item">Book</li>
-        <li class="list-inline-item">Book</li>
-        <li class="list-inline-item">Book</li>
-        <li class="list-inline-item">Book</li>
-        <li class="list-inline-item">Book</li>
-        <li class="list-inline-item">Book</li>
-        <li class="list-inline-item">Book</li>
-        <li class="list-inline-item">Book</li>
-        <li class="list-inline-item">Book</li>
-    </ul>
+﻿@model List<BookCave.Models.ViewModels.BookListViewModel>
+<h1>Frontpage</h1>
+
+<div class="container">
+    <div class="row"></div>
+        @foreach(var book in @Model)
+        {
+            <div class="col-lg-2 cl-md-2 col-sm-3 col-xs-6 text-center">
+                <img src="@book.Image"  height="200" width="120" /><br>
+                @book.Title<br>
+                @book.Price $
+            </div>
+        }
+    </div>
 </div>
