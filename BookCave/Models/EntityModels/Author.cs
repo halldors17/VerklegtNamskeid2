@@ -8,5 +8,6 @@ namespace BookCave.Models.EntityModels
         public string Name { get; set; }
         public string Description { get; set; }
         public List<BookIdItem> BookIdList { get; set; }
+        public string Image { get; set; }
     }
 }
