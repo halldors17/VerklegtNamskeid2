@@ -3,20 +3,20 @@
     <form method="POST" asp-action="Login" asp-controller="Account" class="form-horizontal">
         <div asp-validation-summary="All"></div>
         <div class="form-group">
-            <label asp-for="Email"></label>
+            <label asp-for="Email">Netfang</label>
             <input asp-for="Email" class="form-control">
             <span asp-validation-for="Email"></span>
         </div>
         <div class="form-group">
-            <label asp-for="Password"></label>
+            <label asp-for="Password">Lykilorð</label>
             <input type="password" asp-for="Password" class="form-control">
             <span asp-validation-for="Password"></span>
         </div>
         <div class="form-group">
-            <label asp-for="RememberMe"></label>
+            <label asp-for="RememberMe">Muna mig</label>
             <input type="checkbox" asp-for="RememberMe">
         </div>
-        <div class="form-group"><input type="submit" value="Log in" class="btn btn-default"></div>
+        <div class="form-group"><input type="submit" value="Innskrá" class="btn btn-default"></div>
     </form>
-    <div><a asp-controller="Account" asp-action="Register">Búa til aðgang</a></div>
+    <div><a asp-controller="Account" asp-action="Register">Stofna aðgang</a></div>
 </div>
