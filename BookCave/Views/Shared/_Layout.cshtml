@@ -4,7 +4,6 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewBag.Title - BookCave</title>
-
     <environment include="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
         <link rel="stylesheet" href="~/css/site.css" />
@@ -15,6 +14,17 @@
               asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
         <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
     </environment>
+    <style>
+        footer 
+        {
+        position: fixed;
+        height: 50px;
+        bottom: 0;
+        width: 100%;
+        text-align: left;
+        }
+    </style>
+    
 </head>
 <body>
     <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -59,8 +69,8 @@
     <div class="container body-content">
         @RenderBody()
         <hr />
-        <footer>
-            <p>&copy; 2018 - BookCave</p>
+        <footer class="footer">
+            <p>&copy; 2018 - BookCave <a href="Contact"> Hafa Samband</a></p>
         </footer>
     </div>
 
