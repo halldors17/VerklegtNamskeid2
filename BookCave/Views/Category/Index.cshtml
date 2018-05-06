@@ -1,0 +1,13 @@
+@model List<BookCave.Models.ViewModels.CategoryListViewModel>
+<h1>Flokkar</h1>
+
+<div class="container">
+    <div class="row"></div>
+        <ul>
+            @foreach(var category in @Model)
+            {
+                <li><a asp-area="" asp-controller="Category" asp-action="Details" asp-route-id="@category.Id">@category.Name</a></li>
+            }
+        </ul>
+    </div>
+</div>
