@@ -1,0 +1,16 @@
+@model BookCave.Models.ViewModels.BookSalesViewModel
+<h1>Breyta bók</h1>
+<div class="jumbotron">
+    <form method="">
+        <div class="form-group">
+            <label asp-for="Title"></label>
+            <input asp-for="Title" class="form-control">
+            <span asp-validation-for="Title"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Publisher"></label>
+            <input asp-for="Publisher" class="form-control">
+            <span asp-validation-for="Publisher"></span>
+        </div>
+    </form>
+</div>
