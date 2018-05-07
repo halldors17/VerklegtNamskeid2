@@ -92,7 +92,14 @@ namespace BookCave.Repositories
                 YearPublished = a.YearPublished,
                 Pages = a.Pages,
                 Description = a.Description,
-                Category = e.Name
+                Category = e.Name,
+                Rating = a.Rating,
+                Stock = a.Stock,
+                Paperback = a.Paperback,
+                Ebook = a.Ebook,
+                Audio = a.Audio,
+                Minutes = a.Minutes,
+
             }).ToList();
 
             return books;
