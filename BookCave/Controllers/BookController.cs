@@ -31,11 +31,11 @@ namespace BookCave.Controllers
         }
         public IActionResult Details(int id)
         {
-            if(id == 0)
-            {
-                return View(Index());
-            }
             var books = _bookService.GetBookDetails(id);
+            if(books == null)
+            {
+                return Content("Not Found");
+            }
             return View();
         }
     }
