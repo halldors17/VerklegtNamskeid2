@@ -17,7 +17,8 @@ namespace BookCave.Repositories
         public List<OrderListViewModel> GetAllOrders()
         {
             var orders = (from b in _db.Orders 
-                    select new OrderListViewModel {
+                    select new OrderListViewModel 
+                    {
                         
                     }).ToList();
             
