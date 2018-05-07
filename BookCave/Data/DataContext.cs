@@ -13,6 +13,7 @@ namespace BookCave.Data
         public DbSet<Account> Accounts { get; set; }
         public DbSet<Customer> Customers { get; set; }
         public DbSet<BookIdItem> BookIdItem { get; set; }
+        public DbSet<CategoryIdItem> CategoryIdItem { get; set; }
         
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

@@ -8,7 +8,7 @@
         {
             <div class="col-lg-2 cl-md-2 col-sm-3 col-xs-6 text-center">
                 <img src="@book.Image"  height="200" width="120" /><br>
-                @book.Title<br>
+                <a asp-controller="Book" asp-action="Details" asp-route-id="@book.Id">@book.Title</a><br>
                 @book.Price $
             </div>
         }

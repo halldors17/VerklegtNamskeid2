@@ -1,6 +1,7 @@
-@model List<BookCave.Models.ViewModels.BookListViewModel>
-<h1>Books</h1>
+@model List<BookCave.Models.ViewModels.BookDetailsViewModel>
 
+<h1> hæ </h1>
+<!-- Þetta er ekki að virka
 <div class="container">
     <div class="row"></div>
         @foreach(var book in @Model)
@@ -13,18 +14,3 @@
         }
     </div>
 </div>
-
-<!-- Gamla htmlið
-<div>
-<ul>
-    @foreach(var book in @Model)
-    {
-        <li class="list-inline-item">
-            <img src="@book.Image" height="100" width="60" /><br>
-            @book.Title<br>
-            @book.Price $
-        </li>
-    }
-  </ul>
-</div>
-//-->
