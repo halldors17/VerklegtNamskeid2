@@ -9,12 +9,21 @@
     var claim = ((ClaimsIdentity) User.Identity).Claims.FirstOrDefault(c => c.Type == "Name")?.Value;
 }
 
-@if(SignInManager.IsSignedIn(User))
+@if(User.IsInRole("User"))
 {
     <form method="POST" asp-action="Logout" asp-controller="Account">
         <ul class="nav navbar-nav navbar-right">
             <li><button type="submit" class="btn btn-link navbar-btn navbar-link">Útskráning</button></li>
             <li><a asp-controller="Account" asp-action="MyAccount">@claim <span class="glyphicon glyphicon-user"></span></a></li>
+        </ul>
+    </form>
+}
+else if(User.IsInRole("Employee"))
+{
+    <form method="POST" asp-action="Logout" asp-controller="Account">
+        <ul class="nav navbar-nav navbar-right">
+            <li><button type="submit" class="btn btn-link navbar-btn navbar-link">Útskráning</button></li>
+            <li><a asp-controller="Employee" asp-action="Index">@claim <span class="glyphicon glyphicon-user"></span></a></li>
         </ul>
     </form>
 }

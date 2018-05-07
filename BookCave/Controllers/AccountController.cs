@@ -6,7 +6,6 @@ using BookCave.Models.ViewModels;
 using Microsoft.AspNetCore.Identity;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Authorization;
-using System.Linq;
 
 namespace BookCave.Controllers
 {
