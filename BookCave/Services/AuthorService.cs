@@ -16,5 +16,10 @@ namespace BookCave.Services
             var authors = _authorRepo.GetAllAuthors();
             return authors;
         }
+     public List<AuthorDetailsViewModel> GetDetailsAuthor()
+        {
+            var authors = _authorRepo.GetDetailsAuthor();
+            return authors;
+        }
     }
 }
