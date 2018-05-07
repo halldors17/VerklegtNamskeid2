@@ -13,9 +13,8 @@
 {
     <form method="POST" asp-action="Logout" asp-controller="Account">
         <ul class="nav navbar-nav navbar-right">
-            <li><button class="btn btn-link navbar-btn navbar-link"></button></li>
-            <li><a asp-controller="Account" asp-action="MyAccount">Notandi</a></li>
-            <li><button type="submit" class="btn btn-link navbar-btn navbar-link">Útskráning <span class="glyphicon glyphicon-user"></span></button></li>
+            <li><button type="submit" class="btn btn-link navbar-btn navbar-link">Útskráning</button></li>
+            <li><a asp-controller="Account" asp-action="MyAccount">@claim <span class="glyphicon glyphicon-user"></span></a></li>
         </ul>
     </form>
 }
