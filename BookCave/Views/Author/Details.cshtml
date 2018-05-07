@@ -1,0 +1,12 @@
+<div>
+    @foreach(var author in @Model)
+    {
+        <div>
+            <p><img src="@author.AImage"/></p>
+            <p>@author.Name</p>
+            <p>@author.Description</p>
+            <p><img src="@author.BImage"/></p>
+            <p>@author.Title</p>
+        </div>
+    }
+</div>
