@@ -24,5 +24,11 @@ namespace BookCave.Services
             var category = _categoryRepo.GetCategory(id);
             return category;
         }
+
+        public CategoryDetailsViewModel GetCategoryDetails(int id)
+        {
+            var category = _categoryRepo.GetCategoryDetails(id);
+            return category;
+        }
     }
 }
