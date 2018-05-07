@@ -5,6 +5,7 @@ using BookCave.Models;
 using BookCave.Models.ViewModels;
 using Microsoft.AspNetCore.Identity;
 using System.Security.Claims;
+using Microsoft.AspNetCore.Authorization;
 
 namespace BookCave.Controllers
 {
@@ -37,7 +38,8 @@ namespace BookCave.Controllers
             {
                 return RedirectToAction("Index", "Home");
             }
-            return View();
+            ModelState.AddModelError("", "Innskráning tókst ekki");
+            return View(login);
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -71,6 +73,18 @@ namespace BookCave.Controllers
 
                 return RedirectToAction("Index", "Home");
             }
+            else
+            {
+                foreach(var error in result.Errors)
+                {
+                    ModelState.AddModelError("", error.Description);
+                }
+            }
+            return View(register);
+        }
+        [Authorize]
+        public IActionResult Member()
+        {
             return View();
         }
         public IActionResult AccessDenied()
