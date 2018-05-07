@@ -57,15 +57,13 @@ namespace BookCave.Repositories
             
             return books;
         }
-        public List <BookDetailsViewModel> GetBookDetails(int id)
+        public List <BookDetailViewModel> GetBookDetails(int id)
         {
             var books = (from a in _db.Books
             join b in _db.BookIdItem on a.Id equals b.BookId
-            join c in _db.CategoryIdItem on a.Id equals c.BookId
             join d in _db.Authors on b.Id equals d.Id
-            join e in _db.Categories on c.CategoryId equals e.Id
-            where a.Id == id
-            select new BookDetailsViewModel
+            where id == a.Id
+            select new BookDetailViewModel
             {
                 Title = a.Title,
                 Image = a.Image,
@@ -75,7 +73,6 @@ namespace BookCave.Repositories
                 YearPublished = a.YearPublished,
                 Pages = a.Pages,
                 Description = a.Description,
-                Category = e.Name
             }).ToList();
 
             return books;

@@ -32,7 +32,7 @@ namespace BookCave.Services
             var books = _bookRepo.GetBooksBySearch(SearchString).ToList();
             return books;
         }
-        public List<BookDetailsViewModel> GetBookDetails(int id)
+        public List<BookDetailViewModel> GetBookDetails(int id)
         {
             var books = _bookRepo.GetBookDetails(id);
             return books;
