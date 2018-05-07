@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using BookCave.Models;
 using BookCave.Services;
+using BookCave.Models.ViewModels;
 
 namespace BookCave.Controllers
 {
@@ -27,15 +28,42 @@ namespace BookCave.Controllers
 
         public IActionResult Books()
         {
-            var books = _bookService.GetSalesBooks();
+            var books = _bookService.GetSalesBooksInfo();
             return View(books);
         }
 
-        public IActionResult ChangeBook(int id)
+        [HttpGet]
+        public IActionResult AddBook()
         {
             return View();
         }
 
+        [HttpPost]
+        public IActionResult AddBook(BookDetailViewModel book)
+        {
+            if(ModelState.IsValid)
+            {
+                _bookService.AddBook(book);
+                return RedirectToAction("AddBook");
+            }
+
+            return View(book);
+        }
+
+        [HttpGet]
+        public IActionResult ChangeBook(int id)
+        {
+            var book = _bookService.GetSalesBooks(id);
+            return View(book);
+        }
+/*
+        [HttpPost]
+        public IActionResult ChangeBook(int id)
+        {
+            
+            return View();
+        }
+*/
         public IActionResult Authors()
         {
             return View();

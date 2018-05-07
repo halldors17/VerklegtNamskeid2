@@ -14,6 +14,7 @@ namespace BookCave.Controllers
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly RoleManager<IdentityRole> _roleManager;
+        
         public AccountController(
             UserManager<ApplicationUser> userManager,
             SignInManager<ApplicationUser> signInManager,
@@ -23,12 +24,14 @@ namespace BookCave.Controllers
             _signInManager = signInManager;
             _roleManager = roleManager;
         }
+
         [HttpGet]
         public IActionResult Login()
         {
             ViewBag.Title = "Innskrá";
             return View();
         }
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Login(LoginViewModel login)
@@ -46,6 +49,7 @@ namespace BookCave.Controllers
             ModelState.AddModelError("", "Innskráning tókst ekki");
             return View(login);
         }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Logout()
@@ -53,12 +57,14 @@ namespace BookCave.Controllers
             await _signInManager.SignOutAsync();
             return RedirectToAction("Login", "Account");
         }
+
         [HttpGet]
         public IActionResult Register() 
         {
             ViewBag.Title = "Nýr notandi";
             return View();
         }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Register(RegisterViewModel register) 
@@ -93,17 +99,20 @@ namespace BookCave.Controllers
             }
             return View(register);
         }
+
         [Authorize(Roles = "User")]
         public IActionResult MyAccount()
         {
             ViewBag.Title = "Notenda síða";
             return View();
         }
+
         public IActionResult AccessDenied()
         {
             ViewBag.Title = "Aðgang neitað";
             return View();
         }
+
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });

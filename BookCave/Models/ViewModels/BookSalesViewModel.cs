@@ -1,4 +1,6 @@
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using BookCave.Models.EntityModels;
 
 namespace BookCave.Models.ViewModels
 {
@@ -14,5 +16,11 @@ namespace BookCave.Models.ViewModels
         
         [Required]
         public string Publisher { get; set; }
+
+        [Required]
+        public string Author { get; set; }
+
+        [Required]
+        public List<CategoryListViewModel> Categories { get; set; }
     }
 }

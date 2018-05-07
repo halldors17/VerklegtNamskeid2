@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using BookCave.Data;
 using System.Linq;
 using BookCave.Models.ViewModels;
+using Microsoft.AspNetCore.Mvc;
 
 namespace BookCave.Repositories
 {
@@ -58,17 +59,18 @@ namespace BookCave.Repositories
             return books;
         }
 
-        public List<BookSalesViewModel> GetSalesBooks()
+        public List<BookSalesViewModel> GetSalesBooksInfo()
         {
             var books = (from b in _db.Books 
-                    //join
+                    join bId in _db.BookIdItem on b.Id equals bId.BookId
+                    join a in _db.Authors on b.Id equals a.Id
                     select new BookSalesViewModel 
                     {
                         Id = b.Id,
                         Image = b.Image,
                         Title = b.Title,
                         Publisher = b.Publisher,
-                        //Author = 
+                        Author = a.Name
                     }).ToList();
             
             return books;
@@ -93,7 +95,7 @@ namespace BookCave.Repositories
                 Pages = a.Pages,
                 Description = a.Description,
                 Category = e.Name,
-                Rating = a.Rating,
+                //Rating = a.Rating,
                 Stock = a.Stock,
                 Paperback = a.Paperback,
                 Ebook = a.Ebook,
@@ -104,7 +106,8 @@ namespace BookCave.Repositories
 
             return books;
         }
-         public List <BookDetailViewModel> GetSalesBook(int id)
+        
+        public BookDetailViewModel GetSalesBook(int id)
         {
             var books = (from a in _db.Books
             join b in _db.BookIdItem on a.Id equals b.BookId
@@ -123,16 +126,22 @@ namespace BookCave.Repositories
                 Pages = a.Pages,
                 Description = a.Description,
                 Category = e.Name,
-                Rating = a.Rating,
+                //Rating = a.Rating,
                 Stock = a.Stock,
                 Paperback = a.Paperback,
                 Ebook = a.Ebook,
                 Audio = a.Audio,
                 Minutes = a.Minutes,
 
-            }).ToList();
+            }).First();
 
             return books;
+        }
+
+        public void AddBook(BookDetailViewModel book)
+        {
+            _db.AddRange(book);
+            _db.SaveChanges();
         }
     }
 }
