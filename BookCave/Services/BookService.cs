@@ -38,10 +38,15 @@ namespace BookCave.Services
             return books;
         }
 
-
-        public List<BookSalesViewModel> GetSalesBooks()
+        public List<BookSalesViewModel> GetSalesBooksInfo()
         {
-            var books = _bookRepo.GetSalesBooks();
+            var books = _bookRepo.GetSalesBooksInfo();
+            return books;
+        }
+
+        public BookDetailViewModel GetSalesBooks(int id)
+        {
+            var books = _bookRepo.GetSalesBook(id);
             return books;
         }
 
@@ -49,6 +54,15 @@ namespace BookCave.Services
         {
             var books = _bookRepo.GetBookDetails(id);
             return books;
+<<<<<<< HEAD
         }*/
+=======
+        }
+
+        public void AddBook(BookDetailViewModel book)
+        {
+            _bookRepo.AddBook(book);
+        }
+>>>>>>> 1737902f610d15167d89b3b7259ebbd21fcd9447
     }
 }

@@ -1,8 +1,9 @@
 @model BookCave.Models.ViewModels.BookDetailViewModel
-<h1>Breyta bók</h1>
+<h1>Bæta við bók</h1>
 
 <div class="jumbotron">
-    <form method="POST" asp-controller="Employee" asp-action="ChangeBook">
+    <form method="POST" asp-controller="Employee" asp-action="AddBook">
+        <!-- Image -->
         <div class="form-group">
             <label asp-for="Title"></label>
             <input asp-for="Title" class="form-control">
@@ -12,6 +13,11 @@
             <label asp-for="Author"></label>
             <input asp-for="Author" class="form-control">
             <span asp-validation-for="Author"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="YearPublished"></label>
+            <input asp-for="YearPublished" class="form-control">
+            <span asp-validation-for="YearPublished"></span>
         </div>
         <div class="form-group">
             <label asp-for="Publisher"></label>
@@ -47,6 +53,11 @@
             <label asp-for="Description"></label>
             <input type="textbox" asp-for="Description" class="form-control">
             <span asp-validation-for="Description"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Price"></label>
+            <input asp-for="Price" class="form-control">
+            <span asp-validation-for="Price"></span>
         </div>
         <div class="form-group">
             <button type="submit">Vista breytingar</button>

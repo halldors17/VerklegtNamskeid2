@@ -10,7 +10,7 @@
             </div>
             <div class="book-sales-div col-lg-4 col-md-6 col-sm-6 col-xs-12" style="height: 250px; width: 700px">
                 <h4>@book.Title<br></h4>
-                <p>(Author)</p>
+                <p>@book.Author</p>
                 <p>@book.Publisher</p>
                 <p>---Sölutölur hér---</p>
                 <button><a asp-controller="Employee" asp-action="ChangeBook" asp-route-id="@book.Id">Breyta</a></button>

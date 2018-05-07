@@ -2,7 +2,11 @@ using System.Collections.Generic;
 using BookCave.Data;
 using System.Linq;
 using BookCave.Models.ViewModels;
+<<<<<<< HEAD
 using Microsoft.EntityFrameworkCore;
+=======
+using Microsoft.AspNetCore.Mvc;
+>>>>>>> 1737902f610d15167d89b3b7259ebbd21fcd9447
 
 namespace BookCave.Repositories
 {
@@ -73,17 +77,18 @@ namespace BookCave.Repositories
             return books;
         }
 
-        public List<BookSalesViewModel> GetSalesBooks()
+        public List<BookSalesViewModel> GetSalesBooksInfo()
         {
             var books = (from b in _db.Books 
-                    //join
+                    join bId in _db.BookIdItem on b.Id equals bId.BookId
+                    join a in _db.Authors on b.Id equals a.Id
                     select new BookSalesViewModel 
                     {
                         Id = b.Id,
                         Image = b.Image,
                         Title = b.Title,
                         Publisher = b.Publisher,
-                        //Author = 
+                        Author = a.Name
                     }).ToList();
             
             return books;
@@ -121,7 +126,8 @@ namespace BookCave.Repositories
 
             return books;
         }
-         public List <BookDetailViewModel> GetSalesBook(int id)
+        
+        public BookDetailViewModel GetSalesBook(int id)
         {
             var books = (from a in _db.Books
             join b in _db.BookIdItem on a.Id equals b.BookId
@@ -147,9 +153,19 @@ namespace BookCave.Repositories
                 Audio = a.Audio,
                 Minutes = a.Minutes,
 
-            }).ToList();
+            }).First();
 
             return books;
+<<<<<<< HEAD
         }*/
+=======
+        }
+
+        public void AddBook(BookDetailViewModel book)
+        {
+            _db.AddRange(book);
+            _db.SaveChanges();
+        }
+>>>>>>> 1737902f610d15167d89b3b7259ebbd21fcd9447
     }
 }
