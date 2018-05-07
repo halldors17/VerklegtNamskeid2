@@ -28,9 +28,6 @@ namespace BookCave.Repositories
 
         public CategoryListViewModel GetCategory(int id)
         {
-            //
-            
-
             var category = (from c in _db.Categories
                     where c.Id == id
                     select new CategoryListViewModel 
@@ -42,6 +39,22 @@ namespace BookCave.Repositories
             return category;
         }
 
+        public List<BookListViewModel> GetCategoryDetails(int id)
+        {
+            var books = (from c in _db.Categories
+                    join cId in _db.CategoryIdItem on c.Id equals cId.CategoryId
+                    join b in _db.Books on cId.BookId equals b.Id
+                    where c.Id == id
+                    select new BookListViewModel
+                    {
+                            Id = b.Id,
+                            Title = b.Title,
+                            Price = b.Price,
+                            Image = b.Image
+                    }).ToList();
+            return books;
+        }
+/*
         public CategoryDetailsViewModel GetCategoryDetails(int id)
         {
             var category = (from c in _db.Categories
@@ -68,5 +81,6 @@ namespace BookCave.Repositories
                     }).First();
             return category;
         }
+*/
     }
 }

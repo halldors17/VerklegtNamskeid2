@@ -25,7 +25,7 @@ namespace BookCave.Services
             return category;
         }
 
-        public CategoryDetailsViewModel GetCategoryDetails(int id)
+        public List<BookListViewModel> GetCategoryDetails(int id)
         {
             var category = _categoryRepo.GetCategoryDetails(id);
             return category;

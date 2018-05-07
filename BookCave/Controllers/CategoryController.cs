@@ -20,6 +20,8 @@ namespace BookCave.Controllers
 
         public IActionResult Details(int id)
         {
+            ViewBag.Category = _categorieService.GetCategory(id).Name;
+
             var result = _categorieService.GetCategoryDetails(id);
 
             if(result == null)

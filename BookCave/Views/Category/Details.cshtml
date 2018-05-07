@@ -1,9 +1,9 @@
-@model BookCave.Models.ViewModels.CategoryDetailsViewModel
-<h1>@Model.Name</h1>
+@model List<BookCave.Models.ViewModels.BookListViewModel>
+<h1>@ViewBag.Category</h1>
 
 <div class="container">
     <div class="row"></div>
-        @foreach(var book in @Model.Books)
+        @foreach(var book in @Model)
         {
             <div class="col-lg-2 cl-md-2 col-sm-3 col-xs-6 text-center">
                 <img src="@book.Image"  height="200" width="120" /><br>
