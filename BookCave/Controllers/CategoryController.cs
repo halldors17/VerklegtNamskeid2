@@ -1,4 +1,3 @@
-using System.Linq;
 using BookCave.Services;
 using Microsoft.AspNetCore.Mvc;
 
@@ -21,7 +20,7 @@ namespace BookCave.Controllers
 
         public IActionResult Details(int id)
         {
-            var result = _categorieService.GetCategory(id);
+            var result = _categorieService.GetCategoryDetails(id);
 
             if(result == null)
             {
