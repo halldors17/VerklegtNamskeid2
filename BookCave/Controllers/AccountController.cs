@@ -13,10 +13,15 @@ namespace BookCave.Controllers
     {
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly SignInManager<ApplicationUser> _signInManager;
-        public AccountController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager) 
+        private readonly RoleManager<IdentityRole> _roleManager;
+        public AccountController(
+            UserManager<ApplicationUser> userManager,
+            SignInManager<ApplicationUser> signInManager,
+            RoleManager<IdentityRole> roleManager)
         {
             _userManager = userManager;
             _signInManager = signInManager;
+            _roleManager = roleManager;
         }
         [HttpGet]
         public IActionResult Login()
@@ -51,14 +56,14 @@ namespace BookCave.Controllers
         [HttpGet]
         public IActionResult Register() 
         {
-            ViewBag.Title = "Nýr Notandi";
+            ViewBag.Title = "Nýr notandi";
             return View();
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Register(RegisterViewModel register) 
         {
-            ViewBag.Title = "Nýr Notandi";
+            ViewBag.Title = "Nýr notandi";
             if(!ModelState.IsValid)
             {
                 return View(register);
@@ -67,7 +72,13 @@ namespace BookCave.Controllers
             var result = await _userManager.CreateAsync(user, register.Password);
             if(result.Succeeded)
             {
+                if(!await _roleManager.RoleExistsAsync("User"))
+                {
+                    var users = new IdentityRole("User");
+                    var res = await _roleManager.CreateAsync(users);
+                }
                 //Success
+                await _userManager.AddToRoleAsync(user, "User");
                 await _userManager.AddClaimAsync(user, new Claim("Name", $"{register.FirstName} {register.LastName}"));
                 await _signInManager.SignInAsync(user, false);
 
@@ -82,14 +93,15 @@ namespace BookCave.Controllers
             }
             return View(register);
         }
-        [Authorize]
-        public IActionResult Member()
+        [Authorize(Roles = "User")]
+        public IActionResult MyAccount()
         {
+            ViewBag.Title = "Notenda síða";
             return View();
         }
         public IActionResult AccessDenied()
         {
-            ViewBag.Title = "Þú hefur ekki leyfi fyrir að vera hér >:(";
+            ViewBag.Title = "Aðgang neitað";
             return View();
         }
         public IActionResult Error()
