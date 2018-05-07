@@ -6,7 +6,7 @@
 @inject SignInManager<ApplicationUser> SignInManager
 
 @{
-    var claim = ((ClaimsIdentity) User.Identity).Claims.FirstOrDefault(c => c.Type == "FirstName")?.Value;
+    var claim = ((ClaimsIdentity) User.Identity).Claims.FirstOrDefault(c => c.Type == "Name")?.Value;
 }
 
 @if(SignInManager.IsSignedIn(User))
@@ -14,7 +14,7 @@
     <form method="POST" asp-action="Logout" asp-controller="Account">
         <ul class="nav navbar-nav navbar-right">
             <li><button class="btn btn-link navbar-btn navbar-link"></button></li>
-            <li><a asp-controller="Account" asp-action="Member">Notandi</a></li>
+            <li><a asp-controller="Account" asp-action="MyAccount">Notandi</a></li>
             <li><button type="submit" class="btn btn-link navbar-btn navbar-link">Útskráning <span class="glyphicon glyphicon-user"></span></button></li>
         </ul>
     </form>
