@@ -62,7 +62,7 @@ namespace BookCave.Repositories
             var books = (from a in _db.Books
             join b in _db.BookIdItem on a.Id equals b.BookId
             join d in _db.Authors on b.Id equals d.Id
-            where id == a.Id
+            where a.Id == id
             select new BookDetailViewModel
             {
                 Title = a.Title,
