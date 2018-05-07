@@ -15,13 +15,13 @@ namespace BookCave.Repositories
         
         public List<BookListViewModel> GetAllBooks()
         {
-            var books = (from a in _db.Books 
+            var books = (from b in _db.Books 
                     select new BookListViewModel 
                     {
-                        Id = a.Id,
-                        Image = a.Image,
-                        Title = a.Title,
-                        Price = a.Price
+                        Id = b.Id,
+                        Image = b.Image,
+                        Title = b.Title,
+                        Price = b.Price
                     }).ToList();
             
             return books;
@@ -57,6 +57,23 @@ namespace BookCave.Repositories
             
             return books;
         }
+
+        public List<BookSalesViewModel> GetSalesBooks()
+        {
+            var books = (from b in _db.Books 
+                    //join
+                    select new BookSalesViewModel 
+                    {
+                        Id = b.Id,
+                        Image = b.Image,
+                        Title = b.Title,
+                        Publisher = b.Publisher,
+                        //Author = 
+                    }).ToList();
+            
+            return books;
+        }
+
         public List <BookDetailViewModel> GetBookDetails(int id)
         {
             var books = (from a in _db.Books
