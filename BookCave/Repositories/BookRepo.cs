@@ -61,7 +61,7 @@ namespace BookCave.Repositories
         {
             var books = (from a in _db.Books
             join b in _db.BookIdItem on a.Id equals b.BookId
-            join c in _db.CategoryIdItem on a.Id equals c.CategoryId
+            join c in _db.CategoryIdItem on a.Id equals c.BookId
             join d in _db.Authors on b.Id equals d.Id
             join e in _db.Categories on c.CategoryId equals e.Id
             where a.Id == id
