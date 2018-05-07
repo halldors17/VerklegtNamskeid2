@@ -1,12 +1,15 @@
 <div>
-    @foreach(var author in @Model)
-    {
         <div>
-            <p><img src="@author.AImage"/></p>
+            @foreach(var author in @Model)
+            {
+            <p><img src="@author.AImage" height="300" width="220"/></p>
             <p>@author.Name</p>
             <p>@author.Description</p>
-            <p><img src="@author.BImage"/></p>
+            }
+            @foreach(var author in @Model)
+            {
+            <p><img src="@author.BImage" height="200" width="120"/></p>
             <p>@author.Title</p>
+            }
         </div>
-    }
 </div>
