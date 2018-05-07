@@ -2,11 +2,8 @@ using System.Collections.Generic;
 using BookCave.Data;
 using System.Linq;
 using BookCave.Models.ViewModels;
-<<<<<<< HEAD
 using Microsoft.EntityFrameworkCore;
-=======
 using Microsoft.AspNetCore.Mvc;
->>>>>>> 1737902f610d15167d89b3b7259ebbd21fcd9447
 
 namespace BookCave.Repositories
 {
@@ -94,6 +91,37 @@ namespace BookCave.Repositories
             return books;
         }
 
+        public List <BookDetailViewModel> GetBookDetails(int id)
+        {
+            //var tempbooks = _db.Books.Include(i => i.Authors).ToList(); eftir Patrek
+
+            var books = (from a in _db.Books
+                        join b in _db.Authors on a.AuthorId equals b.Id
+                        join c in _db.Categories on a.CategoryId equals c.Id
+                        where a.Id == id
+                        select new BookDetailViewModel
+                        {
+                            Title = a.Title,
+                            Image = a.Image,
+                            Price = a.Price,
+                            Publisher = a.Publisher,
+                            Author = b.Name,
+                            YearPublished = a.YearPublished,
+                            Pages = a.Pages,
+                            Description = a.Description,
+                            Category = c.Name,
+                            //Rating = a.Rating,
+                            Stock = a.Stock,
+                            Paperback = a.Paperback,
+                            Ebook = a.Ebook,
+                            Audio = a.Audio,
+                            Minutes = a.Minutes,
+
+                        }).ToList();
+
+            return books;
+        }
+    //----GAMLA BOOK DETAILS----
        /* public List <BookDetailViewModel> GetBookDetails(int id)
         {
             //var tempbooks = _db.Books.Include(i => i.Authors).ToList(); eftir Patrek
@@ -156,16 +184,15 @@ namespace BookCave.Repositories
             }).First();
 
             return books;
-<<<<<<< HEAD
         }*/
-=======
-        }
 
+/*
         public void AddBook(BookDetailViewModel book)
         {
             _db.AddRange(book);
             _db.SaveChanges();
         }
->>>>>>> 1737902f610d15167d89b3b7259ebbd21fcd9447
+*/
+
     }
 }

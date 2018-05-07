@@ -6,6 +6,6 @@ namespace BookCave.Models.ViewModels
         public string Title { get; set; }
         public int Price { get; set; }
         public string Image { get; set; }
-        public int Discount { get; set; }
+        public int Discount { get; internal set; }
     }
 }

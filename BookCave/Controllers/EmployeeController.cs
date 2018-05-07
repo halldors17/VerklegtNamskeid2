@@ -37,7 +37,7 @@ namespace BookCave.Controllers
         {
             return View();
         }
-
+/*
         [HttpPost]
         public IActionResult AddBook(BookDetailViewModel book)
         {
@@ -49,13 +49,15 @@ namespace BookCave.Controllers
 
             return View(book);
         }
-
+*/
+/* 
         [HttpGet]
         public IActionResult ChangeBook(int id)
         {
             var book = _bookService.GetSalesBooks(id);
             return View(book);
         }
+*/
 /*
         [HttpPost]
         public IActionResult ChangeBook(int id)
