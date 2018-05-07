@@ -78,7 +78,9 @@ namespace BookCave.Repositories
         {
             var books = (from a in _db.Books
             join b in _db.BookIdItem on a.Id equals b.BookId
+            join c in _db.CategoryIdItem on a.Id equals c.CategoryId
             join d in _db.Authors on b.Id equals d.Id
+            join e in _db.Categories on c.CategoryId equals e.Id
             where a.Id == id
             select new BookDetailViewModel
             {
@@ -90,6 +92,44 @@ namespace BookCave.Repositories
                 YearPublished = a.YearPublished,
                 Pages = a.Pages,
                 Description = a.Description,
+                Category = e.Name,
+                Rating = a.Rating,
+                Stock = a.Stock,
+                Paperback = a.Paperback,
+                Ebook = a.Ebook,
+                Audio = a.Audio,
+                Minutes = a.Minutes,
+
+            }).ToList();
+
+            return books;
+        }
+         public List <BookDetailViewModel> GetSalesBook(int id)
+        {
+            var books = (from a in _db.Books
+            join b in _db.BookIdItem on a.Id equals b.BookId
+            join c in _db.CategoryIdItem on a.Id equals c.CategoryId
+            join d in _db.Authors on b.Id equals d.Id
+            join e in _db.Categories on c.CategoryId equals e.Id
+            where a.Id == id
+            select new BookDetailViewModel
+            {
+                Title = a.Title,
+                Image = a.Image,
+                Price = a.Price,
+                Publisher = a.Publisher,
+                Author = d.Name,
+                YearPublished = a.YearPublished,
+                Pages = a.Pages,
+                Description = a.Description,
+                Category = e.Name,
+                Rating = a.Rating,
+                Stock = a.Stock,
+                Paperback = a.Paperback,
+                Ebook = a.Ebook,
+                Audio = a.Audio,
+                Minutes = a.Minutes,
+
             }).ToList();
 
             return books;
