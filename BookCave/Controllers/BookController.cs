@@ -17,9 +17,14 @@ namespace BookCave.Controllers
         {
             _bookService = new BookService();
         }
-        public IActionResult Index()
+        //public IActionResult Index()
+        //{
+        //    var books = _bookService.GetAllBooks();
+        //    return View(books);
+        //}
+        public IActionResult Index(string SearchString)
         {
-            var books = _bookService.GetAllBooks();
+            var books = _bookService.GetBooksBySearch(SearchString);
             return View(books);
         }
     }

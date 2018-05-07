@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using BookCave.Models.ViewModels;
@@ -24,6 +25,12 @@ namespace BookCave.Services
         {
             var books = _bookRepo.GetBooksByRating().Take(10).ToList();
             return books;
+        }
+
+        internal object GetBooksBySearch(string SearchString)
+        {
+            var books = _bookRepo.GetBooksBySearch(SearchString).ToList();
+            return books;;
         }
     }
 }

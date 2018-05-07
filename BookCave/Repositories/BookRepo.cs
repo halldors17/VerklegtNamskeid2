@@ -41,5 +41,21 @@ namespace BookCave.Repositories
             
             return books;
         }
+
+        public List<BookListViewModel> GetBooksBySearch(string SearchString)
+        {
+            var books = (from b in _db.Books
+                    orderby b.Title ascending
+                    where b.Title.Contains(SearchString)
+                    select new BookListViewModel 
+                    {
+                        Id = b.Id,
+                        Image = b.Image,
+                        Title = b.Title,
+                        Price = b.Price,
+                    }).ToList();
+            
+            return books;
+        }
     }
 }
