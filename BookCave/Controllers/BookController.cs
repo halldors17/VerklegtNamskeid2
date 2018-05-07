@@ -29,5 +29,14 @@ namespace BookCave.Controllers
             var books = _bookService.GetBooksBySearch(SearchString);
             return View(books);
         }
+        public IActionResult Details(int id)
+        {
+            var books = _bookService.GetBookDetails(id);
+            if(books == null)
+            {
+                return Content("Not Found");
+            }
+            return View();
+        }
     }
 }

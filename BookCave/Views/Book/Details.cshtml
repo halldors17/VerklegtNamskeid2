@@ -1,14 +1,12 @@
-@model List<BookCave.Models.ViewModels.BookListViewModel>
-
-<h1>Top 10</h1>
+@model List<BookCave.Models.ViewModels.BookDetailViewModel>
 
 <div class="container">
     <div class="row"></div>
-        @foreach(var book in @Model)
+        @foreach(var book    in @Model)
         {
             <div class="col-lg-2 cl-md-2 col-sm-3 col-xs-6 text-center">
                 <img src="@book.Image"  height="200" width="120" /><br>
-                <a asp-controller="Book" asp-action="Details" asp-route-id="@book.Id">@book.Title</a><br>
+               <a asp-controller="Book" asp-action="Details" asp-route-id="@book.Id">@book.Title</a><br>
                 @book.Price $
             </div>
         }
