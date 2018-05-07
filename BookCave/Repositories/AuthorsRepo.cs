@@ -16,7 +16,8 @@ namespace BookCave.Repositories
         public List<AuthorListViewModel> GetAllAuthors()
         {
             var authors = (from a in _db.Authors 
-                    select new AuthorListViewModel {
+                    select new AuthorListViewModel 
+                    {
                         Name = a.Name,
                         
                     }).ToList();
