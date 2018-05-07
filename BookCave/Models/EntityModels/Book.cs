@@ -21,5 +21,10 @@ namespace BookCave.Models.EntityModels
         public int Stock { get; set; }
         public string Image { get; set; }
         public double Rating { get; set; }
+        public int Discount { get; set; }
+        public int AuthorId { get; set; }
+        public int CategoryId { get; set;}
+        //public virtual ICollection<Author> Authors { get; set; } Eftir Patrek
+
     }
 }

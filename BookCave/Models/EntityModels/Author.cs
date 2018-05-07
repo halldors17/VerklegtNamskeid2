@@ -9,5 +9,8 @@ namespace BookCave.Models.EntityModels
         public string Description { get; set; }
         public List<BookIdItem> BookIdList { get; set; }
         public string Image { get; set; }
+
+        //public virtual ICollection<Book> Books { get; set; } Eftir Patrek
+
     }
 }

@@ -30,7 +30,8 @@ namespace BookCave.Controllers
         }
         public IActionResult Discount()
         {
-            return View();
+            var discountBooks = _bookService.GetDiscount();
+            return View(discountBooks);
         }
         public IActionResult About()
         {

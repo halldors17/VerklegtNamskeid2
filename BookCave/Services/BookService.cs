@@ -26,6 +26,11 @@ namespace BookCave.Services
             var books = _bookRepo.GetBooksByRating().Take(10).ToList();
             return books;
         }
+        public List<BookListViewModel> GetDiscount()
+        {
+            var books = _bookRepo.GetDiscount();
+            return books;
+        }
 
         internal object GetBooksBySearch(string SearchString)
         {
@@ -40,10 +45,10 @@ namespace BookCave.Services
             return books;
         }
 
-        public List<BookDetailViewModel> GetBookDetails(int id)
+        /*public List <BookDetailViewModel> GetBookDetails(int id)
         {
             var books = _bookRepo.GetBookDetails(id);
             return books;
-        }
+        }*/
     }
 }

@@ -18,7 +18,7 @@ namespace BookCave
         {
             var host = BuildWebHost(args);
             //to initialize the database
-            SeedData();
+            //SeedData();
             host.Run();
         }
 
@@ -28,7 +28,7 @@ namespace BookCave
                 .Build();
 
         //To initialize the database
-        public static void SeedData()
+        /*public static void SeedData()
         {
             var db = new DataContext();
 
@@ -87,6 +87,6 @@ namespace BookCave
                 db.AddRange(initialOrders);
                 db.SaveChanges();
             }
-        }
+        }*/
     }
 }
