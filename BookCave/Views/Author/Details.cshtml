@@ -6,10 +6,12 @@
             <p>@author.Name</p>
             <p>@author.Description</p>
             }
+            <ul>
             @foreach(var author in @Model)
             {
             <p><img src="@author.BImage" height="200" width="120"/></p>
             <p>@author.Title</p>
             }
+            </ul>
         </div>
 </div>

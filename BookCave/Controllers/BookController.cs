@@ -36,7 +36,7 @@ namespace BookCave.Controllers
             {
                 return Content("Not Found");
             }
-            return View();
+            return View(books);
         }
     }
 }
