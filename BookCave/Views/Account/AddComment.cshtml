@@ -4,12 +4,14 @@
     <div class="jumbotron">
         <form method="POST" asp-controller="Account" asp-action="AddComment">
             <div class="form-group">
-                <label for="Name">Nafn</label>
-                <input id="Name" name="Name" class="form-control">
+                <label asp-for="BookComment"></label>
+                <input asp-for="BookComment" class="form-control">
+                <span asp-validation-for="BookComment"></span>
             </div>
             <div class="form-group">
-                <label for="Comment">Umsögn</label>
-                <input id="Name" name="Comment" class="form-control">
+                <label asp-for="Rating"></label>
+                <input asp-for="Rating" class="form-control">
+                <span asp-validation-for="Rating"></span>
             </div>
             <button type="submit" class="btn btn-default">Skrá umsögn</button>
         </form>
