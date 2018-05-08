@@ -24,5 +24,6 @@ namespace BookCave.Models.ViewModels
         public int Discount { get; set; }
         public List<Author> AuthorList { get; set; }
         public List<Category> CategoryList { get; set; }
+        public string BookComment { get; set; }
     }
 }

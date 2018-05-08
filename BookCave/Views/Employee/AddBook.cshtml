@@ -1,10 +1,10 @@
-@model BookCave.Models.ViewModels.InputBookModel
+@model BookCave.Models.InputModels.InputBookModel
 <h1>Bæta við bók</h1>
 
 <div class="jumbotron">
     <form method="POST" asp-controller="Employee" asp-action="AddBook">
         <div class="form-group">
-            <label asp-for="Title"></label>
+            <label asp-for="Title">Titill</label>
             <input asp-for="Title" class="form-control">
             <span asp-validation-for="Title"></span>
         </div>
@@ -15,17 +15,17 @@
             </select>
         </div>
         <div class="form-group">
-            <label asp-for="Image"></label>
+            <label asp-for="Image">Mynd</label>
             <input asp-for="Image" class="form-control">
             <span asp-validation-for="Image"></span>
         </div>
         <div class="form-group">
-            <label asp-for="YearPublished"></label>
+            <label asp-for="YearPublished">Útgáfuár</label>
             <input asp-for="YearPublished" class="form-control">
             <span asp-validation-for="YearPublished"></span>
         </div>
         <div class="form-group">
-            <label asp-for="Publisher"></label>
+            <label asp-for="Publisher">Útgáfufélag</label>
             <input asp-for="Publisher" class="form-control">
             <span asp-validation-for="Publisher"></span>
         </div>
@@ -36,37 +36,37 @@
             </select>
         </div>
 
-        <input type="checkbox" name="Paperback" value="Paperback"> Kilja
-        <input type="checkbox" name="Ebook" value="Ebook"> Rafbók
-        <input type="checkbox" name="Audio" value="Audio"> Hljóðbók
+        <input type="checkbox" asp-for="Paperback" value="Paperback"> Kilja
+        <input type="checkbox" asp-for="Ebook" value="Ebook"> Rafbók
+        <input type="checkbox" asp-for="Audio" value="Audio"> Hljóðbók
 
         <div class="form-group">
-            <label asp-for="Stock"></label>
+            <label asp-for="Stock">Magn</label>
             <input asp-for="Stock" class="form-control">
             <span asp-validation-for="Stock"></span>
         </div>
         <div class="form-group">
-            <label asp-for="Pages"></label>
+            <label asp-for="Pages">Blaðsíðutal</label>
             <input asp-for="Pages" class="form-control">
             <span asp-validation-for="Pages"></span>
         </div>
         <div class="form-group">
-            <label asp-for="Minutes"></label>
+            <label asp-for="Minutes">Mínútur</label>
             <input asp-for="Minutes" class="form-control">
             <span asp-validation-for="Minutes"></span>
         </div>
         <div class="form-group">
-            <label asp-for="Description"></label>
+            <label asp-for="Description">Lýsing</label>
             <input type="textbox" asp-for="Description" class="form-control">
             <span asp-validation-for="Description"></span>
         </div>
         <div class="form-group">
-            <label asp-for="Price"></label>
+            <label asp-for="Price">Verð</label>
             <input asp-for="Price" class="form-control">
             <span asp-validation-for="Price"></span>
         </div>
         <div class="form-group">
-            <label asp-for="Discount"></label>
+            <label asp-for="Discount">Afsláttur</label>
             <input asp-for="Discount" class="form-control">
             <span asp-validation-for="Discount"></span>
         </div>

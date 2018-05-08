@@ -115,7 +115,13 @@ namespace BookCave.Repositories
                             Id = c.Id,
                             Name = c.Name
                         }).ToList();
-            
+/*
+            var comment = (from b in _db.Books
+                        join c in _db.Comments on b.Id equals c.BookId
+                        where b.Id == id
+                        select
+                        ).FirstOrDefault();
+      */      
             var book = (from a in _db.Books
                         where a.Id == id
                         select new BookDetailViewModel
@@ -142,6 +148,8 @@ namespace BookCave.Repositories
 
             return book;
         }
+
+        
     //----GAMLA BOOK DETAILS----
        /* public List <BookDetailViewModel> GetBookDetails(int id)
         {
@@ -230,6 +238,9 @@ namespace BookCave.Repositories
 
             _db.Add(newBook);
             _db.SaveChanges();
+
+            //Tengja book og author
+            //Tengja book og category
         }
     }
 }
