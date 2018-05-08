@@ -5,6 +5,7 @@ using BookCave.Models.ViewModels;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
 using BookCave.Models.EntityModels;
+using BookCave.Models.InputModels;
 
 namespace BookCave.Repositories
 {
@@ -226,7 +227,7 @@ namespace BookCave.Repositories
                 Ebook = book.Ebook,
                 YearPublished = book.YearPublished 
             };
-            _db.Add(newBook);
+            _db.Books.Add(newBook);
             _db.SaveChanges();
         }
     }
