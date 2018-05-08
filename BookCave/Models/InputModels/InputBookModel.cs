@@ -1,6 +1,6 @@
- namespace BookCave.Models.ViewModels
+ namespace BookCave.Models.InputModels
  {
- public class InputBookModel
+    public class InputBookModel
     {
         public string Title { get; set; }
         public string Publisher { get; set; }

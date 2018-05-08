@@ -5,6 +5,7 @@ using BookCave.Models.ViewModels;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
 using BookCave.Models.EntityModels;
+using BookCave.Models.InputModels;
 
 namespace BookCave.Repositories
 {
