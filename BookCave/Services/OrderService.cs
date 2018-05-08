@@ -13,9 +13,9 @@ namespace BookCave.Services
             _orderRepo = new OrderRepo();
         }
         
-        public List<OrderListViewModel> GetAllOrders()
+        public List<OrderListViewModel> GetOrder(int id)
         {
-            var orders = _orderRepo.GetAllOrders();
+            var orders = _orderRepo.GetOrder(id);
             return orders;
         }
     }

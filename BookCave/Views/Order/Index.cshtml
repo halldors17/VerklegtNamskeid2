@@ -1,0 +1,11 @@
+@model BookCave.Models.ViewModels.OrderListViewModel
+<h1>Pantanir</h1>
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-2 cl-md-2 col-sm-3 col-xs-6 text-center">
+            <a asp-controller="Order" asp-action="Details" asp-route-id="@Order.Id">@Order.Status</a><br>
+            @Order.Price $
+        </div>
+    </div>
+</div>

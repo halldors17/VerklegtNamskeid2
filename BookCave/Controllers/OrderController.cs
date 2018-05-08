@@ -11,16 +11,17 @@ namespace BookCave.Controllers
 {
     public class OrderController : Controller
     {
+        int id = 2;
         private OrderService _orderService;
 
         public OrderController()
         {
             _orderService = new OrderService();
         }
-        
-        public IActionResult Index()
+
+        public IActionResult Index(int id)
         {
-            return View();
+            return View(id);
         }
 
         public IActionResult Checkout()

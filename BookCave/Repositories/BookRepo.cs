@@ -54,7 +54,7 @@ namespace BookCave.Repositories
                         Id = a.Id,
                         Image = a.Image,
                         Title = a.Title,
-                        Price = a.Price,
+                        Price = a.Price * (1-(a.Discount/100)),
                         Discount = a.Discount
                     }).ToList();
             return books;
@@ -227,12 +227,8 @@ namespace BookCave.Repositories
                 Ebook = book.Ebook,
                 YearPublished = book.YearPublished 
             };
-<<<<<<< HEAD
-            _db.Books.Add(newBook);
-=======
 
             _db.Add(newBook);
->>>>>>> 08eed8076bc1203846be2d9c86b416c3b33e8a94
             _db.SaveChanges();
         }
     }
