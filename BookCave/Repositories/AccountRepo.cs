@@ -36,7 +36,17 @@ namespace BookCave.Repositories
         }
         public void AddShippingInfo(ShippingInfoInputModel shipping, string userId)
         {
-           // var newShipping = 
+            var newShipping = new ShippingInfo
+            {
+                UserId = userId,
+                Street = shipping.Street,
+                City = shipping.City,
+                PostalCode = shipping.PostalCode,
+                Country = shipping.Country,
+                SendingMethod = shipping.SendingMethod
+            };
+            _db.ShippingInfo.Add(newShipping);
+            _db.SaveChanges();
         }
     }
 }

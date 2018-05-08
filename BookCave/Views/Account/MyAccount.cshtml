@@ -10,7 +10,7 @@
 <div class="jumbotron">
     @if(@Model.Shipping == null)
     {
-        <a href="#">Bæta við Flutnings upplýsingar</a>
+        <a asp-controller="Account" asp-action="ShippingInfo">Bæta við Flutnings upplýsingar</a>
     }
     else
     {

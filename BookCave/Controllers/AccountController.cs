@@ -131,6 +131,8 @@ namespace BookCave.Controllers
             if(ModelState.IsValid)
             {
                 string userId = _userManager.GetUserId(User);
+                _accountService.AddShippingInfo(shipping, userId);
+                return RedirectToAction("Index", "Home");
 
             }
             return View(shipping);

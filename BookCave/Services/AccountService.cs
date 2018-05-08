@@ -18,7 +18,7 @@ namespace BookCave.Services
         }
         public void AddShippingInfo(ShippingInfoInputModel shipping, string userId)
         {
-            
+            _accountRepo.AddShippingInfo(shipping, userId);
         }
     }
 }
