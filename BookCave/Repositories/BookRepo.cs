@@ -208,32 +208,26 @@ namespace BookCave.Repositories
 
         public void AddBook(InputBookModel book)
         {
-            var newBook = (from a in _db.Books
-                        join b in _db.Authors on a.AuthorId equals b.Id
-                        join c in _db.Categories on a.CategoryId equals c.Id
-                        where a.Id == book.Id
-                        select new Book
-                        {
-                            Title = book.Title,
-                            Image = book.Image,
-                            Price = book.Price,
-                            Publisher = book.Publisher,
-                            AuthorId = b.Id,
-                            YearPublished = book.YearPublished,
-                            Pages = book.Pages,
-                            Description = book.Description,
-                            CategoryId = c.Id,
-                            //Rating = a.Rating,
-                            Stock = book.Stock,
-                            Paperback = book.Paperback,
-                            Ebook = book.Ebook,
-                            Audio = book.Audio,
-                            Minutes = book.Minutes
-                        }).SingleOrDefault(); //??
-            //??
-            _db.AddRange(newBook);
+            var newBook = new Book
+            {
+                Title = book.Title,
+                CategoryId = book.CategoryId,
+                Image = book.Image,
+                Price = book.Price,
+                Publisher = book.Publisher,
+                AuthorId = book.AuthorId,
+                Rating = book.Rating,
+                Pages = book.Pages,
+                Description = book.Description,
+                Stock = book.Stock,
+                Paperback = book.Paperback,
+                Audio = book.Audio,
+                Minutes = book.Minutes,
+                Ebook = book.Ebook,
+                YearPublished = book.YearPublished 
+            };
+            _db.Add(newBook);
             _db.SaveChanges();
         }
-
     }
 }

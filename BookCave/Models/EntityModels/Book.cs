@@ -24,6 +24,5 @@ namespace BookCave.Models.EntityModels
         public int Discount { get; set; }
         public int AuthorId { get; set; }
         public int CategoryId { get; set;}
-        //public virtual ICollection<Author> Authors { get; set; } Eftir Patrek
     }
 }
