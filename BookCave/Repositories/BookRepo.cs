@@ -93,7 +93,7 @@ namespace BookCave.Repositories
             return books;
         }
 
-        public List<BookDetailViewModel> GetBookDetails(int id)
+        public BookDetailViewModel GetBookDetails(int id)
         {
             //var tempbooks = _db.Books.Include(i => i.Authors).ToList(); eftir Patrek
             var authors = (from b in _db.Books
@@ -116,7 +116,7 @@ namespace BookCave.Repositories
                             Name = c.Name
                         }).ToList();
             
-            var books = (from a in _db.Books
+            var book = (from a in _db.Books
                         where a.Id == id
                         select new BookDetailViewModel
                         {
@@ -131,16 +131,16 @@ namespace BookCave.Repositories
                             Pages = a.Pages,
                             Description = a.Description,
                             //Category = c.Name,
-                            Rating = a.Rating,
+                            //Rating = a.Rating,
                             Stock = a.Stock,
                             Paperback = a.Paperback,
                             Ebook = a.Ebook,
                             Audio = a.Audio,
                             Minutes = a.Minutes,
 
-                        }).ToList();
+                        }).First();
 
-            return books;
+            return book;
         }
     //----GAMLA BOOK DETAILS----
        /* public List <BookDetailViewModel> GetBookDetails(int id)
@@ -227,7 +227,12 @@ namespace BookCave.Repositories
                 Ebook = book.Ebook,
                 YearPublished = book.YearPublished 
             };
+<<<<<<< HEAD
             _db.Books.Add(newBook);
+=======
+
+            _db.Add(newBook);
+>>>>>>> 08eed8076bc1203846be2d9c86b416c3b33e8a94
             _db.SaveChanges();
         }
     }

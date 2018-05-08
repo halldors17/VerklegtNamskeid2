@@ -1,6 +1,6 @@
  namespace BookCave.Models.InputModels
  {
- public class InputBookModel
+    public class InputBookModel
     {
         public string Title { get; set; }
         public string Publisher { get; set; }
@@ -15,7 +15,6 @@
         public int Stock { get; set; }
         public string Image { get; set; }
         public double Rating { get; set; }
-        public string Author { get; set; }
         public int AuthorId { get; set ; }
         public int CategoryId { get; set; }
         public int Discount { get; set; }
