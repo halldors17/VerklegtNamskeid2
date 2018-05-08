@@ -130,7 +130,7 @@ namespace BookCave.Repositories
                             Pages = a.Pages,
                             Description = a.Description,
                             //Category = c.Name,
-                            //Rating = a.Rating,
+                            Rating = a.Rating,
                             Stock = a.Stock,
                             Paperback = a.Paperback,
                             Ebook = a.Ebook,
