@@ -14,7 +14,7 @@
                 }
                 @foreach(var a in book.AuthorList)
                 {
-                    @a.Name <br>
+                    <a asp-controller="Author" asp-action="Details" asp-route-id="@a.Id">@a.Name</a> <br>
                 }
             </div>
         }

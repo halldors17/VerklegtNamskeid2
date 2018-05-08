@@ -96,10 +96,12 @@ namespace BookCave.Repositories
         {
             //var tempbooks = _db.Books.Include(i => i.Authors).ToList(); eftir Patrek
             var authors = (from b in _db.Books
-                        join a in _db.Authors on b.AuthorId equals a.Id
+                        join bId in _db.BookIdItem on b.Id equals bId.BookId
+                        join a in _db.Authors on bId.AuthorId equals a.Id
                         where b.Id == id
                         select new Author
                         {
+                            Id = a.Id,
                             Name = a.Name
                         }).ToList();
 
@@ -109,6 +111,7 @@ namespace BookCave.Repositories
                         where b.Id == id
                         select new Category
                         {
+                            Id = c.Id,
                             Name = c.Name
                         }).ToList();
             

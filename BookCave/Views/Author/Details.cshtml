@@ -12,7 +12,7 @@
                     {
                         <li>
                             <p><img src="@b.Image" height="200" width="120"/></p>
-                            <p>@b.Title</p>
+                            <p><a asp-controller="Book" asp-action="Details" asp-route-id="@b.Id">@b.Title</a></p>
                         </li>
                     }
                 </ul>
