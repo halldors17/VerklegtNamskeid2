@@ -11,7 +11,6 @@ namespace BookCave.Controllers
 {
     public class OrderController : Controller
     {
-        int id = 2;
         private OrderService _orderService;
 
         public OrderController()
@@ -21,7 +20,8 @@ namespace BookCave.Controllers
 
         public IActionResult Index(int id)
         {
-            return View(id);
+            var Order = _orderService.GetOrder(id);
+            return View(Order);
         }
 
         public IActionResult Checkout()

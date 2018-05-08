@@ -4,8 +4,8 @@
 <div>
     @foreach(var author in @Model)
     {
-        <div>
-            <p>@author.Name</p>
+        <div class="col-lg-2 cl-md-2 col-sm-3 col-xs-6 text-center">
+            <a asp-controller="Author" asp-action="Details" asp-route-id="@author.Id">@author.Name</a><br>
         </div>
     }
 </div>

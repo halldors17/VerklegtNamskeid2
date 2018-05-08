@@ -60,7 +60,7 @@ namespace BookCave.Repositories
             return books;
         }
 
-        public List<BookListViewModel> GetBooksBySearch(string SearchString)
+        public List<BookListViewModel> GetBooksByTitle(string SearchString)
         {
             var books = (from b in _db.Books
                     orderby b.Title ascending

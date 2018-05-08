@@ -24,6 +24,19 @@ namespace BookCave.Repositories
             
             return authors;
         }
+
+        public List<AuthorListViewModel> GetAuthorsByName(string SearchString)
+        {
+            var authors = (from a in _db.Authors
+                    where a.Name.Contains(SearchString)
+                    select new AuthorListViewModel 
+                    {
+                        Name = a.Name
+                    }).ToList();
+            
+            return authors;
+        }
+
         public List<AuthorDetailsViewModel> GetDetailsAuthor(int id)
         {
             var books = (from a in _db.Authors
