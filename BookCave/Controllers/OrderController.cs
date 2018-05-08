@@ -20,8 +20,17 @@ namespace BookCave.Controllers
         
         public IActionResult Index()
         {
-            var orders = _orderService.GetAllOrders();
-            return View(orders);
+            return View();
+        }
+
+        public IActionResult Checkout()
+        {
+            return View();
+        }
+
+        public IActionResult ReviewOrder()
+        {
+            return View();
         }
     }
 }

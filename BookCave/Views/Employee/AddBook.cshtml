@@ -9,9 +9,10 @@
             <span asp-validation-for="Title"></span>
         </div>
         <div class="form-group">
-            <label asp-for="Author"></label>
-            <input asp-for="Author" class="form-control">
-            <span asp-validation-for="Author"></span>
+            <label asp-for="AuthorId">Höfundur</label>
+            <select>
+                <option value="3">Harper Lee</option>
+            </select>
         </div>
         <div class="form-group">
             <label asp-for="Image"></label>
@@ -29,9 +30,10 @@
             <span asp-validation-for="Publisher"></span>
         </div>
         <div class="form-group">
-            <label asp-for="Category"></label>
-            <input asp-for="Category" class="form-control">
-            <span asp-validation-for="Category"></span>
+            <label asp-for="CategoryId">Flokkur</label>
+            <select>
+                <option value="3">Vísindaskáldskapur</option>
+            </select>
         </div>
 
         <input type="checkbox" name="Paperback" value="Paperback"> Kilja

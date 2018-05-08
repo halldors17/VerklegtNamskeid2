@@ -92,7 +92,7 @@ namespace BookCave.Repositories
             return books;
         }
 
-        public List<BookDetailViewModel> GetBookDetails(int id)
+        public BookDetailViewModel GetBookDetails(int id)
         {
             //var tempbooks = _db.Books.Include(i => i.Authors).ToList(); eftir Patrek
             var authors = (from b in _db.Books
@@ -115,7 +115,7 @@ namespace BookCave.Repositories
                             Name = c.Name
                         }).ToList();
             
-            var books = (from a in _db.Books
+            var book = (from a in _db.Books
                         where a.Id == id
                         select new BookDetailViewModel
                         {
@@ -137,9 +137,9 @@ namespace BookCave.Repositories
                             Audio = a.Audio,
                             Minutes = a.Minutes,
 
-                        }).ToList();
+                        }).First();
 
-            return books;
+            return book;
         }
     //----GAMLA BOOK DETAILS----
        /* public List <BookDetailViewModel> GetBookDetails(int id)
@@ -208,6 +208,9 @@ namespace BookCave.Repositories
 
         public void AddBook(InputBookModel book)
         {
+            //gæti verið bý höfundur
+            //category id
+
             var newBook = (from a in _db.Books
                         join b in _db.Authors on a.AuthorId equals b.Id
                         join c in _db.Categories on a.CategoryId equals c.Id
@@ -229,7 +232,7 @@ namespace BookCave.Repositories
                             Ebook = book.Ebook,
                             Audio = book.Audio,
                             Minutes = book.Minutes
-                        }).SingleOrDefault(); //??
+                        }).ToList(); //??
             //??
             _db.AddRange(newBook);
             _db.SaveChanges();

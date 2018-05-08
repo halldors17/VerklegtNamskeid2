@@ -1,22 +1,41 @@
-@model List<BookCave.Models.ViewModels.BookDetailViewModel>
+@model BookCave.Models.ViewModels.BookDetailViewModel
 
 <div class="container">
     <div class="row"></div>
-        @foreach(var book in @Model)
-        {
+        
             <div class="col-lg-2 cl-md-2 col-sm-3 col-xs-6 text-center">
-                <img src="@book.Image"  height="200" width="120" /><br>
-               <a asp-controller="Book" asp-action="Details" asp-route-id="@book.Id">@book.Title</a><br>
-                <p>@book.Price $</p>
-                @foreach(var c in book.CategoryList)
+                <img src="@Model.Image"  height="200" width="120" /><br>
+                <a asp-controller="Book" asp-action="Details" asp-route-id="@Model.Id">@Model.Title</a><br>
+                <p>@Model.Price $</p>
+                
+                @foreach(var c in @Model.CategoryList)
                 {
                     @c.Name <br>
                 }
-                @foreach(var a in book.AuthorList)
+                
+                @foreach(var a in @Model.AuthorList)
                 {
                     <a asp-controller="Author" asp-action="Details" asp-route-id="@a.Id">@a.Name</a> <br>
                 }
             </div>
-        }
+            <div class="col-lg-2 cl-md-2 col-sm-3 col-xs-6 text-center">
+                @if(@Model.Paperback)
+                {
+                    <button class="btn btn-default">Kilja</button>
+                }
+                @if(@Model.Ebook)
+                {
+                    <button class="btn btn-default">Rafbók</button>
+                }
+                @if(@Model.Audio)
+                {
+                    <button class="btn btn-default">Hljóðbók</button>
+                }
+
+                <button class="btn btn-primary">Setja í körfu</button>
+                <button class="btn btn-default">Setja í uppáhalds</button>
+                <button class="btn btn-default">Setja á óskalist</button>
+            </div>
+        
     </div>
 </div>
