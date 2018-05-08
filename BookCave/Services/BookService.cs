@@ -56,11 +56,11 @@ namespace BookCave.Services
             return books;
         }
         
-/*
-        public void AddBook(BookDetailViewModel book)
+
+        public void AddBook(InputBookModel book)
         {
             _bookRepo.AddBook(book);
         }
-*/
+
     }
 }

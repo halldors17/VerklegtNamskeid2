@@ -37,19 +37,18 @@ namespace BookCave.Controllers
         {
             return View();
         }
-/*
+
         [HttpPost]
-        public IActionResult AddBook(BookDetailViewModel book)
+        public IActionResult AddBook(InputBookModel book)
         {
             if(ModelState.IsValid)
             {
                 _bookService.AddBook(book);
-                return RedirectToAction("AddBook");
             }
 
-            return View(book);
+            return RedirectToAction("AddBook");
         }
-*/
+
 /* 
         [HttpGet]
         public IActionResult ChangeBook(int id)
