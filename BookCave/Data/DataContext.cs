@@ -14,6 +14,7 @@ namespace BookCave.Data
         public DbSet<Customer> Customers { get; set; }
         public DbSet<CategoryIdItem> CategoryIdItem { get; set; }
         public DbSet<BookIdItem> BookIdItem { get; set; }
+        public DbSet<ShippingInfo> ShippingInfo { get; set;}
         
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

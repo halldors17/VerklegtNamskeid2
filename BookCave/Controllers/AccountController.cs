@@ -6,6 +6,8 @@ using BookCave.Models.ViewModels;
 using Microsoft.AspNetCore.Identity;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Authorization;
+using System.Linq;
+using BookCave.Services;
 
 namespace BookCave.Controllers
 {
@@ -14,6 +16,7 @@ namespace BookCave.Controllers
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly RoleManager<IdentityRole> _roleManager;
+        private AccountService _accountService;
         
         public AccountController(
             UserManager<ApplicationUser> userManager,
@@ -23,6 +26,7 @@ namespace BookCave.Controllers
             _userManager = userManager;
             _signInManager = signInManager;
             _roleManager = roleManager;
+            _accountService = new AccountService();
         }
 
         [HttpGet]
@@ -103,8 +107,13 @@ namespace BookCave.Controllers
         [Authorize(Roles = "User")]
         public IActionResult MyAccount()
         {
+            var account = new AccountViewModel();
+            account.Email = User.Identity.Name;
+            account.FullName = User.Claims.FirstOrDefault(c => c.Type == "Name")?.Value;
+            account.Shipping = _accountService.GetShippingInfo(_userManager.GetUserId(User));
             ViewBag.Title = "Notenda síða";
-            return View();
+
+            return View(account);
         }
 
         public IActionResult AccessDenied()
