@@ -35,19 +35,18 @@ namespace BookCave.Controllers
             ViewBag.Title = "Innranet bækur";
             return View();
         }
-/*
+
         [HttpPost]
-        public IActionResult AddBook(BookDetailViewModel book)
+        public IActionResult AddBook(InputBookModel book)
         {
             if(ModelState.IsValid)
             {
                 _bookService.AddBook(book);
-                return RedirectToAction("AddBook");
             }
 
-            return View(book);
+            return RedirectToAction("AddBook");
         }
-*/
+
 /* 
         [HttpGet]
         public IActionResult ChangeBook(int id)

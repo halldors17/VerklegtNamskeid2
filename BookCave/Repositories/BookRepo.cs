@@ -4,6 +4,7 @@ using System.Linq;
 using BookCave.Models.ViewModels;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
+using BookCave.Models.EntityModels;
 
 namespace BookCave.Repositories
 {
@@ -91,26 +92,45 @@ namespace BookCave.Repositories
             return books;
         }
 
-        public List <BookDetailViewModel> GetBookDetails(int id)
+        public List<BookDetailViewModel> GetBookDetails(int id)
         {
             //var tempbooks = _db.Books.Include(i => i.Authors).ToList(); eftir Patrek
+            var authors = (from b in _db.Books
+                        join bId in _db.BookIdItem on b.Id equals bId.BookId
+                        join a in _db.Authors on bId.AuthorId equals a.Id
+                        where b.Id == id
+                        select new Author
+                        {
+                            Id = a.Id,
+                            Name = a.Name
+                        }).ToList();
 
+            var categories = (from b in _db.Books
+                        join cId in _db.CategoryIdItem on b.Id equals cId.BookId
+                        join c in _db.Categories on cId.CategoryId equals c.Id
+                        where b.Id == id
+                        select new Category
+                        {
+                            Id = c.Id,
+                            Name = c.Name
+                        }).ToList();
+            
             var books = (from a in _db.Books
-                        join b in _db.Authors on a.AuthorId equals b.Id
-                        join c in _db.Categories on a.CategoryId equals c.Id
                         where a.Id == id
                         select new BookDetailViewModel
                         {
+                            AuthorList = authors,
+                            CategoryList = categories,
                             Title = a.Title,
                             Image = a.Image,
                             Price = a.Price,
                             Publisher = a.Publisher,
-                            Author = b.Name,
+                            //Author = b.Name,
                             YearPublished = a.YearPublished,
                             Pages = a.Pages,
                             Description = a.Description,
-                            Category = c.Name,
-                            //Rating = a.Rating,
+                            //Category = c.Name,
+                            Rating = a.Rating,
                             Stock = a.Stock,
                             Paperback = a.Paperback,
                             Ebook = a.Ebook,
@@ -186,13 +206,34 @@ namespace BookCave.Repositories
             return books;
         }*/
 
-/*
-        public void AddBook(BookDetailViewModel book)
+        public void AddBook(InputBookModel book)
         {
-            _db.AddRange(book);
+            var newBook = (from a in _db.Books
+                        join b in _db.Authors on a.AuthorId equals b.Id
+                        join c in _db.Categories on a.CategoryId equals c.Id
+                        where a.Id == book.Id
+                        select new Book
+                        {
+                            Title = book.Title,
+                            Image = book.Image,
+                            Price = book.Price,
+                            Publisher = book.Publisher,
+                            AuthorId = b.Id,
+                            YearPublished = book.YearPublished,
+                            Pages = book.Pages,
+                            Description = book.Description,
+                            CategoryId = c.Id,
+                            //Rating = a.Rating,
+                            Stock = book.Stock,
+                            Paperback = book.Paperback,
+                            Ebook = book.Ebook,
+                            Audio = book.Audio,
+                            Minutes = book.Minutes
+                        }).SingleOrDefault(); //??
+            //??
+            _db.AddRange(newBook);
             _db.SaveChanges();
         }
-*/
 
     }
 }

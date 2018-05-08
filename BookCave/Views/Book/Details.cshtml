@@ -7,9 +7,16 @@
             <div class="col-lg-2 cl-md-2 col-sm-3 col-xs-6 text-center">
                 <img src="@book.Image"  height="200" width="120" /><br>
                <a asp-controller="Book" asp-action="Details" asp-route-id="@book.Id">@book.Title</a><br>
-                @book.Price $
-                @book.Author
-                @book.Category
+                <p>@book.Price $</p>
+                <p>@book.Rating</p>
+                @foreach(var c in book.CategoryList)
+                {
+                    @c.Name <br>
+                }
+                @foreach(var a in book.AuthorList)
+                {
+                    <a asp-controller="Author" asp-action="Details" asp-route-id="@a.Id">@a.Name</a> <br>
+                }
             </div>
         }
     </div>
