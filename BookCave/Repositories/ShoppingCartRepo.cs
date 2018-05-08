@@ -2,19 +2,22 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-
+using BookCave.Data;
+using BookCave.Models.EntityModels;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 
 namespace BookCave.Repositories
 {
     public class ShoppingCartRepo
-    {
-        string ShoppingCartId { get; set; }
-        public const string CartSessionKey = "CartId";
-/*
-        public static ShoppingCart GetCart(HttpContext context)
+    {/* 
+        private DataContext _db;
+        
+        public ShoppingCartRepo()
         {
-            
+            _db = new DataContext();
         }
-*/
-    }
+
+    */
+}
 }
