@@ -5,6 +5,7 @@ using BookCave.Models.ViewModels;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
 using BookCave.Models.EntityModels;
+using BookCave.Models.InputModels;
 
 namespace BookCave.Repositories
 {
@@ -20,10 +21,22 @@ namespace BookCave.Repositories
             _db.AddRange(shipping);
             _db.SaveChanges();
         }
-        public ShippingInfo GetShippingInfo(string Id)
+        public ShippingInfoViewModel GetShippingInfo(string Id)
         {
-            var shipping = (from s in _db.ShippingInfo where s.UserId == Id select s).FirstOrDefault();
+            var shipping = (from s in _db.ShippingInfo where s.UserId == Id select 
+            new ShippingInfoViewModel
+            {
+                Id = s.Id,
+                Street = s.Street,
+                City = s.City,
+                PostalCode = s.PostalCode,
+                Country = s.Country
+            }).FirstOrDefault();
             return shipping;
+        }
+        public void AddShippingInfo(ShippingInfoInputModel shipping, string userId)
+        {
+           // var newShipping = 
         }
     }
 }

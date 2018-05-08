@@ -1,7 +1,4 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using BookCave.Models.EntityModels;
+using BookCave.Models.InputModels;
 using BookCave.Models.ViewModels;
 using BookCave.Repositories;
 
@@ -15,9 +12,13 @@ namespace BookCave.Services
             _accountRepo = new AccountRepo();
         }
 
-        public ShippingInfo GetShippingInfo(string Id)
+        public ShippingInfoViewModel GetShippingInfo(string Id)
         {
             return _accountRepo.GetShippingInfo(Id);
+        }
+        public void AddShippingInfo(ShippingInfoInputModel shipping, string userId)
+        {
+            
         }
     }
 }
