@@ -1,5 +1,5 @@
 using System.ComponentModel.DataAnnotations;
-using BookCave.Models.EntityModels;
+using BookCave.Models.ViewModels;
 
 namespace BookCave.Models.ViewModels
 {
@@ -7,6 +7,6 @@ namespace BookCave.Models.ViewModels
     {
         public string FullName { get; set; }
         public string Email { get; set; }
-        public ShippingInfo Shipping { get; set; }
+        public ShippingInfoViewModel Shipping { get; set; }
     }
 }

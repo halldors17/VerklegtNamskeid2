@@ -235,8 +235,7 @@ namespace BookCave.Repositories
                 Ebook = book.Ebook,
                 YearPublished = book.YearPublished 
             };
-
-            _db.Add(newBook);
+            _db.Books.Add(newBook);
             _db.SaveChanges();
 
             //Tengja book og author

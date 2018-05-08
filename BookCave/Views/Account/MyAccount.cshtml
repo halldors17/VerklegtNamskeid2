@@ -1,16 +1,20 @@
 @model BookCave.Models.ViewModels.AccountViewModel
 <h1>Notenda síða</h1>
+<h2>Persónulegt</h2>
 <div class="jumbotron">
-    <h2>Persónulegt</h2>
+    <a href="#">Breyta</a>
     <p>Nafn: @Model.FullName</p>
     <p>Netfang: @Model.Email</p>
-    <h2>Flutnings upplýsingar</h2>
+</div>
+<h2>Flutnings upplýsingar</h2>
+<div class="jumbotron">
     @if(@Model.Shipping == null)
     {
         <a href="#">Bæta við Flutnings upplýsingar</a>
     }
     else
     {
+        <a href="#">Breyta</a>
         <p>Heimilisfang: @Model.Shipping.Street</p>
         <p>Póstnúmer: @Model.Shipping.PostalCode</p>
         <p>Borg: @Model.Shipping.City</p>
