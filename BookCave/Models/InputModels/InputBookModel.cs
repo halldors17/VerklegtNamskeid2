@@ -1,7 +1,11 @@
- namespace BookCave.Models.InputModels
+using System.Collections.Generic;
+using BookCave.Models.EntityModels;
+
+namespace BookCave.Models.InputModels
  {
     public class InputBookModel
     {
+        public int Id { get; set; }
         public string Title { get; set; }
         public string Publisher { get; set; }
         public int YearPublished { get; set; }
@@ -18,5 +22,7 @@
         public int AuthorId { get; set ; }
         public int CategoryId { get; set; }
         public int Discount { get; set; }
+        public List<Author> AuthorList { get; set; }
+        public List<Category> CategoryList { get; set; }
     }
 }

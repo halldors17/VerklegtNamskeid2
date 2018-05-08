@@ -63,5 +63,10 @@ namespace BookCave.Services
             _bookRepo.AddBook(book);
         }
 
+        public void UpdateBook(InputBookModel book)
+        {
+            _bookRepo.UpdateBook(book);
+        }
+
     }
 }

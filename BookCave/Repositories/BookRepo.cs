@@ -80,7 +80,7 @@ namespace BookCave.Repositories
         {
             var books = (from b in _db.Books 
                     join bId in _db.BookIdItem on b.Id equals bId.BookId
-                    join a in _db.Authors on b.Id equals a.Id
+                    join a in _db.Authors on bId.AuthorId equals a.Id
                     select new BookSalesViewModel 
                     {
                         Id = b.Id,
@@ -89,7 +89,6 @@ namespace BookCave.Repositories
                         Publisher = b.Publisher,
                         Author = a.Name
                     }).ToList();
-            
             return books;
         }
 
@@ -129,6 +128,7 @@ namespace BookCave.Repositories
                         where a.Id == id
                         select new BookDetailViewModel
                         {
+                            Id = a.Id,
                             AuthorList = authors,
                             CategoryList = categories,
                             Title = a.Title,
@@ -151,42 +151,7 @@ namespace BookCave.Repositories
 
             return book;
         }
-
-        
-    //----GAMLA BOOK DETAILS----
-       /* public List <BookDetailViewModel> GetBookDetails(int id)
-        {
-            //var tempbooks = _db.Books.Include(i => i.Authors).ToList(); eftir Patrek
-
-            var books = (from a in _db.Books
-                        join b in _db.BookIdItem on a.Id equals b.BookId into tempbook
-                        join c in _db.CategoryIdItem on a.Id equals c.CategoryId
-                        join d in _db.Authors on b.Id equals d.Id
-                        join e in _db.Categories on c.CategoryId equals e.Id
-                        where a.Id == id
-                        select new BookDetailViewModel
-                        {
-                            Title = a.Title,
-                            Image = a.Image,
-                            Price = a.Price,
-                            Publisher = a.Publisher,
-                            Author = d.Name,
-                            YearPublished = a.YearPublished,
-                            Pages = a.Pages,
-                            Description = a.Description,
-                            Category = e.Name,
-                            //Rating = a.Rating,
-                            Stock = a.Stock,
-                            Paperback = a.Paperback,
-                            Ebook = a.Ebook,
-                            Audio = a.Audio,
-                            Minutes = a.Minutes,
-
-                        }).ToList();
-
-            return books;
-        }
-        
+/*    
         public BookDetailViewModel GetSalesBook(int id)
         {
             var books = (from a in _db.Books
@@ -243,6 +208,29 @@ namespace BookCave.Repositories
 
             //Tengja book og author
             //Tengja book og category
+        }
+
+        public void UpdateBook(InputBookModel book)
+        {
+            var bookFromDb = _db.Books.Find(book.Id);
+
+            bookFromDb.Title = book.Title;
+            bookFromDb.CategoryId = book.CategoryId;
+            bookFromDb.Image = book.Image;
+            bookFromDb.Price = book.Price;
+            bookFromDb.Publisher = book.Publisher;
+            bookFromDb.AuthorId = book.AuthorId;
+            bookFromDb.Rating = book.Rating;
+            bookFromDb.Pages = book.Pages;
+            bookFromDb.Description = book.Description;
+            bookFromDb.Stock = book.Stock;
+            bookFromDb.Paperback = book.Paperback;
+            bookFromDb.Audio = book.Audio;
+            bookFromDb.Minutes = book.Minutes;
+            bookFromDb.Ebook = book.Ebook;
+            bookFromDb.YearPublished = book.YearPublished;
+            
+            _db.SaveChanges();
         }
     }
 }

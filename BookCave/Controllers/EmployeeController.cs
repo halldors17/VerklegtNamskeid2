@@ -48,22 +48,45 @@ namespace BookCave.Controllers
             return RedirectToAction("AddBook");
         }
 
-/* 
+ 
         [HttpGet]
         public IActionResult ChangeBook(int id)
         {
-            var book = _bookService.GetSalesBooks(id);
-            return View(book);
+            var book = _bookService.GetBookDetails(id);
+
+            var inputBook = new InputBookModel 
+            {
+                Title = book.Title,
+                CategoryList = book.CategoryList,
+                Image = book.Image,
+                Price = book.Price,
+                Publisher = book.Publisher,
+                AuthorList = book.AuthorList,
+                Rating = book.Rating,
+                Pages = book.Pages,
+                Description = book.Description,
+                Stock = book.Stock,
+                Paperback = book.Paperback,
+                Audio = book.Audio,
+                Minutes = book.Minutes,
+                Ebook = book.Ebook,
+                YearPublished = book.YearPublished 
+            };
+
+            return View(inputBook);
         }
-*/
-/*
+
+
         [HttpPost]
-        public IActionResult ChangeBook(int id)
+        public IActionResult ChangeBook(InputBookModel book)
         {
-            
-            return View();
+            if(ModelState.IsValid)
+            {
+                _bookService.UpdateBook(book);
+            }
+            return RedirectToAction("ChangeBook");
         }
-*/
+
         public IActionResult Authors()
         {
             ViewBag.Title = "Innranet höfundar";
