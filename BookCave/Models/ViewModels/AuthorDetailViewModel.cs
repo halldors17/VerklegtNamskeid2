@@ -8,10 +8,9 @@ namespace BookCave.Models.ViewModels
         public int AId { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
-        public List<BookIdItem> BookIdList { get; set; }
+        public List<BookListViewModel> BookList { get; set; }
         public string AImage { get; set; }
         public string BImage { get; set; }
-        public string Title { get; set; }
+        //public string Title { get; set; }
      }
-
  }

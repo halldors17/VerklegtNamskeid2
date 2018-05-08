@@ -1,17 +1,21 @@
+@model List<BookCave.Models.ViewModels.AuthorDetailsViewModel>
 <div>
         <div>
             @foreach(var author in @Model)
             {
-            <p><img src="@author.AImage" height="300" width="220"/></p>
-            <p>@author.Name</p>
-            <p>@author.Description</p>
+                <p><img src="@author.AImage" height="300" width="220"/></p>
+                <p>@author.Name</p>
+                <p>@author.Description</p>
+
+                <ul>
+                    @foreach(var b in author.BookList)
+                    {
+                        <li>
+                            <p><img src="@b.Image" height="200" width="120"/></p>
+                            <p>@b.Title</p>
+                        </li>
+                    }
+                </ul>
             }
-            <ul>
-            @foreach(var author in @Model)
-            {
-            <p><img src="@author.BImage" height="200" width="120"/></p>
-            <p>@author.Title</p>
-            }
-            </ul>
         </div>
 </div>

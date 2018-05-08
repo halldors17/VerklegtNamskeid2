@@ -26,18 +26,27 @@ namespace BookCave.Repositories
         }
         public List<AuthorDetailsViewModel> GetDetailsAuthor(int id)
         {
+            var books = (from a in _db.Authors
+                    join bId in _db.BookIdItem on a.Id equals bId.AuthorId
+                    join b in _db.Books on bId.BookId equals b.Id
+                    where a.Id == id
+                    select new BookListViewModel
+                    {
+                        Id = b.Id,
+                        Title = b.Title,
+                        Image = b.Image,
+                        Price = b.Price
+                    }).ToList();
+
             var authors = (from a in _db.Authors 
-            join b in _db.BookIdItem on a.Id equals b.Id
-            join c in _db.Books on b.BookId equals c.Id
-            where a.Id == id
-            select new AuthorDetailsViewModel
-            {
-                Name = a.Name,
-                Description = a.Description,
-                AImage = a.Image,
-                Title = c.Title,
-                BImage = c.Image
-            }).ToList();
+                    where a.Id == id
+                    select new AuthorDetailsViewModel
+                    {
+                        Name = a.Name,
+                        Description = a.Description,
+                        AImage = a.Image,
+                        BookList = books
+                    }).ToList();
             return authors;
         }
 
