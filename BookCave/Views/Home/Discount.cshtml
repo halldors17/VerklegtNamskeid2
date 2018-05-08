@@ -9,10 +9,9 @@
                 <img src="@book.Image"  height="200" width="120" /><br>
                 <a asp-controller="Book" asp-action="Details" asp-route-id="@book.Id">@book.Title</a><br>
                 <p id="price"> </p>
-            <script>var price = @book.Price * @book.Discount^-10;
-               document.getElementById("price").innerHTML = price;
-            </script>
-                
+                <p> @book.Price </p>
+                <p> @book.Discount </p>
+                // Á eftir að reikna út verðið með afslætti 
             </div>
         }
     </div>

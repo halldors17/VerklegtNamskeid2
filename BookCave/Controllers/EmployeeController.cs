@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Mvc;
 using BookCave.Models;
 using BookCave.Services;
 using BookCave.Models.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 
 namespace BookCave.Controllers
 {
+    [Authorize(Roles = "Employee")]
     public class EmployeeController : Controller
     {
         private EmployeeService _employeeService;
@@ -23,11 +25,13 @@ namespace BookCave.Controllers
 
         public IActionResult Index()
         {
+            ViewBag.Title = "Innranet forsíða";
             return View();
         }
 
         public IActionResult Books()
         {
+            ViewBag.Title = "Innranet bækur";
             var books = _bookService.GetSalesBooksInfo();
             return View(books);
         }
@@ -35,6 +39,7 @@ namespace BookCave.Controllers
         [HttpGet]
         public IActionResult AddBook()
         {
+            ViewBag.Title = "Innranet bækur";
             return View();
         }
 
@@ -67,16 +72,19 @@ namespace BookCave.Controllers
 */
         public IActionResult Authors()
         {
+            ViewBag.Title = "Innranet höfundar";
             return View();
         }
 
         public IActionResult Categories()
         {
+            ViewBag.Title = "Innranet flokkar";
             return View();
         }
 
         public IActionResult Sales()
         {
+            ViewBag.Title = "Innranet sala";
             return View();
         }
     }
