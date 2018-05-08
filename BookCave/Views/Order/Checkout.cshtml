@@ -1,0 +1,61 @@
+@model BookCave.Models.InputModels.InputOrderModel
+
+<h1>Greiðslusíða</h1>
+<div class="jumbotron">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                <h2>Flutnings upplýsingar</h2>
+                <form>
+                    <div class="form-group">
+                        <label asp-for="Name">Nafn</label>
+                        <input asp-for="Name" class="form-control">
+                        <span asp-validation-for="Name"></span>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label asp-for="Street">Heimilisfang</label>
+                        <input asp-for="Street" class="form-control">
+                        <span asp-validation-for="Street"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="City">Borg</label>
+                        <input asp-for="City" class="form-control">
+                        <span asp-validation-for="City"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="PostalCode">Póstnúmer</label>
+                        <input asp-for="PostalCode" class="form-control">
+                        <span asp-validation-for="PostalCode"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Country">Land</label>
+                        <select>
+                            <option value="Ísland">Ísland</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Email">Netfang</label>
+                        <input asp-for="Email" class="form-control">
+                        <span asp-validation-for="Email"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="ShippingMethod">Sendigarmáti</label>
+                        <input asp-for="ShippingMethod" class="form-control">
+                        <span asp-validation-for="ShippingMethod"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <button type="submit"><a asp-controller="Order" asp-action="ReviewOrder">Halda áfram</a></button>
+                    </div>
+                    <div class="form-group">
+                        <button>Til baka</button>
+                    </div>
+                </form>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                <h2>Greiðslu upplýsingar</h2>
+            </div>
+        </div>
+    </div>
+</div>

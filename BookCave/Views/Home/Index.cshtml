@@ -1,6 +1,11 @@
 ﻿@model List<BookCave.Models.ViewModels.BookListViewModel>
 <h1>Frontpage</h1>
-
+<ul class="dropdown-menu">
+                <li><a asp-area="" asp-controller="Home" asp-action="Index" asp-route-id="stafrofsrod">Stafrófsröð</a></li>
+                <li><a asp-area="" asp-controller="Home" asp-action="Index" asp-route-id="verdnidur">Verði Hærra til Lægra</a></li>
+                <li><a asp-area="" asp-controller="Home" asp-action="Index" asp-route-id="verdupp">Verði Lægra til Hærra</a></li>
+                <li><a asp-area="" asp-controller="Home" asp-action="Index" asp-route-id="einkunn">Einkunn</a></li>
+            </ul>
 <div class="container">
     <div class="row"></div>
         @foreach(var book in @Model)

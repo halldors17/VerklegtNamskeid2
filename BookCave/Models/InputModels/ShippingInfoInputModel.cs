@@ -8,7 +8,7 @@ namespace BookCave.Models.InputModels
         public string Street { get; set; }
         [Required, Display(Name = "Borg")]
         public string City { get; set; }
-        [Required, MinLength(3), MaxLength(10), Range(0,1000000000),  Display(Name = "Póstnúmer")]
+        [Required, Range(100, 1000000000),  Display(Name = "Póstnúmer")]
         public int PostalCode { get; set; }
         [Required, Display(Name = "Land")]
         public string Country { get; set; }

@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using BookCave.Models.InputModels;
 using BookCave.Models.ViewModels;
 using BookCave.Repositories;
 
@@ -50,10 +51,10 @@ namespace BookCave.Services
             return books;
         }
 */
-        public List <BookDetailViewModel> GetBookDetails(int id)
+        public BookDetailViewModel GetBookDetails(int id)
         {
-            var books = _bookRepo.GetBookDetails(id);
-            return books;
+            var book = _bookRepo.GetBookDetails(id);
+            return book;
         }
         
 
