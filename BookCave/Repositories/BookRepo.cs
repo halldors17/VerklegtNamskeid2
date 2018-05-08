@@ -115,13 +115,16 @@ namespace BookCave.Repositories
                             Id = c.Id,
                             Name = c.Name
                         }).ToList();
-/*
-            var comment = (from b in _db.Books
+
+            var comments = (from b in _db.Books
                         join c in _db.Comments on b.Id equals c.BookId
                         where b.Id == id
-                        select
-                        ).FirstOrDefault();
-      */      
+                        select new Comment
+                        {
+                            Rating = c.Rating,
+                            BookComment = c.BookComment
+                        }).ToList();
+          
             var book = (from a in _db.Books
                         where a.Id == id
                         select new BookDetailViewModel
@@ -137,13 +140,13 @@ namespace BookCave.Repositories
                             Pages = a.Pages,
                             Description = a.Description,
                             //Category = c.Name,
-                            //Rating = a.Rating,
                             Stock = a.Stock,
                             Paperback = a.Paperback,
                             Ebook = a.Ebook,
                             Audio = a.Audio,
                             Minutes = a.Minutes,
-
+                            BookComments = comments,
+                            //Rating = a.Rating
                         }).First();
 
             return book;

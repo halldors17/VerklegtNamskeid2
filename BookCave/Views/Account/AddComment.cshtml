@@ -1,0 +1,17 @@
+@model BookCave.Models.InputModels.InputCommentModel
+<h1>Skrá inn umsögn</h1>
+<div class="col-lg-4 cl-md-4 col-sm-3 col-xs-6 text-center">
+    <div class="jumbotron">
+        <form method="POST" asp-controller="Account" asp-action="AddComment">
+            <div class="form-group">
+                <label for="Name">Nafn</label>
+                <input id="Name" name="Name" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="Comment">Umsögn</label>
+                <input id="Name" name="Comment" class="form-control">
+            </div>
+            <button type="submit" class="btn btn-default">Skrá umsögn</button>
+        </form>
+    </div>
+</div>

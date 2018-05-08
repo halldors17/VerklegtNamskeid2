@@ -146,5 +146,24 @@ namespace BookCave.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
+        [HttpGet]
+        public IActionResult AddComment(int id)
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult AddComment(InputCommentModel comment)
+        {
+            
+
+            if(ModelState.IsValid)
+            {
+                
+            }
+
+            return View("Book/Details/id");
+        }
     }
 }
