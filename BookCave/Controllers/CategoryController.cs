@@ -17,6 +17,11 @@ namespace BookCave.Controllers
             var categories = _categorieService.GetAllCategories();
             return View(categories);
         }
+        public IActionResult GetCategories()
+        {
+            var categories = _categorieService.GetAllCategories();
+            return Json(categories);
+        }
 
         public IActionResult Details(int id)
         {
