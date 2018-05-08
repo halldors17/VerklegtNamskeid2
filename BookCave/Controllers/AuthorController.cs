@@ -17,10 +17,16 @@ namespace BookCave.Controllers
         {
             _authorService = new AuthorService();
         }
-        
+        [HttpGet]
         public IActionResult Index()
         {
             var authors = _authorService.GetAllAuthors();
+            return View(authors);
+        }
+        [HttpPost]
+        public IActionResult Index(string SearchString)
+        {
+            var authors = _authorService.GetAuthorsByName(SearchString);
             return View(authors);
         }
         public IActionResult Details(int id)

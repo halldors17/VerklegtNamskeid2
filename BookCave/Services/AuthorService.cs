@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using BookCave.Models.ViewModels;
 using BookCave.Repositories;
 
@@ -14,6 +15,11 @@ namespace BookCave.Services
      public List<AuthorListViewModel> GetAllAuthors()
         {
             var authors = _authorRepo.GetAllAuthors();
+            return authors;
+        }
+    internal object GetAuthorsByName(string SearchString)
+        {
+            var authors = _authorRepo.GetAuthorsByName(SearchString).ToList();
             return authors;
         }
      public List<AuthorDetailsViewModel> GetDetailsAuthor(int id)

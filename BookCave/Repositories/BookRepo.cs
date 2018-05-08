@@ -54,13 +54,13 @@ namespace BookCave.Repositories
                         Id = a.Id,
                         Image = a.Image,
                         Title = a.Title,
-                        Price = a.Price,
+                        Price = a.Price * (1-(a.Discount/100)),
                         Discount = a.Discount
                     }).ToList();
             return books;
         }
 
-        public List<BookListViewModel> GetBooksBySearch(string SearchString)
+        public List<BookListViewModel> GetBooksByTitle(string SearchString)
         {
             var books = (from b in _db.Books
                     orderby b.Title ascending
