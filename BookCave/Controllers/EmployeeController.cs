@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using BookCave.Services;
 using Microsoft.AspNetCore.Authorization;
+using BookCave.Models.ViewModels;
 
 namespace BookCave.Controllers
 {

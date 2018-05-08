@@ -8,6 +8,7 @@ using System.Security.Claims;
 using Microsoft.AspNetCore.Authorization;
 using System.Linq;
 using BookCave.Services;
+using BookCave.Models.InputModels;
 
 namespace BookCave.Controllers
 {
@@ -63,7 +64,7 @@ namespace BookCave.Controllers
         }
 
         [HttpGet]
-        public IActionResult Register() 
+        public IActionResult Register()
         {
             ViewBag.Title = "Nýr notandi";
             return View();
@@ -114,6 +115,25 @@ namespace BookCave.Controllers
             ViewBag.Title = "Notenda síða";
 
             return View(account);
+        }
+        [HttpGet]
+        [Authorize(Roles = "User")]
+        public IActionResult ShippingInfo()
+        {
+            ViewBag.Title = "Flutnings upplýsingar";
+            return View();
+        }
+        [HttpPost]
+        [Authorize(Roles = "User")]
+        public IActionResult ShippingInfo(ShippingInfoInputModel shipping)
+        {
+            ViewBag.Title = "Flutnings upplýsingar";
+            if(ModelState.IsValid)
+            {
+                string userId = _userManager.GetUserId(User);
+
+            }
+            return View(shipping);
         }
 
         public IActionResult AccessDenied()
