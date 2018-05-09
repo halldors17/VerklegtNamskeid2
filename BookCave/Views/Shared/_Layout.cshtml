@@ -50,14 +50,16 @@
             </div>
             <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
         </form>-->
-        @using (Html.BeginForm("Search", "Book", FormMethod.Post))
-        {
-            @Html.TextBox("SearchString");<input type="submit" value="Search" />
-             <b>Search by:</b>
-            @Html.RadioButton("searchBy", "Title", true)<text> Bók</text>
-            @Html.RadioButton("searchBy", "Author")<text> Höfundur</text>
-            @Html.RadioButton("searchBy", "Category")<text> Flokkur</text>
-        }
+        <div class="navbar-form navbar-left">
+            @using (Html.BeginForm("Search", "Book", FormMethod.Post))
+            {
+                @Html.TextBox("SearchString");<input type="submit" value="Search" />
+                <b>Search by:</b>
+                @Html.RadioButton("searchBy", "Title", true)<text> Bók</text>
+                @Html.RadioButton("searchBy", "Author")<text> Höfundur</text>
+                @Html.RadioButton("searchBy", "Category")<text> Flokkur</text>
+            }
+        </div>
         <ul class="nav navbar-nav navbar-right">
             <li><a asp-area="" asp-controller="Home" asp-action="About">Um BookCave</a></li>
         </ul>
