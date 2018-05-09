@@ -142,6 +142,12 @@ namespace BookCave.Controllers
             }
             return RedirectToAction("ChangeAuthor");
         }
+        public IActionResult RemoveAuthor(int id)
+        {
+            //Spurja aftur hvort notandi vilji fjarlægja bók
+            _authorService.RemoveAuthor(id);
+            return RedirectToAction("Books");
+        }
 
 
         public IActionResult Categories()

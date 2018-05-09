@@ -36,5 +36,9 @@ namespace BookCave.Services
         {
             _authorRepo.UpdateAuthor(author);
         }
+             public void RemoveAuthor(int id)
+        {
+            _authorRepo.RemoveAuthor(id);
+        }
     }
 }
