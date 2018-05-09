@@ -21,6 +21,26 @@ namespace BookCave.Services
             var books = _bookRepo.GetAllBooks();
             return books;
         }
+        public List<BookListViewModel> GetAllBooksAlpha()
+        {
+            var books = _bookRepo.GetAllBooksAlpha();
+            return books;
+        }
+          public List<BookListViewModel> GetAllBooksLH()
+        {
+            var books = _bookRepo.GetAllBooksLH();
+            return books;
+        }
+          public List<BookListViewModel> GetAllBooksHL()
+        {
+            var books = _bookRepo.GetAllBooksHL();
+            return books;
+        }
+        public List<BookListViewModel> GetAllBooksEinkunn()
+        {
+            var books = _bookRepo.GetAllBooksEinkunn();
+            return books;
+        }
 
         public List<BookListViewModel> GetTop10()
         {
@@ -33,12 +53,11 @@ namespace BookCave.Services
             return books;
         }
 
-        internal object GetBooksByTitle(string SearchString)
+        internal object GetBooksBySearch(string SearchString)
         {
-            var books = _bookRepo.GetBooksByTitle(SearchString).ToList();
+            var books = _bookRepo.GetBooksBySearch(SearchString).ToList();
             return books;
         }
-
         public List<BookSalesViewModel> GetSalesBooksInfo()
         {
             var books = _bookRepo.GetSalesBooksInfo();
@@ -66,6 +85,11 @@ namespace BookCave.Services
         public void UpdateBook(InputBookModel book)
         {
             _bookRepo.UpdateBook(book);
+        }
+
+        public void RemoveBook(int id)
+        {
+            _bookRepo.RemoveBook(id);
         }
 
     }

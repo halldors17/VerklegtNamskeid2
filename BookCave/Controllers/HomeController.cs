@@ -18,11 +18,33 @@ namespace BookCave.Controllers
         {
             _bookService = new BookService();
         }
-
-        public IActionResult Index()
+          public IActionResult Index(string id)
         {
+            if(id == "Stafrodsrod")
+            {
+                var alphabooks = _bookService.GetAllBooksAlpha();
+                return View(alphabooks);
+            }
+            if(id == "VerdLH")
+            {
+                var LHbooks = _bookService.GetAllBooksLH();
+                return View(LHbooks);
+            }
+            if( id == "VerdHL")
+            {
+            var HLbooks = _bookService.GetAllBooksHL();
+            return View(HLbooks);
+            }
+            if(id == "Einkunn")
+            {
+                var EinkunnBooks = _bookService.GetAllBooksEinkunn();
+                return View(EinkunnBooks);
+            }
+            else
+            {
             var books = _bookService.GetAllBooks();
             return View(books);
+            }
         }
         public IActionResult Top10()
         {
