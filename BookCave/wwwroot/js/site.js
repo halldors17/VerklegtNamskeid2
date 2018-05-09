@@ -1,16 +1,15 @@
 ﻿// Write your JavaScript code.
-
-$("#hello-world-button").click(function() { 
-    $.get("Home/GetText", function(data, status) {
-        $("#hello-world").text(data);
+$(document).ready(function () {
+    $( function() {
+        $.get("Category/GetCategories", function(data, status) {
+            for(var i = 0; i < data.length; i++) {
+                var markup = "<li>" + data[i].Name + "</li>";
+                $("#category-menu").append(markup);
+            }
+        });
     });
-});
+  });
 
-var getCategories = $("#category-menu");
-
-getCategories.click(function() {
-    $.get("Category/GetAllCategories", function(data, status) {
-        var markup = "<li><a asp-controller=&quotCategory&quot asp-action=&quotDetails&quot asp-route-id=&quot" + data.Id + "&quot>" + data.Name + "</a></li>";
-        $("#category-menu").append(markup);
-    });
-});
+            //var markup = "<li><a asp-controller='Category' asp-action='Details' asp-route-id='" + data.Id + "'>" + data.Name + "</a></li>";
+            //var markup = "<li>" + data.Name + "</li>";
+            //$("#category-menu").append(markup);
