@@ -69,5 +69,11 @@ namespace BookCave.Repositories
 
             _db.SaveChanges();
         }
+
+        public void AddComment(Comment comment)
+        {
+            _db.Comments.Add(comment);
+            _db.SaveChanges();
+        }
     }
 }

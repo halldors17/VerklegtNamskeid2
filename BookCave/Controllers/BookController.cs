@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using BookCave.Models;
 using BookCave.Services;
+using BookCave.Models.EntityModels;
 
 namespace BookCave.Controllers
 {
@@ -13,9 +14,12 @@ namespace BookCave.Controllers
     public class BookController : Controller
     {
         private BookService _bookService;
+        private AccountService _accountService;
+
         public BookController()
         {
             _bookService = new BookService();
+            _accountService = new AccountService();
         }
         [HttpGet]
         public IActionResult Index()
@@ -42,14 +46,24 @@ namespace BookCave.Controllers
             return View(books);
         }
         [HttpPost]
-        public IActionResult Details(int id, string BookComment, int Rating)
+        public IActionResult Details(int id, string comment, int rating)
         {
-            var books = _bookService.GetBookDetails(id);
-            if(books == null)
+            var newComment = new Comment
             {
-                return Content("Not Found");
+                BookComment = comment,
+                Rating = rating,
+                BookId = id
+                //user
+            };
+
+            if(ModelState.IsValid)
+            {
+                _accountService.AddComment(newComment);
             }
-            return View(books);
+
+            //var books = _bookService.GetBookDetails(id);
+            
+            return RedirectToAction("Details");
         }
         
     }

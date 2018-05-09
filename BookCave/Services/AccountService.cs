@@ -1,3 +1,4 @@
+using BookCave.Models.EntityModels;
 using BookCave.Models.InputModels;
 using BookCave.Models.ViewModels;
 using BookCave.Repositories;
@@ -19,6 +20,11 @@ namespace BookCave.Services
         public void AddShippingInfo(ShippingInfoInputModel shipping, string userId)
         {
             _accountRepo.AddShippingInfo(shipping, userId);
+        }
+
+        public void AddComment(Comment comment)
+        {
+            _accountRepo.AddComment(comment);
         }
     }
 }
