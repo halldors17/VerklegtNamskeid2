@@ -148,7 +148,6 @@ namespace BookCave.Repositories
 
         public BookDetailViewModel GetBookDetails(int id)
         {
-            //var tempbooks = _db.Books.Include(i => i.Authors).ToList(); eftir Patrek
             var authors = (from b in _db.Books
                         join bId in _db.BookIdItem on b.Id equals bId.BookId
                         join a in _db.Authors on bId.AuthorId equals a.Id
