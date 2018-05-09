@@ -28,11 +28,13 @@ namespace BookCave.Controllers
             return View(books);
         }
         [HttpPost]
-        public IActionResult Search(string SearchString)
+        public IActionResult Search(string SearchBy, string SearchString)
         {
-            var books = _bookService.GetBooksBySearch(SearchString);
+            var books = _bookService.GetBooksBySearch(SearchBy, SearchString);
             return View(books);
         }
+
+        
         [HttpGet]
         public IActionResult Details(int id)
         {

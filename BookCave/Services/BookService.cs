@@ -53,9 +53,9 @@ namespace BookCave.Services
             return books;
         }
 
-        internal object GetBooksBySearch(string SearchString)
+        internal object GetBooksBySearch(string SearchBy, string SearchString)
         {
-            var books = _bookRepo.GetBooksBySearch(SearchString).ToList();
+            var books = _bookRepo.GetBooksBySearch(SearchBy, SearchString).ToList();
             return books;
         }
         public List<BookSalesViewModel> GetSalesBooksInfo()
