@@ -44,12 +44,19 @@
             <li><a asp-area="" asp-controller="Home" asp-action="Discount">Tilboð</a></li>
             <li><a asp-area="" asp-controller="Home" asp-action="Top10">Topp 10</a></li>
         </ul>
-        <form method="POST" asp-controller="Book" asp-action="Search" class="navbar-form navbar-left">
+        <!--<form method="POST" asp-controller="Book" asp-action="Search" class="navbar-form navbar-left">
             <div class="form-group">
             <input type="text" class="form-control" name="SearchString" placeholder="Leita hér..">
             </div>
             <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
-        </form>
+        </form>-->
+        @using (Html.BeginForm("Search", "Book", FormMethod.Post))
+        {
+            <b>Search by:</b>
+            @Html.RadioButton("searchBy", "Title")<text> Bók</text>
+            @Html.RadioButton("searchBy", "Author")<text>Höfundur</text><br />
+            @Html.TextBox("SearchString");<input type="submit" value="Search" />
+        }
         <ul class="nav navbar-nav navbar-right">
             <li><a asp-area="" asp-controller="Home" asp-action="About">Um BookCave</a></li>
         </ul>
