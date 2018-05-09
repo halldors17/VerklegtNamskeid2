@@ -52,11 +52,10 @@
         </form>-->
         @using (Html.BeginForm("Search", "Book", FormMethod.Post))
         {
-            <b>Search by:</b>
-            @Html.RadioButton("searchBy", "Title")<text> Bók</text>
-            @Html.RadioButton("searchBy", "Author")<text>Höfundur</text>
-            @Html.RadioButton("searchBy", "Category")<text>Flokkar</text>
             @Html.TextBox("SearchString");<input type="submit" value="Search" />
+             <b>Search by:</b>
+            @Html.RadioButton("searchBy", "Title", true)<text> Bók</text>
+            @Html.RadioButton("searchBy", "Author")<text>Höfundur</text><br />
         }
         <ul class="nav navbar-nav navbar-right">
             <li><a asp-area="" asp-controller="Home" asp-action="About">Um BookCave</a></li>

@@ -10,6 +10,8 @@ namespace BookCave.Models.EntityModels
         public int CartId { get; set; }
         public int Quantity { get; set; }
         public DateTime DateCreated { get; set; }
+        public const string CartSessionKey = "CartId";
+
       
     }
 }
