@@ -44,7 +44,7 @@
             <li><a asp-area="" asp-controller="Home" asp-action="Discount">Tilboð</a></li>
             <li><a asp-area="" asp-controller="Home" asp-action="Top10">Topp 10</a></li>
         </ul>
-        <form method="POST" asp-controller="Book" asp-action="Index" class="navbar-form navbar-left">
+        <form method="POST" asp-controller="Book" asp-action="Search" class="navbar-form navbar-left">
             <div class="form-group">
             <input type="text" class="form-control" name="SearchString" placeholder="Leita hér..">
             </div>
@@ -61,8 +61,7 @@
         @RenderBody()
         <hr />
         <footer class="footer">
-            <p>&copy; 2018 - BookCave <a asp-area="" asp-controller="Home" asp-action="Contact"> Hafa Samband</a> <a asp-area="" asp-controller="Home" asp-action="FAQ"> Algengar Spurningar</a></p>
-            <p></p>
+            <p>&copy; 2018 - BookCave <a asp-area="" asp-controller="Home" asp-action="Contact"> Hafa Samband</a> <a asp-area="" asp-controller="Home" asp-action="FAQ"> Algengar Spurningar</a> </p>
         </footer>
     </div>
 

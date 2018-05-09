@@ -117,7 +117,7 @@ namespace BookCave.Repositories
         {
             var books = (from b in _db.Books
                     join a in _db.Authors on b.AuthorId equals a.Id
-                    //orderby b.Title ascending
+                    orderby b.Title ascending
                     where b.Title.Contains(SearchString) || a.Name.Contains(SearchString)
                     select new BookListViewModel 
                     {
