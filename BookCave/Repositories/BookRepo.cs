@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using BookCave.Data;
 using System.Linq;
@@ -151,37 +152,6 @@ namespace BookCave.Repositories
 
             return book;
         }
-/*    
-        public BookDetailViewModel GetSalesBook(int id)
-        {
-            var books = (from a in _db.Books
-            join b in _db.BookIdItem on a.Id equals b.BookId
-            join c in _db.CategoryIdItem on a.Id equals c.CategoryId
-            join d in _db.Authors on b.Id equals d.Id
-            join e in _db.Categories on c.CategoryId equals e.Id
-            where a.Id == id
-            select new BookDetailViewModel
-            {
-                Title = a.Title,
-                Image = a.Image,
-                Price = a.Price,
-                Publisher = a.Publisher,
-                Author = d.Name,
-                YearPublished = a.YearPublished,
-                Pages = a.Pages,
-                Description = a.Description,
-                Category = e.Name,
-                //Rating = a.Rating,
-                Stock = a.Stock,
-                Paperback = a.Paperback,
-                Ebook = a.Ebook,
-                Audio = a.Audio,
-                Minutes = a.Minutes,
-
-            }).First();
-
-            return books;
-        }*/
 
         public void AddBook(InputBookModel book)
         {
@@ -206,8 +176,26 @@ namespace BookCave.Repositories
             _db.Books.Add(newBook);
             _db.SaveChanges();
 
-            //Tengja book og author
-            //Tengja book og category
+            //sækja nýju bókina
+            var bookFromDb = _db.Books.Find(newBook.Id);
+
+            //Tengja höfund og bók samann
+            var newBookAuthorItem = new BookIdItem
+            {
+                BookId = bookFromDb.Id,
+                AuthorId = bookFromDb.AuthorId
+            };
+            _db.BookIdItem.Add(newBookAuthorItem);
+
+            //Tengja flokk og bók saman
+            var newBookCategoryItem = new CategoryIdItem
+            {
+                BookId = bookFromDb.Id,
+                CategoryId = bookFromDb.CategoryId
+            };
+            _db.CategoryIdItem.Add(newBookCategoryItem);
+
+            _db.SaveChanges();
         }
 
         public void UpdateBook(InputBookModel book)
@@ -230,6 +218,39 @@ namespace BookCave.Repositories
             bookFromDb.Ebook = book.Ebook;
             bookFromDb.YearPublished = book.YearPublished;
             
+            _db.SaveChanges();
+
+            //Tengja höfund og bók samann
+            var bookAuthorItemDb = _db.BookIdItem.Where(b => b.BookId == bookFromDb.Id).FirstOrDefault();
+            bookAuthorItemDb.AuthorId = bookFromDb.AuthorId;
+
+            //Tengja flokk og bók saman
+            var bookCategoryItemDb = _db.CategoryIdItem.Where(b => b.BookId == bookFromDb.Id).FirstOrDefault();
+            bookCategoryItemDb.CategoryId = bookFromDb.CategoryId;
+
+            _db.SaveChanges();
+        }
+
+        public void RemoveBook(int id)
+        {
+            //Fjarlægja tenginu við höfunda
+            var bookAuthorItemDb = _db.BookIdItem.Where(b => b.BookId == id).ToList();
+            foreach(var ba in bookAuthorItemDb)
+            {
+                _db.BookIdItem.Remove(ba);
+            }
+
+            //Fjarlægjatenginu við flokka
+            var bookCategoryItemDb = _db.CategoryIdItem.Where(b => b.BookId == id).ToList();
+            foreach (var bc in bookCategoryItemDb)
+            {
+                _db.CategoryIdItem.Remove(bc);
+            };
+
+            //Fjarlægja bókina
+            var bookFromDb = _db.Books.Find(id);
+            _db.Books.Remove(bookFromDb);
+
             _db.SaveChanges();
         }
     }

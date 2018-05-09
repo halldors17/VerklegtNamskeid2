@@ -68,5 +68,10 @@ namespace BookCave.Services
             _bookRepo.UpdateBook(book);
         }
 
+        public void RemoveBook(int id)
+        {
+            _bookRepo.RemoveBook(id);
+        }
+
     }
 }

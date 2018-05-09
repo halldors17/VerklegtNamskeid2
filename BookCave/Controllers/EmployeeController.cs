@@ -87,6 +87,13 @@ namespace BookCave.Controllers
             return RedirectToAction("ChangeBook");
         }
 
+        public IActionResult RemoveBook(int id)
+        {
+            //Spurja aftur hvort notandi vilji fjarlægja bók
+            _bookService.RemoveBook(id);
+            return RedirectToAction("Books");
+        }
+
         public IActionResult Authors()
         {
             ViewBag.Title = "Innranet höfundar";
