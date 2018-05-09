@@ -58,7 +58,6 @@ namespace BookCave.Services
             var books = _bookRepo.GetBooksByTitle(SearchString).ToList();
             return books;
         }
-
         public List<BookSalesViewModel> GetSalesBooksInfo()
         {
             var books = _bookRepo.GetSalesBooksInfo();
