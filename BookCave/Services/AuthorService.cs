@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using BookCave.Models.InputModels;
 using BookCave.Models.ViewModels;
 using BookCave.Repositories;
 
@@ -22,10 +23,18 @@ namespace BookCave.Services
             var authors = _authorRepo.GetAuthorsByName(SearchString).ToList();
             return authors;
         }
-     public List<AuthorDetailsViewModel> GetDetailsAuthor(int id)
+     public AuthorDetailsViewModel GetDetailsAuthor(int id)
         {
             var authors = _authorRepo.GetDetailsAuthor(id);
             return authors;
+        }
+           public void AddAuthor(AuthorInputModel author)
+        {
+            _authorRepo.AddAuthor(author);
+        }
+        public void UpdateAuthor(AuthorInputModel author)
+        {
+            _authorRepo.UpdateAuthor(author);
         }
     }
 }

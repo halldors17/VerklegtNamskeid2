@@ -1,0 +1,25 @@
+@model BookCave.Models.InputModels.AuthorInputModel
+<h1>Breyta Höfund</h1>
+
+<div class="jumbotron">
+    <form method="POST" asp-controller="Employee" asp-action="ChangeAuthor">
+        <div class="form-group">
+            <label asp-for="Name">Nafn</label>
+            <input asp-for="Name" class="form-control">
+            <span asp-validation-for="Name"></span>
+        </div>
+        <div class="form-group">
+          <label asp-for="Description">Lýsing</label>
+          <input asp-for="Description" class="form-control">
+          <span asp-validation-for="Description"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Image">Mynd</label>
+            <input asp-for="Image" class="form-control">
+            <span asp-validation-for="Image"></span>
+        </div>
+        <div class="form-group">
+            <button type="submit">Vista breytingar</button>
+        </div>
+    </form>
+</div>
