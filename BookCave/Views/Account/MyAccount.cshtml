@@ -19,10 +19,11 @@
     }
     else
     {
-        <a href="#">Breyta</a>
+        <a asp-controller="Account" asp-action="ShippingInfo">Breyta</a>
         <p>Heimilisfang: @Model.Shipping.Street</p>
         <p>Póstnúmer: @Model.Shipping.PostalCode</p>
         <p>Borg: @Model.Shipping.City</p>
         <p>Land: @Model.Shipping.Country</p>
+        <p>Sendingarmáti: @Model.Shipping.SendingMethod</p>
     }
 </div>

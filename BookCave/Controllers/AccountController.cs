@@ -123,7 +123,17 @@ namespace BookCave.Controllers
         public IActionResult ShippingInfo()
         {
             ViewBag.Title = "Flutnings upplýsingar";
-            return View();
+            var shippingInfo = new ShippingInfoInputModel();
+            var shippingInfoView = _accountService.GetShippingInfo(_userManager.GetUserId(User));
+            if(shippingInfo == null)
+            {
+                return View();
+            }
+            shippingInfo.Id = shippingInfoView.Id;
+            shippingInfo.Street = shippingInfoView.Street;
+            shippingInfo.City = shippingInfoView.City;
+            shippingInfo.PostalCode = shippingInfoView.PostalCode;
+            return View(shippingInfo);
         }
         [HttpPost]
         [Authorize(Roles = "User")]
@@ -134,7 +144,7 @@ namespace BookCave.Controllers
             {
                 string userId = _userManager.GetUserId(User);
                 _accountService.AddShippingInfo(shipping, userId);
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("MyAccount", "Account");
 
             }
             return View(shipping);

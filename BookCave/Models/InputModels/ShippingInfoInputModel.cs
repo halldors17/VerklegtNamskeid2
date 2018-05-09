@@ -4,6 +4,7 @@ namespace BookCave.Models.InputModels
 {
     public class ShippingInfoInputModel
     {
+        public int Id { get; set; }
         [Required, Display(Name = "Heimilisfang")]
         public string Street { get; set; }
         [Required, Display(Name = "Borg")]

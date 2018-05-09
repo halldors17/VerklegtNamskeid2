@@ -30,22 +30,43 @@ namespace BookCave.Repositories
                 Street = s.Street,
                 City = s.City,
                 PostalCode = s.PostalCode,
-                Country = s.Country
+                Country = s.Country,
+                SendingMethod = s.SendingMethod
             }).FirstOrDefault();
             return shipping;
         }
         public void AddShippingInfo(ShippingInfoInputModel shipping, string userId)
         {
-            var newShipping = new ShippingInfo
+            var user = GetShippingInfo(userId);
+            if(user != null)
             {
-                UserId = userId,
-                Street = shipping.Street,
-                City = shipping.City,
-                PostalCode = shipping.PostalCode,
-                Country = shipping.Country,
-                SendingMethod = shipping.SendingMethod
-            };
-            _db.ShippingInfo.Add(newShipping);
+                shipping.Id = user.Id;
+                UpdateShippingInfo(shipping, userId);
+            }
+            else
+            {
+                var newShipping = new ShippingInfo
+                {
+                    UserId = userId,
+                    Street = shipping.Street,
+                    City = shipping.City,
+                    PostalCode = shipping.PostalCode,
+                    Country = shipping.Country,
+                    SendingMethod = shipping.SendingMethod
+                };
+                _db.ShippingInfo.Add(newShipping);
+                _db.SaveChanges();
+            }
+        }
+        public void UpdateShippingInfo(ShippingInfoInputModel shipping, string userId)
+        {
+            var newShipping = _db.ShippingInfo.Find(shipping.Id);
+            newShipping.PostalCode = shipping.PostalCode;
+            newShipping.Street = shipping.Street;
+            newShipping.City = shipping.City;
+            newShipping.Country = shipping.Country;
+            newShipping.SendingMethod = shipping.SendingMethod;
+
             _db.SaveChanges();
         }
     }

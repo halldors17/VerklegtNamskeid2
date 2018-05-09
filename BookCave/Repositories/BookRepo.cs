@@ -107,17 +107,18 @@ namespace BookCave.Repositories
                         Id = a.Id,
                         Image = a.Image,
                         Title = a.Title,
-                        Price = a.Price * (1-(a.Discount/100)),
+                        Price = (a.Price-((a.Price/10)*(a.Discount/10))),
                         Discount = a.Discount
                     }).ToList();
             return books;
         }
 
-        public List<BookListViewModel> GetBooksByTitle(string SearchString)
+        public List<BookListViewModel> GetBooksBySearch(string SearchString)
         {
             var books = (from b in _db.Books
+                    join a in _db.Authors on b.AuthorId equals a.Id
                     orderby b.Title ascending
-                    where b.Title.Contains(SearchString)
+                    where b.Title.Contains(SearchString) || a.Name.Contains(SearchString)
                     select new BookListViewModel 
                     {
                         Id = b.Id,
