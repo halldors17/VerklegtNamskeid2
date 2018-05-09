@@ -128,7 +128,7 @@ namespace BookCave.Repositories
                     }).ToList();*/
             {
 
-                if (SearchBy == "Company")
+                if (SearchBy == "Title")
                 {
                     var books = (from b in _db.Books
                         orderby b.Title ascending
@@ -142,12 +142,29 @@ namespace BookCave.Repositories
                         }).ToList();
                     return books;
                 }
-                else
+
+                else if (SearchBy == "Author")
                 {
                     var books = (from b in _db.Books
                         join a in _db.Authors on b.AuthorId equals a.Id
                         orderby b.Title ascending
                         where a.Name.Contains(SearchString)
+                        select new BookListViewModel
+                        {
+                            Id =b.Id,
+                            Image = b.Image,
+                            Title = b.Title,
+                            Price = b.Price,
+                        }).ToList();
+                    return books;
+                }
+
+                else
+                {
+                    var books = (from b in _db.Books
+                        join c in _db.Categories on b.CategoryId equals c.Id
+                        orderby b.Title ascending
+                        where c.Name.Contains(SearchString)
                         select new BookListViewModel
                         {
                             Id =b.Id,
