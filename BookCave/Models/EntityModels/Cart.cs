@@ -1,4 +1,5 @@
 using System;
+using Microsoft.AspNetCore.Http;
 
 namespace BookCave.Models.EntityModels
 {
@@ -9,5 +10,6 @@ namespace BookCave.Models.EntityModels
         public int CartId { get; set; }
         public int Quantity { get; set; }
         public DateTime DateCreated { get; set; }
+      
     }
 }

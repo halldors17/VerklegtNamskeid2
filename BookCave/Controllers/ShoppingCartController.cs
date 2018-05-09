@@ -10,14 +10,14 @@ using Microsoft.AspNetCore.Mvc;
 namespace BookCave.Controllers
 {
     public class ShoppingCartController : Controller
-    {/*
+    {
         private ShoppingCartService _shoppingCartService;
 
-        public ShoppingCartController()
+         public ShoppingCartController() 
         {
             _shoppingCartService = new ShoppingCartService();
-        }*/
-        public IActionResult Index()
+        }
+       public IActionResult Index()
         {
             return View();
         }

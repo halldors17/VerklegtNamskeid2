@@ -4,9 +4,9 @@ using BookCave.Repositories;
 
 namespace BookCave.Services
 {
-    /*public class ShoppingCartService
+    public class ShoppingCartService
     {
         private ShoppingCartRepo _shoppingCartRepo;
     
-}*/
+    }
 }

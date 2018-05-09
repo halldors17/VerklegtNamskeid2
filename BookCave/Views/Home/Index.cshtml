@@ -1,11 +1,14 @@
 ﻿@model List<BookCave.Models.ViewModels.BookListViewModel>
 <h1>Frontpage</h1>
-<ul class="dropdown-menu">
-                <li><a asp-area="" asp-controller="Home" asp-action="Index" asp-route-id="stafrofsrod">Stafrófsröð</a></li>
-                <li><a asp-area="" asp-controller="Home" asp-action="Index" asp-route-id="verdnidur">Verði Hærra til Lægra</a></li>
-                <li><a asp-area="" asp-controller="Home" asp-action="Index" asp-route-id="verdupp">Verði Lægra til Hærra</a></li>
-                <li><a asp-area="" asp-controller="Home" asp-action="Index" asp-route-id="einkunn">Einkunn</a></li>
-            </ul>
+        <li class="dropdown">
+<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Raða eftir <span class="caret"></span></a>
+<ul class="dropdown-menu" id="list-menu">
+                <li><a asp-area="" asp-controller="Home" asp-action="Index" asp-route-id="Stafrodsrod">Stafrófsröð</a></li>
+                <li><a asp-area="" asp-controller="Home" asp-action="Index" asp-route-id="LH">Verð lægra til hærra</a></li>
+                <li><a asp-area="" asp-controller="Home" asp-action="Index" asp-route-id="HL">Verð hærra til lægra</a></li>
+                <li><a asp-area="" asp-controller="Home" asp-action="Index" asp-route-id="Einkunn">Einkunn</a></li>
+                </ul>
+        </li>
 <div class="container">
     <div class="row"></div>
         @foreach(var book in @Model)
