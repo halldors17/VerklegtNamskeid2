@@ -21,6 +21,26 @@ namespace BookCave.Services
             var books = _bookRepo.GetAllBooks();
             return books;
         }
+        public List<BookListViewModel> GetAllBooksAlpha()
+        {
+            var books = _bookRepo.GetAllBooksAlpha();
+            return books;
+        }
+          public List<BookListViewModel> GetAllBooksLH()
+        {
+            var books = _bookRepo.GetAllBooksLH();
+            return books;
+        }
+          public List<BookListViewModel> GetAllBooksHL()
+        {
+            var books = _bookRepo.GetAllBooksHL();
+            return books;
+        }
+        public List<BookListViewModel> GetAllBooksEinkunn()
+        {
+            var books = _bookRepo.GetAllBooksEinkunn();
+            return books;
+        }
 
         public List<BookListViewModel> GetTop10()
         {
