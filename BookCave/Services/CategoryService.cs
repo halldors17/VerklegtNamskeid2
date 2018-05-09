@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using BookCave.Models.InputModels;
 using BookCave.Models.ViewModels;
 using BookCave.Repositories;
 
@@ -29,6 +31,21 @@ namespace BookCave.Services
         {
             var category = _categoryRepo.GetCategoryDetails(id);
             return category;
+        }
+
+        public void UpdateCategory(InputCategoryModel category)
+        {
+            _categoryRepo.UpdateCategory(category);
+        }
+
+        public void RemoveCategory(int id)
+        {
+            _categoryRepo.RemoveCategory(id);
+        }
+
+        public void AddCategory(InputCategoryModel category)
+        {
+            _categoryRepo.AddCategory(category);
         }
     }
 }

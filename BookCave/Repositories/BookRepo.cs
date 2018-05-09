@@ -188,18 +188,16 @@ namespace BookCave.Repositories
                             Image = a.Image,
                             Price = a.Price,
                             Publisher = a.Publisher,
-                            //Author = b.Name,
                             YearPublished = a.YearPublished,
                             Pages = a.Pages,
                             Description = a.Description,
-                            //Category = c.Name,
                             Stock = a.Stock,
                             Paperback = a.Paperback,
                             Ebook = a.Ebook,
                             Audio = a.Audio,
                             Minutes = a.Minutes,
                             BookComments = comments,
-                            //Rating = a.Rating
+                            Rating = a.Rating
                         }).First();
 
             return book;

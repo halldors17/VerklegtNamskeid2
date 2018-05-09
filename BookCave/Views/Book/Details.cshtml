@@ -7,6 +7,7 @@
             <img src="@Model.Image"  height="200" width="120" /><br>
             <a asp-controller="Book" asp-action="Details" asp-route-id="@Model.Id">@Model.Title</a><br>
             <p>@Model.Price $</p>
+            <p>Einkunn @Model.Rating</p>
             
             @foreach(var c in @Model.CategoryList)
             {
