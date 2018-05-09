@@ -102,5 +102,19 @@ namespace BookCave.Repositories
 
             return authors;
         }
+         public void RemoveAuthor(int id)
+        {
+            //Fjarlægja tenginu við höfunda
+            var authorBookItemDb = _db.BookIdItem.Where(b => b.AuthorId == id).ToList();
+            foreach(var ba in authorBookItemDb)
+            {
+                _db.BookIdItem.Remove(ba);
+            }
+            //Fjarlægja bókina
+            var authorFromDb = _db.Authors.Find(id);
+            _db.Authors.Remove(authorFromDb);
+
+            _db.SaveChanges();
+        }
     }
 }
