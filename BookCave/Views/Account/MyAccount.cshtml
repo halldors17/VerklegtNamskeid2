@@ -2,9 +2,14 @@
 <h1>Notenda síða</h1>
 <h2>Persónulegt</h2>
 <div class="jumbotron">
-    <a href="#">Breyta</a>
-    <p>Nafn: @Model.FullName</p>
+    <a asp-controller="Account" asp-action="EditProfile">Breyta</a>
+    <p>Eiginnafn: @Model.FirstName</p>
+    <p>Eftirafn: @Model.LastName</p>
     <p>Netfang: @Model.Email</p>
+    @if(@Model.Age != 0)
+    {
+        <p>Aldur: @Model.Age</p>
+    }
 </div>
 <h2>Flutnings upplýsingar</h2>
 <div class="jumbotron">
