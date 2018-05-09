@@ -135,7 +135,7 @@ namespace BookCave.Repositories
                         where b.Title.Contains(SearchString)
                         select new BookListViewModel
                         {
-                            Id =b.Id,
+                            Id = b.Id,
                             Image = b.Image,
                             Title = b.Title,
                             Price = b.Price,
@@ -146,12 +146,13 @@ namespace BookCave.Repositories
                 else if (SearchBy == "Author")
                 {
                     var books = (from b in _db.Books
-                        join a in _db.Authors on b.AuthorId equals a.Id
+                        join bId in _db.BookIdItem on b.Id equals bId.BookId
+                        join a in _db.Authors on bId.AuthorId equals a.Id
                         orderby b.Title ascending
                         where a.Name.Contains(SearchString)
                         select new BookListViewModel
                         {
-                            Id =b.Id,
+                            Id = b.Id,
                             Image = b.Image,
                             Title = b.Title,
                             Price = b.Price,
@@ -162,14 +163,14 @@ namespace BookCave.Repositories
                 else
                 {
                     var books = (from b in _db.Books
-                        join c in _db.Categories on b.CategoryId equals c.Id
-                        orderby b.Title ascending
+                        join cId in _db.CategoryIdItem on b.Id equals cId.BookId
+                        join c in _db.Categories on cId.CategoryId equals c.Id
                         where c.Name.Contains(SearchString)
                         select new BookListViewModel
                         {
-                            Id =b.Id,
-                            Image = b.Image,
+                            Id = b.Id,
                             Title = b.Title,
+                            Image = b.Image,
                             Price = b.Price,
                         }).ToList();
                     return books;
