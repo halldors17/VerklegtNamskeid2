@@ -75,5 +75,38 @@ namespace BookCave.Repositories
             _db.Comments.Add(comment);
             _db.SaveChanges();
         }
+
+        public bool CheckCartItem(int bookId, string userId)
+        {
+            var item = (from c in _db.Cart
+                        where c.UserId == userId && c.BookId == bookId
+                        select c).ToList();
+            
+            if(item.Count == 0)
+            {
+                return false;
+            }
+            return true;
+        }
+
+        public void UpdateQuantity(int bookId, string userId)
+        {
+            /*
+            var item = (from c in _db.Cart
+                        where c.UserId == userId && c.BookId == bookId
+                        select c).FirstOrDefault();
+            */
+            
+            var bookFromDb = _db.Books.Find(bookId);
+            var cartFromDb = _db.Cart.Where(b => b.BookId == bookFromDb.Id).FirstOrDefault();
+            cartFromDb.Quantity++;
+            _db.SaveChanges();
+        }
+
+        public void AddToCart(Cart cart)
+        {
+            _db.Cart.Add(cart);
+            _db.SaveChanges();
+        }
     }
 }
