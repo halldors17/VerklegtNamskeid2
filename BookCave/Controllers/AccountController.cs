@@ -79,7 +79,8 @@ namespace BookCave.Controllers
             {
                 return View(register);
             }
-            var user = new ApplicationUser { UserName = register.Email, Email = register.Email };
+            var user = new ApplicationUser { UserName = register.Email, Email = register.Email, 
+                FirstName = register.FirstName, LastName = register.LastName };
             var result = await _userManager.CreateAsync(user, register.Password);
             if(result.Succeeded)
             {
@@ -88,9 +89,7 @@ namespace BookCave.Controllers
                     var users = new IdentityRole("User");
                     var res = await _roleManager.CreateAsync(users);
                 }
-                //Success
                 await _userManager.AddToRoleAsync(user, "User");
-                await _userManager.AddClaimAsync(user, new Claim("Name", $"{register.FirstName} {register.LastName}"));
                 await _signInManager.SignInAsync(user, false);
 
                 return RedirectToAction("Index", "Home");
@@ -106,11 +105,14 @@ namespace BookCave.Controllers
         }
 
         [Authorize(Roles = "User")]
-        public IActionResult MyAccount()
+        public async Task<IActionResult> MyAccount()
         {
+            var user = await _userManager.GetUserAsync(User);
             var account = new AccountViewModel();
-            account.Email = User.Identity.Name;
-            account.FullName = User.Claims.FirstOrDefault(c => c.Type == "Name")?.Value;
+            account.FirstName = user.FirstName;
+            account.LastName = user.LastName;
+            account.Email = user.Email;
+            account.Age = user.age;
             account.Shipping = _accountService.GetShippingInfo(_userManager.GetUserId(User));
             ViewBag.Title = "Notenda síða";
 
@@ -137,7 +139,37 @@ namespace BookCave.Controllers
             }
             return View(shipping);
         }
-
+        [HttpGet]
+        [Authorize(Roles = "User")]
+        public async Task<IActionResult> EditProfile()
+        {
+            ViewBag.Title = "Notenda upplýsingar";
+            var user = await _userManager.GetUserAsync(User);
+            var account = new AccountInputModel();
+            account.FirstName = user.FirstName;
+            account.LastName = user.LastName;
+            account.Email = user.Email;
+            account.Age = user.age;
+            return View(account);
+        }
+        [HttpPost]
+        [Authorize(Roles = "User")]
+        public async Task<IActionResult> EditProfile(AccountInputModel account)
+        {
+            ViewBag.Title = "Notenda upplýsingar";
+            if(!ModelState.IsValid)
+            {
+                return View(account);
+            }
+            var user = await _userManager.GetUserAsync(User);
+            user.FirstName = account.FirstName;
+            user.LastName = account.LastName;
+            user.Email = account.Email;
+            user.age = account.Age;
+            user.UserName = account.Email;
+            await _userManager.UpdateAsync(user);
+            return RedirectToAction("MyAccount", "Account");
+        }
         public IActionResult AccessDenied()
         {
             ViewBag.Title = "Aðgang neitað";
@@ -147,25 +179,6 @@ namespace BookCave.Controllers
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
-
-        [HttpGet]
-        public IActionResult AddComment(int id)
-        {
-            return View();
-        }
-
-        [HttpPost]
-        public IActionResult AddComment(InputCommentModel comment)
-        {
-            
-
-            if(ModelState.IsValid)
-            {
-                
-            }
-
-            return View("Book/Details/id");
         }
     }
 }

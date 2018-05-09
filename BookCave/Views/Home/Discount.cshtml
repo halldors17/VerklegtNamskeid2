@@ -10,7 +10,12 @@
                 <a asp-controller="Book" asp-action="Details" asp-route-id="@book.Id">@book.Title</a><br>
                 <p id="price"> </p>
                 <p> @book.Price </p>
-                <p> @book.Price</p>
+                <p id="Total"></p>
+                <script>
+                function totalFunction()
+                {
+                    document.getElementById("Total").innerHTML = Math.pow(@book.Discount, -10) * @book.Price;
+                }</script>
                 // Á eftir að reikna út verðið með afslætti 
             </div>
         }

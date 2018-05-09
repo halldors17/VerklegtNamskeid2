@@ -31,6 +31,58 @@ namespace BookCave.Repositories
             
             return books;
         }
+        public List<BookListViewModel> GetAllBooksAlpha()
+        {
+            var books = (from b in _db.Books
+            orderby b.Title ascending
+            select new BookListViewModel
+            {
+                Id = b.Id,
+                Image = b.Image,
+                Title =b.Title,
+                Price = b.Price
+            }).ToList();
+            return books;
+        }
+         public List<BookListViewModel> GetAllBooksLH()
+        {
+            var books = (from b in _db.Books
+            orderby b.Price ascending
+            select new BookListViewModel
+            {
+                Id = b.Id,
+                Image = b.Image,
+                Title =b.Title,
+                Price = b.Price
+            }).ToList();
+            return books;
+        }
+          public List<BookListViewModel> GetAllBooksHL()
+        {
+            var books = (from b in _db.Books
+            orderby b.Price descending
+            select new BookListViewModel
+            {
+                Id = b.Id,
+                Image = b.Image,
+                Title =b.Title,
+                Price = b.Price
+            }).ToList();
+            return books;
+        }
+          public List<BookListViewModel> GetAllBooksEinkunn()
+        {
+            var books = (from b in _db.Books
+            orderby b.Rating descending
+            select new BookListViewModel
+            {
+                Id = b.Id,
+                Image = b.Image,
+                Title =b.Title,
+                Price = b.Price
+            }).ToList();
+            return books;
+        }
 
         public List<BookListViewModel> GetBooksByRating()
         {
