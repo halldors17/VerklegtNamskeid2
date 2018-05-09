@@ -58,7 +58,6 @@ namespace BookCave.Services
             var books = _bookRepo.GetBooksBySearch(SearchString).ToList();
             return books;
         }
-
         public List<BookSalesViewModel> GetSalesBooksInfo()
         {
             var books = _bookRepo.GetSalesBooksInfo();
@@ -86,6 +85,11 @@ namespace BookCave.Services
         public void UpdateBook(InputBookModel book)
         {
             _bookRepo.UpdateBook(book);
+        }
+
+        public void RemoveBook(int id)
+        {
+            _bookRepo.RemoveBook(id);
         }
 
     }
