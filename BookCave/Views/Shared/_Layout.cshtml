@@ -14,16 +14,6 @@
               asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
         <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
     </environment>
-    <style>
-        footer 
-        {
-        height: 50px;
-        bottom: 0;
-        width: 100%;
-        text-align: left;
-        }
-    </style>
-    
 </head>
 <body>
     <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -54,12 +44,6 @@
             <li><a asp-area="" asp-controller="Home" asp-action="Discount">Tilboð</a></li>
             <li><a asp-area="" asp-controller="Home" asp-action="Top10">Topp 10</a></li>
         </ul>
-        <form method="POST" asp-controller="Author" asp-action="Index" class="navbar-form navbar-left">
-            <div class="form-group">
-            <input type="text" class="form-control" name="SearchString" placeholder="Leita hér..">
-            </div>
-            <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
-        </form>
         <form method="POST" asp-controller="Book" asp-action="Index" class="navbar-form navbar-left">
             <div class="form-group">
             <input type="text" class="form-control" name="SearchString" placeholder="Leita hér..">
@@ -78,7 +62,8 @@
         @RenderBody()
         <hr />
         <footer class="footer">
-            <p>&copy; 2018 - BookCave <a asp-area="" asp-controller="Home" asp-action="Contact"> Hafa Samband</a></p>
+            <p>&copy; 2018 - BookCave <a asp-area="" asp-controller="Home" asp-action="Contact"> Hafa Samband</a> <a asp-area="" asp-controller="Home" asp-action="FAQ"> Algengar Spurningar</a></p>
+            <p></p>
         </footer>
     </div>
 

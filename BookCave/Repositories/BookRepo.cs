@@ -60,11 +60,12 @@ namespace BookCave.Repositories
             return books;
         }
 
-        public List<BookListViewModel> GetBooksByTitle(string SearchString)
+        public List<BookListViewModel> GetBooksBySearch(string SearchString)
         {
             var books = (from b in _db.Books
-                    orderby b.Title ascending
-                    where b.Title.Contains(SearchString)
+                    join a in _db.Authors on b.AuthorId equals a.Id
+                    //orderby b.Title ascending
+                    where b.Title.Contains(SearchString) || a.Name.Contains(SearchString)
                     select new BookListViewModel 
                     {
                         Id = b.Id,

@@ -26,7 +26,7 @@ namespace BookCave.Controllers
         [HttpPost]
         public IActionResult Index(string SearchString)
         {
-            var books = _bookService.GetBooksByTitle(SearchString);
+            var books = _bookService.GetBooksBySearch(SearchString);
             return View(books);
         }
         [HttpGet]
