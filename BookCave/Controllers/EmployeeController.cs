@@ -2,6 +2,8 @@ using Microsoft.AspNetCore.Mvc;
 using BookCave.Services;
 using Microsoft.AspNetCore.Authorization;
 using BookCave.Models.InputModels;
+using BookCave.Models.EntityModels;
+using BookCave.Models.ViewModels;
 
 namespace BookCave.Controllers
 {
@@ -10,11 +12,16 @@ namespace BookCave.Controllers
     {
         private EmployeeService _employeeService;
         private BookService _bookService;
+        private CategoryService _categoryService;
+        private AuthorService _authorService;
 
         public EmployeeController() 
         {
             _bookService = new BookService();
             _employeeService = new EmployeeService();
+            _categoryService = new CategoryService();
+            _authorService = new AuthorService();
+
         }
 
         public IActionResult Index()
@@ -97,19 +104,114 @@ namespace BookCave.Controllers
         public IActionResult Authors()
         {
             ViewBag.Title = "Innranet höfundar";
+            var authors = _authorService.GetAllAuthors();
+            return View(authors);
+        }
+         [HttpGet]
+        public IActionResult AddAuthor()
+        {
+            ViewBag.Title = "Innranet höfundar";
             return View();
         }
+        [HttpPost]
+        public IActionResult AddAuthor(AuthorInputModel author)
+        {
+            if(ModelState.IsValid)
+            {
+                _authorService.AddAuthor(author);
+            }
+
+            return RedirectToAction("AddAuthor");
+        }
+        [HttpGet]
+        public IActionResult ChangeAuthor(int id)
+        {
+            var author = _authorService.GetDetailsAuthor(id);
+
+            var inputAuthor = new AuthorInputModel 
+            {
+                Name = author.Name,
+                Description = author.Description,
+                Image = author.AImage
+            };
+            return View(inputAuthor);
+        }
+        [HttpPost]
+        public IActionResult ChangeAuthor(AuthorInputModel author)
+        {
+            if(ModelState.IsValid)
+            {
+                _authorService.UpdateAuthor(author);
+            }
+            return RedirectToAction("ChangeAuthor");
+        }
+        public IActionResult RemoveAuthor(int id)
+        {
+            //Spurja aftur hvort notandi vilji fjarlægja bók
+            _authorService.RemoveAuthor(id);
+            return RedirectToAction("Books");
+        }
+
 
         public IActionResult Categories()
         {
             ViewBag.Title = "Innranet flokkar";
-            return View();
+            var categories = _categoryService.GetAllCategories();
+            return View(categories);
         }
 
         public IActionResult Sales()
         {
             ViewBag.Title = "Innranet sala";
             return View();
+        }
+
+        [HttpGet]
+        public IActionResult ChangeCategory(int id)
+        {
+            var category = _categoryService.GetCategory(id);
+
+            var inputCategory = new InputCategoryModel 
+            {
+                Name = category.Name,
+                Id = category.Id
+            };
+
+            return View(inputCategory);
+        }
+
+        [HttpPost]
+        public IActionResult ChangeCategory(InputCategoryModel category)
+        {
+            if(ModelState.IsValid)
+            {
+                _categoryService.UpdateCategory(category);
+            }
+            return RedirectToAction("ChangeCategory");
+        }
+
+        public IActionResult RemoveCategory(int id)
+        {
+            _categoryService.RemoveCategory(id);
+            return RedirectToAction("Categories");
+        }
+
+        [HttpGet]
+        public IActionResult AddCategory()
+        {
+            ViewBag.Title = "Innranet bækur";
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult AddCategory(InputCategoryModel category)
+        {
+            if(ModelState.IsValid)
+            {
+                _categoryService.AddCategory(category);
+            }
+
+            return RedirectToAction("AddCategory");
         }
     }
 }

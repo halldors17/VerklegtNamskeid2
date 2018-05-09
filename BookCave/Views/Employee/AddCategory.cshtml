@@ -1,0 +1,15 @@
+@model BookCave.Models.InputModels.InputCategoryModel
+<h1>Bæta við flokk</h1>
+
+<div class="jumbotron">
+    <form method="POST" asp-controller="Employee" asp-action="AddCategory">
+        <div class="form-group">
+            <label asp-for="Name"></label>
+            <input asp-for="Name" class="form-control">
+            <span asp-validation-for="Name"></span>
+        </div>
+        <div class="form-group">
+            <button type="submit">Vista breytingar</button>
+        </div>
+    </form>
+</div>

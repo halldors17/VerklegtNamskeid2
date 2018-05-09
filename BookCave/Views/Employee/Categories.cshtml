@@ -1,1 +1,18 @@
+@model List<BookCave.Models.ViewModels.CategoryListViewModel>
 <h1>Flokkar</h1>
+
+<div class="container">
+    <div class="row"></div>
+        @foreach(var category in @Model)
+        {
+            <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                <h2><a asp-area="" asp-controller="Category" asp-action="Details" asp-route-id="@category.Id">@category.Name</a></h2>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12" style="height: 250px; width: 700px">
+                <p>---Sölutölur hér---</p>
+                <button><a asp-controller="Employee" asp-action="ChangeCategory" asp-route-id="@category.Id">Breyta</a></button>
+                <button><a asp-controller="Employee" asp-action="RemoveCategory" asp-route-id="@category.Id">Fjarlægja</a></button>
+            </div>
+        }
+    </div>
+</div>

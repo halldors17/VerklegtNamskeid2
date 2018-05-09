@@ -117,7 +117,7 @@ namespace BookCave.Repositories
         {
             var books = (from b in _db.Books
                     join a in _db.Authors on b.AuthorId equals a.Id
-                    //orderby b.Title ascending
+                    orderby b.Title ascending
                     where b.Title.Contains(SearchString) || a.Name.Contains(SearchString)
                     select new BookListViewModel 
                     {
@@ -189,18 +189,16 @@ namespace BookCave.Repositories
                             Image = a.Image,
                             Price = a.Price,
                             Publisher = a.Publisher,
-                            //Author = b.Name,
                             YearPublished = a.YearPublished,
                             Pages = a.Pages,
                             Description = a.Description,
-                            //Category = c.Name,
                             Stock = a.Stock,
                             Paperback = a.Paperback,
                             Ebook = a.Ebook,
                             Audio = a.Audio,
                             Minutes = a.Minutes,
                             BookComments = comments,
-                            //Rating = a.Rating
+                            Rating = a.Rating
                         }).First();
 
             return book;
