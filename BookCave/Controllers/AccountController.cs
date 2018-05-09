@@ -192,12 +192,11 @@ namespace BookCave.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
-
+        [HttpPost]
+        [Authorize(Roles = "User")]
         public IActionResult AddToCart(int bookId)
         {
-
             var exists = _accountService.CheckCartItem(bookId, _userManager.GetUserId(User));
-
             if(exists)
             {
                 _accountService.UpdateQuantity(bookId, _userManager.GetUserId(User));
@@ -211,10 +210,8 @@ namespace BookCave.Controllers
                     UserId = _userManager.GetUserId(User),
                     Quantity = 1
                 };
-
                 _accountService.AddToCart(cartItem);
             }
-
             return RedirectToAction("Index", "Home");
         }
     }

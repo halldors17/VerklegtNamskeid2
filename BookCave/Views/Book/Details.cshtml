@@ -33,12 +33,9 @@
                 <button class="btn btn-default">Hljóðbók</button>
             }
 
-            <form method="POST" asp-controller="Account" asp-action="AddToCart">
-                <button type="submit" class="btn btn-primary" value="@Model.Id">Setja í körfu</button>
-            </form>
-            <button class="btn btn-default">Setja í uppáhalds</button>
-            <button class="btn btn-default">Setja á óskalist</button>
-
+            <input type="button" class="btn btn-primary" value="Setja í körfu" onclick="addToCart(@Model.Id)">
+            <input type="button" class="btn btn-default" value="Setja í uppáhalds">
+            <input type="button" class="btn btn-default" value="Setja á óskalist">
         </div>
         <div class="col-lg-2 cl-md-2 col-sm-3 col-xs-6 text-center">
             <h3>Umsagnir</h3>
