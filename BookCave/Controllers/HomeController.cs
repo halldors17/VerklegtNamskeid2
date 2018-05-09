@@ -25,12 +25,12 @@ namespace BookCave.Controllers
                 var alphabooks = _bookService.GetAllBooksAlpha();
                 return View(alphabooks);
             }
-            if(id == "LH")
+            if(id == "VerdLH")
             {
                 var LHbooks = _bookService.GetAllBooksLH();
                 return View(LHbooks);
             }
-            if( id == "HL")
+            if( id == "VerdHL")
             {
             var HLbooks = _bookService.GetAllBooksHL();
             return View(HLbooks);
