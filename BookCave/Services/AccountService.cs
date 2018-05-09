@@ -26,5 +26,20 @@ namespace BookCave.Services
         {
             _accountRepo.AddComment(comment);
         }
+
+        public bool CheckCartItem(int bookId, string userId)
+        {
+            return _accountRepo.CheckCartItem(bookId, userId);
+        }
+
+        public void UpdateQuantity(int bookId, string userId)
+        {
+            _accountRepo.UpdateQuantity(bookId, userId);
+        }
+
+        public void AddToCart(Cart cart)
+        {
+            _accountRepo.AddToCart(cart);
+        }
     }
 }

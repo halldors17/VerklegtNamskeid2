@@ -9,6 +9,8 @@ using Microsoft.AspNetCore.Authorization;
 using System.Linq;
 using BookCave.Services;
 using BookCave.Models.InputModels;
+using BookCave.Models.EntityModels;
+using System;
 
 namespace BookCave.Controllers
 {
@@ -189,6 +191,31 @@ namespace BookCave.Controllers
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+
+        public IActionResult AddToCart(int bookId)
+        {
+
+            var exists = _accountService.CheckCartItem(bookId, _userManager.GetUserId(User));
+
+            if(exists)
+            {
+                _accountService.UpdateQuantity(bookId, _userManager.GetUserId(User));
+            }
+            else
+            {
+                var cartItem = new Cart
+                {
+                    BookId = bookId,
+                    DateCreated = DateTime.Now,
+                    UserId = _userManager.GetUserId(User),
+                    Quantity = 1
+                };
+
+                _accountService.AddToCart(cartItem);
+            }
+
+            return RedirectToAction("Index", "Home");
         }
     }
 }
