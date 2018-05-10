@@ -1,18 +1,17 @@
 @model BookCave.Models.ViewModels.AuthorDetailsViewModel
-<div>
-    <div>
-        <p><img src="@Model.AImage" height="300" width="220"/></p>
-        <p>@Model.Name</p>
-        <p>@Model.Description</p>
-
-        <ul>
-            @foreach(var b in @Model.BookList)
-            {
-                <li>
-                    <p><img src="@b.Image" height="200" width="120"/></p>
-                    <p><a asp-controller="Book" asp-action="Details" asp-route-id="@b.Id">@b.Title</a></p>
-                </li>
-            }
-        </ul>
-    </div>
+<h1>@Model.Name</h1>
+<div class="jumbotron">
+    <p><img src="@Model.AImage" height="300" width="220"/></p>
+    <p>Um Höfund: @Model.Description</p>
+    <h3>Bækur eftir höfund:</h3>
+    <ul class="list-group list-group-flush">
+        @foreach(var b in @Model.BookList)
+        {
+            <li class="list-group-item">
+                <p><a asp-controller="Book" asp-action="Details" asp-route-id="@b.Id">@b.Title</a></p>
+                <p><img src="@b.Image" height="200" width="120"/></p>
+                <p>"@b.Price $</p>
+            </li>
+        }
+    </ul>
 </div>
