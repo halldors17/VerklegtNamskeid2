@@ -115,7 +115,9 @@ namespace BookCave.Controllers
             account.FirstName = user.FirstName;
             account.LastName = user.LastName;
             account.Email = user.Email;
-            account.Age = user.age;
+            account.Age = user.Age;
+            account.Image = user.Image;
+            account.FavBook = user.FavBook;
             account.Shipping = _accountService.GetShippingInfo(_userManager.GetUserId(User));
             ViewBag.Title = "Notenda síða";
 
@@ -128,7 +130,7 @@ namespace BookCave.Controllers
             ViewBag.Title = "Flutnings upplýsingar";
             var shippingInfo = new ShippingInfoInputModel();
             var shippingInfoView = _accountService.GetShippingInfo(_userManager.GetUserId(User));
-            if(shippingInfo.Street != null)
+            if(shippingInfoView.Id != 0)
             {
                 shippingInfo.Id = shippingInfoView.Id;
                 shippingInfo.Street = shippingInfoView.Street;
@@ -161,7 +163,9 @@ namespace BookCave.Controllers
             account.FirstName = user.FirstName;
             account.LastName = user.LastName;
             account.Email = user.Email;
-            account.Age = user.age;
+            account.Age = user.Age;
+            account.Image = user.Image;
+            account.FavBook = user.FavBook;
             return View(account);
         }
         [HttpPost]
@@ -177,8 +181,10 @@ namespace BookCave.Controllers
             user.FirstName = account.FirstName;
             user.LastName = account.LastName;
             user.Email = account.Email;
-            user.age = account.Age;
+            user.Age = account.Age;
             user.UserName = account.Email;
+            user.Image = account.Image;
+            user.FavBook = account.FavBook;
             await _userManager.UpdateAsync(user);
             return RedirectToAction("MyAccount", "Account");
         }
