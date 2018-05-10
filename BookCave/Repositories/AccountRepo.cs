@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
 using BookCave.Models.EntityModels;
 using BookCave.Models.InputModels;
+using System;
 
 namespace BookCave.Repositories
 {
@@ -172,6 +173,58 @@ namespace BookCave.Repositories
         {
             var cartFromDb = _db.Cart.Find(cartId);
             _db.Remove(cartFromDb);
+            _db.SaveChanges();
+        }
+
+        public void saveInputOrder(InputOrderModel newOrder, string userId)
+        {
+            //Save the items
+            var cartItemsFromDb = _db.Cart.Where(u => u.UserId == userId).ToList();
+
+            double totalPrice = (from c in cartItemsFromDb
+                                join b in _db.Books on c.BookId equals b.Id
+                                select b.Price).Sum();
+
+            //Save the order
+            var shippingInfoFromDb = _db.ShippingInfo.Where(u => u.UserId == userId).FirstOrDefault();
+
+            var order = new Order 
+            {
+                CustomerId = userId,
+                PaidDate = DateTime.Now,
+                Total = totalPrice,
+                ShippingInfoId = shippingInfoFromDb.Id,
+                Status = "Paid"
+            };
+
+            _db.Orders.Add(order);
+            _db.SaveChanges();
+
+            //Get the orderId
+            var orderFromDb = _db.Orders.Where(p => p.PaidDate == order.PaidDate).FirstOrDefault();
+
+            foreach(var item in cartItemsFromDb)
+            {
+                var bookFromDb = _db.Books.Where(b => b.Id == item.BookId).FirstOrDefault();
+
+                var orderItem = new OrderItem
+                {
+                    BookId = item.BookId,
+                    OrderId = orderFromDb.Id,
+                    Price = bookFromDb.Price,
+                    Quantity = item.Quantity,
+                    AuthorId = bookFromDb.AuthorId
+                };
+
+                _db.OrderItem.Add(orderItem);
+            }
+
+            //Delete from cart
+            foreach(var item in cartItemsFromDb)
+            {
+                RemoveCart(item.Id);
+            }
+
             _db.SaveChanges();
         }
     }
