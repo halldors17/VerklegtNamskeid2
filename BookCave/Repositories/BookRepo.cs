@@ -108,7 +108,7 @@ namespace BookCave.Repositories
                         Id = a.Id,
                         Image = a.Image,
                         Title = a.Title,
-                        Price = (a.Price-((a.Price/10)*(a.Discount/10))),
+                        Price = (a.Price-(a.Price*(a.Discount/100))),
                         Discount = a.Discount
                     }).ToList();
             return books;
