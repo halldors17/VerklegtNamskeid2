@@ -20,6 +20,7 @@ namespace BookCave.Controllers
         }
           public IActionResult Index(string id)
         {
+            ViewBag.Title = "Forsíða";
             if(id == "Stafrodsrod")
             {
                 var alphabooks = _bookService.GetAllBooksAlpha();
@@ -48,31 +49,31 @@ namespace BookCave.Controllers
         }
         public IActionResult Top10()
         {
+            ViewBag.Title = "Top 10";
             var topBooks = _bookService.GetTop10();
             return View(topBooks);
         }
         public IActionResult Discount()
         {
+            ViewBag.Title = "Tilboð";
             var discountBooks = _bookService.GetDiscount();
             return View(discountBooks);
         }
         public IActionResult About()
         {
-            ViewData["Message"] = "Your application description page.";
-
+            ViewBag.Title = "Um okkur";
             return View();
         }
 
         public IActionResult Contact()
         {
-            ViewData["Message"] = "Your contact page.";
-
+            ViewBag.Title = "Hafa samband";
             return View();
         }
 
         public IActionResult FAQ()
         {
-            ViewData["Message"] = "Your application description page.";
+            ViewBag.Title = "Algengar Spurningar";
 
             return View();
         }

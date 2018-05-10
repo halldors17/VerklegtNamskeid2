@@ -24,10 +24,19 @@
     }
 }
 
+<<<<<<< HEAD
+#book-logo {
+    float: left;
+}
+
+#text-logo {
+    float: right;
+=======
 .selectBox{
     border-radius:4px;border:1px solid #AAAAAA;
     padding: 5px;
 }
 .overflow{
     overflow: scroll;
+>>>>>>> 38d677ff65c6016da9430210d5677d1f3e17f1da
 }
