@@ -119,7 +119,7 @@ namespace BookCave.Repositories
         public bool CheckCartItem(int bookId, string userId)
         {
             var item = (from c in _db.Cart
-                        where c.CustomerId == userId && c.BookId == bookId
+                        where c.UserId == userId && c.BookId == bookId
                         select c).ToList();
             
             if(item.Count == 0)
@@ -152,10 +152,10 @@ namespace BookCave.Repositories
         {
             var cart = (from a in _db.Cart
                     join b in _db.Books on a.BookId equals b.Id
-                    where a.CustomerId == userId
+                    where a.UserId == userId
                     select new CartViewModel
                     {
-                        UserId = a.CustomerId,
+                        UserId = a.UserId,
                         BookId = b.Id,
                         Title = b.Title,
                         Image = b.Image,
