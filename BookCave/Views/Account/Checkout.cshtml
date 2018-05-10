@@ -6,7 +6,7 @@
         <div class="row">
             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                 <h2>Flutnings upplýsingar</h2>
-                <form>
+                <form method="POST" asp-controller="Account" asp-action="Checkout">
                     <div class="form-group">
                         <label asp-for="Name">Nafn</label>
                         <input asp-for="Name" class="form-control">

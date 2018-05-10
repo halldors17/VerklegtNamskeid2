@@ -192,11 +192,23 @@ namespace BookCave.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
         [Authorize(Roles = "User")]
+        [HttpGet]
         public IActionResult Checkout()
         {
             return View();
         }
+
+        [Authorize(Roles = "User")]
+        [HttpPost]
+        public IActionResult Checkout(InputOrderModel newOrder)
+        {
+            _accountService.saveInputOrder(newOrder, _userManager.GetUserId(User));
+
+            return View(); //Ath
+        }
+
         [Authorize(Roles = "User")]
         public IActionResult OrderHistory()
         {

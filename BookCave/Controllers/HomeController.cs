@@ -78,6 +78,13 @@ namespace BookCave.Controllers
             return View();
         }
 
+        public IActionResult Terms()
+        {
+            ViewBag.Title = "Skilmálar";
+
+            return View();
+        }
+
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });

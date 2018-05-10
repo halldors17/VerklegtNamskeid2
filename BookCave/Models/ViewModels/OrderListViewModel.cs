@@ -10,6 +10,6 @@ namespace BookCave.Models.ViewModels
         public string CustomerId { get; set; }
         public DateTime PaidDate { get; set; }
         public string Status { get; set; }
-        public int Total { get; set; }
+        public double Total { get; set; }
     }
 }

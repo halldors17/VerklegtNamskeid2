@@ -66,6 +66,11 @@ namespace BookCave.Services
         {
             _accountRepo.RemoveCart(cartId);
         }
+
+        public void saveInputOrder(InputOrderModel newOrder, string userId)
+        {
+            _accountRepo.saveInputOrder(newOrder, userId);
+        }
         
     }
 }
