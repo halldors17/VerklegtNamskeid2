@@ -212,7 +212,7 @@ namespace BookCave.Controllers
                 };
                 _accountService.AddToCart(cartItem);
             }
-            return RedirectToAction("Index", "Home");
+            return Ok();
         }
     }
 }
