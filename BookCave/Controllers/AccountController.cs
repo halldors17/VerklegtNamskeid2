@@ -244,8 +244,8 @@ namespace BookCave.Controllers
         {
             if(User.IsInRole("User"))
             {
-                _accountService.GetCart(_userManager.GetUserId(User));
-                return View();
+                var cart = _accountService.GetCart(_userManager.GetUserId(User));
+                return View(cart);
             }
             else{
             return Content("Þú þarft að vera innskráður til að fá aðgang að körfunni");
