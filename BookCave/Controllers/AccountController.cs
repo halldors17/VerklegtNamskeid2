@@ -193,24 +193,26 @@ namespace BookCave.Controllers
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
         [HttpPost]
-        [Authorize(Roles = "User")]
         public IActionResult AddToCart(int bookId)
         {
-            var exists = _accountService.CheckCartItem(bookId, _userManager.GetUserId(User));
-            if(exists)
+            if(User.IsInRole("User"))
             {
-                _accountService.UpdateQuantity(bookId, _userManager.GetUserId(User));
-            }
-            else
-            {
-                var cartItem = new Cart
+                var exists = _accountService.CheckCartItem(bookId, _userManager.GetUserId(User));
+                if(exists)
                 {
-                    BookId = bookId,
-                    DateCreated = DateTime.Now,
-                    UserId = _userManager.GetUserId(User),
-                    Quantity = 1
-                };
-                _accountService.AddToCart(cartItem);
+                    _accountService.UpdateQuantity(bookId, _userManager.GetUserId(User));
+                }
+                else
+                {
+                    var cartItem = new Cart
+                    {
+                        BookId = bookId,
+                        DateCreated = DateTime.Now,
+                        UserId = _userManager.GetUserId(User),
+                        Quantity = 1
+                    };
+                    _accountService.AddToCart(cartItem);
+                }
             }
             return Ok();
         }
