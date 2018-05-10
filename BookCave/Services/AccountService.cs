@@ -38,9 +38,9 @@ namespace BookCave.Services
             _accountRepo.AddOrder(order);
         }
 
-        public OrderDetailViewModel GetOrder(int orderId)
+        public OrderDetailViewModel GetOrder(int id)
         {
-            return _accountRepo.GetOrder(orderId);
+            return _accountRepo.GetOrder(id);
         }
 
         public bool CheckCartItem(int bookId, string userId)
@@ -48,9 +48,9 @@ namespace BookCave.Services
             return _accountRepo.CheckCartItem(bookId, userId);
         }
 
-        public void UpdateQuantity(int bookId, string userId)
+        public void UpdateQuantity(int id, string userId)
         {
-            _accountRepo.UpdateQuantity(bookId, userId);
+            _accountRepo.UpdateQuantity(id, userId);
         }
 
         public void AddToCart(Cart cart)
@@ -71,6 +71,5 @@ namespace BookCave.Services
         {
             _accountRepo.saveInputOrder(newOrder, userId);
         }
-        
     }
 }

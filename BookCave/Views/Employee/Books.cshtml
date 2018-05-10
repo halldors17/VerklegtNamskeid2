@@ -13,8 +13,8 @@
                 <p>@book.Author</p>
                 <p>@book.Publisher</p>
                 <p>---Sölutölur hér---</p>
-                <button class="btn btn-default"><a asp-controller="Employee" asp-action="ChangeBook" asp-route-id="@book.Id">Breyta</a></button>
-                <button class="btn btn-default"><a asp-controller="Employee" asp-action="RemoveBook" asp-route-id="@book.Id">Fjarlægja</a></button>
+                <a asp-controller="Employee" asp-action="ChangeBook" asp-route-id="@book.Id"><button class="btn btn-default">Breyta</button></a>
+                <a asp-controller="Employee" asp-action="RemoveBook" asp-route-id="@book.Id"><button class="btn btn-default">Fjarlægja</button></a>
             </div>
         }
     </div>

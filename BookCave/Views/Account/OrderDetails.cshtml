@@ -1,19 +1,20 @@
 @model BookCave.Models.ViewModels.OrderDetailViewModel
 
 <h1>Pöntun @Model.Id</h1>
+<a asp-controller="Account" asp-action="OrderHistory"><button class="btn btn-default">Til baka</button></a>
 <div class="container">
     <div class="row"></div>
-            <div class="col-lg-2 cl-md-2 col-sm-3 col-xs-6 text-center">
+            <div class="col-lg-4 cl-md-4 col-sm-3 col-xs-6">
+                <h3>Almennt</h3>
                 <p>Total price: @Model.Total</p>
                 <p>Paid date: @Model.PaidDate</p>
             </div>
-            <br>
-            <h3>Bækur</h3>
-            <div class="col-lg-2 cl-md-2 col-sm-3 col-xs-6 text-center">
+            <div class="col-lg-4 cl-md-4 col-sm-3 col-xs-6">
+                <h3>Bækur</h3>
                 @foreach(var item in @Model.OrderItems)
                 {
-                    <p>Book: item.BookId</p>
-                    <p>Price: item.Price</p>
+                    <p>Book Id: @item.BookId</p>
+                    <p>Price: @item.Price</p>
                 }
             </div>
     </div>

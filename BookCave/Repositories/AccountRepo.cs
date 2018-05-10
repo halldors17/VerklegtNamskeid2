@@ -100,10 +100,10 @@ namespace BookCave.Repositories
             _db.SaveChanges();
         }
 
-        public OrderDetailViewModel GetOrder(int orderId)
+        public OrderDetailViewModel GetOrder(int id)
         {
-            var orderItems = _db.OrderItem.Where(o => o.OrderId == orderId).ToList();
-            var order = _db.Orders.Find(orderId);
+            var orderItems = _db.OrderItem.Where(o => o.OrderId == id).ToList();
+            var order = _db.Orders.Find(id);
 
             var orderDetail = new OrderDetailViewModel
             {
@@ -130,16 +130,10 @@ namespace BookCave.Repositories
             return true;
         }
 
-        public void UpdateQuantity(int bookId, string userId)
+        public void UpdateQuantity(int id, string userId)
         {
-            /*
-            var item = (from c in _db.Cart
-                        where c.UserId == userId && c.BookId == bookId
-                        select c).FirstOrDefault();
-            */
-            
-            var bookFromDb = _db.Books.Find(bookId);
-            var cartFromDb = _db.Cart.Where(b => b.BookId == bookFromDb.Id).FirstOrDefault();
+            var bookFromDb = _db.Books.Find(id);
+            var cartFromDb = _db.Cart.Where(u => u.UserId == userId).Where(b => b.BookId == id).FirstOrDefault();
             cartFromDb.Quantity++;
             _db.SaveChanges();
         }

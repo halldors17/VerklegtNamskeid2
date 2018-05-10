@@ -18,10 +18,10 @@
                     <tr>
                         <td><img src="@item.Image"  height="200" width="120" /></td>
                         <td>@item.Title</td>
-                        <td><input type="text" asp-for="@item.Quantity" id="quantity"> <input type="button" class="btn btn-default" value="Uppfæra" onclick="changeQuantity()"></td>
+                        <td><input type="text" asp-for="@item.Quantity"><a asp-controller="Account" asp-action="ChangeQuantity" asp-route-quantity="@item.Id"><button class="btn btn-default">Uppfæra</button></a></td>
                         <td>@item.Discount %</td>
                         <td>@item.Price $</td>
-                        <td><input type="button" class="btn btn-default" value="Fjarlægja úr körfu" onclick="removeCart(@item.Id)"></td>
+                        <td><a asp-controller="Account" asp-action="RemoveCart" asp-route-id="@item.Id"><button class="btn btn-default">Fjarlægja út körfu</button></a></td>
                     </tr>
                 }
             </table>

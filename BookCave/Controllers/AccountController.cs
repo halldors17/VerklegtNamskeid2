@@ -237,9 +237,9 @@ namespace BookCave.Controllers
             return View(orders);
         }
         [Authorize(Roles = "User")]
-        public IActionResult OrderDetails(int orderId)
+        public IActionResult OrderDetails(int id)
         {
-            var order = _accountService.GetOrder(orderId);
+            var order = _accountService.GetOrder(id);
             return View(order);
         }
         [Authorize(Roles = "User")]
@@ -250,20 +250,20 @@ namespace BookCave.Controllers
 
         [Authorize(Roles = "User")]
         [HttpPost]
-        public IActionResult AddToCart(int bookId)
+        public IActionResult AddToCart(int id)
         {
             if(User.IsInRole("User"))
             {
-                var exists = _accountService.CheckCartItem(bookId, _userManager.GetUserId(User));
+                var exists = _accountService.CheckCartItem(id, _userManager.GetUserId(User));
                 if(exists)
                 {
-                    _accountService.UpdateQuantity(bookId, _userManager.GetUserId(User));
+                    _accountService.UpdateQuantity(id, _userManager.GetUserId(User));
                 }
                 else
                 {
                     var cartItem = new Cart
                     {
-                        BookId = bookId,
+                        BookId = id,
                         DateCreated = DateTime.Now,
                         UserId = _userManager.GetUserId(User),
                         Quantity = 1
@@ -275,10 +275,10 @@ namespace BookCave.Controllers
         }
 
         [Authorize(Roles = "User")]
-        public IActionResult RemoveCart(int cartId)
+        public IActionResult RemoveCart(int id)
         {
-            _accountService.RemoveCart(cartId);
-            return RedirectToAction("Cart", "Account");
+            _accountService.RemoveCart(id);
+            return RedirectToAction("Cart");
         }
 
         [Authorize(Roles = "User")]
@@ -296,9 +296,10 @@ namespace BookCave.Controllers
         }
 
         [Authorize(Roles = "User")]
-        public void ChangeQuantity(int quantity)
+        public IActionResult ChangeQuantity(int quantity)
         {
-
+            //_accountService.UpdateQuantity(quantity);
+            return RedirectToAction("Cart");
         }
     }
 }

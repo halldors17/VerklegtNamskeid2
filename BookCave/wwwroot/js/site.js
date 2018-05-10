@@ -12,7 +12,7 @@ function addToCart(id) {
     $.ajax({
         type: "POST",
         url: "/Account/AddToCart",
-        data: {bookId: id},
+        data: {id: id},
         dataType: "json",
     });
 };
@@ -32,7 +32,7 @@ function removeCart(id) {
     $.ajax({
         type: "POST",
         url: "/Account/RemoveCart",
-        data: {cartId: id},
+        data: {id: id},
         dataType: "json",
     });
 }

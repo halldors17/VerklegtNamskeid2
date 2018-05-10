@@ -11,5 +11,6 @@ namespace BookCave.Models.ViewModels
         public DateTime PaidDate { get; set; }
         public string Status { get; set; }
         public double Total { get; set; }
+        public List<OrderItem> OrderItems { get; set; }
     }
 }
