@@ -10,7 +10,7 @@
             <li class="list-group-item">
                 <p><a asp-controller="Book" asp-action="Details" asp-route-id="@b.Id">@b.Title</a></p>
                 <p><img src="@b.Image" height="200" width="120"/></p>
-                <p>"@b.Price $</p>
+                <p>@b.Price $</p>
             </li>
         }
     </ul>
