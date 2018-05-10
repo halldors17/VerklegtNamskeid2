@@ -9,7 +9,7 @@ namespace BookCave.Models.EntityModels
         public List<BookIdItem> AuthorBookIdList { get; set; }
         public string Publisher { get; set; }
         public int YearPublished { get; set; }
-        public int Price { get; set; }
+        public double Price { get; set; }
         public List<LanguageItem> LanguageList { get; set; }
         public int Pages { get; set; }
         public int Minutes { get; set; }
