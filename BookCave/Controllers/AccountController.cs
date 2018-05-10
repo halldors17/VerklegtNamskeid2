@@ -195,21 +195,24 @@ namespace BookCave.Controllers
 
         [Authorize(Roles = "User")]
         [HttpGet]
-        public IActionResult Checkout()
+        public async Task<IActionResult> Checkout()
         {
             var orderModel = new InputOrderModel();
-           /* var shippingInfoFromDb = _accountService.GetShippingInfo(_userManager.GetUserId(User));
+            var shippingInfoFromDb = _accountService.GetShippingInfo(_userManager.GetUserId(User));
             var user = await _userManager.GetUserAsync(User);
+            
             if(shippingInfoFromDb.Street != null)
             {
-                //orderModel.shippingInfo.Id = shippingInfoFromDb.Id;
                 orderModel.Name = user.FirstName;
                 orderModel.Email = user.Email;
-                orderModel.ShippingInfo.Street = shippingInfoFromDb.Street;
-                orderModel.ShippingInfo.City = shippingInfoFromDb.City;
-                orderModel.ShippingInfo.PostalCode = shippingInfoFromDb.PostalCode;
-                orderModel.ShippingInfo.SendingMethod = shippingInfoFromDb.SendingMethod;
-            }*/
+                orderModel.Street = shippingInfoFromDb.Street;    
+                orderModel.Street = shippingInfoFromDb.Street;
+                orderModel.City = shippingInfoFromDb.City;
+                orderModel.PostalCode = shippingInfoFromDb.PostalCode;
+                orderModel.Country = shippingInfoFromDb.Country;
+                orderModel.SendingMethod = shippingInfoFromDb.SendingMethod;
+                
+            }
             return View(orderModel);
         }
 
