@@ -6,7 +6,7 @@
         @foreach(var book in @Model)
         {
             <div class="col-lg-2 cl-md-2 col-sm-3 col-xs-6 text-center" style="height: 325px; width: 200px">
-                <img src="@book.Image"  height="200" width="120" /><br>
+                <p><a asp-controller="Book" asp-action="Details" asp-route-id="@book.Id"><img src="@book.Image" height="200" width="120"/></a></p>
                 <a asp-controller="Book" asp-action="Details" asp-route-id="@book.Id">@book.Title</a><br>
                 <p id="price"> </p>
                 <p> @book.Price $</p>

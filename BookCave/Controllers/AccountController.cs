@@ -197,7 +197,20 @@ namespace BookCave.Controllers
         [HttpGet]
         public IActionResult Checkout()
         {
-            return View();
+            var orderModel = new InputOrderModel();
+           /* var shippingInfoFromDb = _accountService.GetShippingInfo(_userManager.GetUserId(User));
+            var user = await _userManager.GetUserAsync(User);
+            if(shippingInfoFromDb.Street != null)
+            {
+                //orderModel.shippingInfo.Id = shippingInfoFromDb.Id;
+                orderModel.Name = user.FirstName;
+                orderModel.Email = user.Email;
+                orderModel.ShippingInfo.Street = shippingInfoFromDb.Street;
+                orderModel.ShippingInfo.City = shippingInfoFromDb.City;
+                orderModel.ShippingInfo.PostalCode = shippingInfoFromDb.PostalCode;
+                orderModel.ShippingInfo.SendingMethod = shippingInfoFromDb.SendingMethod;
+            }*/
+            return View(orderModel);
         }
 
         [Authorize(Roles = "User")]
@@ -267,6 +280,11 @@ namespace BookCave.Controllers
         {
             var cart = _accountService.GetCart(_userManager.GetUserId(User));
             return View(cart);
+        }
+
+        public void ChangeQuantity(int quantity)
+        {
+
         }
     }
 }
