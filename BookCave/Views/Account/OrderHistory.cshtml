@@ -6,7 +6,7 @@
         @foreach(var order in @Model)
         {
             <div class="col-lg-2 cl-md-2 col-sm-3 col-xs-6 text-center">
-                <button class="btn btn-default"><a asp-controller="Account" asp-action="OrderDetails" asp-route-id="@order.Id">Order: @order.Id</a></button>
+                <input type="button" class="btn btn-default" value="Order: @order.Id" onclick="orderDetails(@order.Id)">
                 <p>Total price: @order.Total</p>
                 <p>Paid date: @order.PaidDate</p>
             </div>

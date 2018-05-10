@@ -202,8 +202,13 @@ namespace BookCave.Controllers
         public IActionResult OrderHistory()
         {
             var orders =_accountService.GetOrdersForUser(_userManager.GetUserId(User));
-
             return View(orders);
+        }
+
+        public IActionResult OrderDetails(int orderId)
+        {
+            var order = _accountService.GetOrder(orderId);
+            return View(order);
         }
 
         public void AddOrder(Order order)

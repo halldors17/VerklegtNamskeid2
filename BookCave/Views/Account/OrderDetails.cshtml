@@ -1,0 +1,20 @@
+@model BookCave.Models.ViewModels.OrderDetailViewModel
+
+<h1>Pöntun @Model.Id</h1>
+<div class="container">
+    <div class="row"></div>
+            <div class="col-lg-2 cl-md-2 col-sm-3 col-xs-6 text-center">
+                <p>Total price: @Model.Total</p>
+                <p>Paid date: @Model.PaidDate</p>
+            </div>
+            <br>
+            <h3>Bækur</h3>
+            <div class="col-lg-2 cl-md-2 col-sm-3 col-xs-6 text-center">
+                @foreach(var item in @Model.OrderItems)
+                {
+                    <p>Book: item.BookId</p>
+                    <p>Price: item.Price</p>
+                }
+            </div>
+    </div>
+</div>
