@@ -128,14 +128,13 @@ namespace BookCave.Controllers
             ViewBag.Title = "Flutnings upplýsingar";
             var shippingInfo = new ShippingInfoInputModel();
             var shippingInfoView = _accountService.GetShippingInfo(_userManager.GetUserId(User));
-            if(shippingInfo == null)
+            if(shippingInfo.Street != null)
             {
-                return View();
+                shippingInfo.Id = shippingInfoView.Id;
+                shippingInfo.Street = shippingInfoView.Street;
+                shippingInfo.City = shippingInfoView.City;
+                shippingInfo.PostalCode = shippingInfoView.PostalCode;
             }
-            shippingInfo.Id = shippingInfoView.Id;
-            shippingInfo.Street = shippingInfoView.Street;
-            shippingInfo.City = shippingInfoView.City;
-            shippingInfo.PostalCode = shippingInfoView.PostalCode;
             return View(shippingInfo);
         }
         [HttpPost]
@@ -193,24 +192,24 @@ namespace BookCave.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
-
+        [Authorize(Roles = "User")]
         public IActionResult Checkout()
         {
             return View();
         }
-
+        [Authorize(Roles = "User")]
         public IActionResult OrderHistory()
         {
             var orders =_accountService.GetOrdersForUser(_userManager.GetUserId(User));
             return View(orders);
         }
-
+        [Authorize(Roles = "User")]
         public IActionResult OrderDetails(int orderId)
         {
             var order = _accountService.GetOrder(orderId);
             return View(order);
         }
-
+        [Authorize(Roles = "User")]
         public void AddOrder(Order order)
         {
             _accountService.AddOrder(order);
@@ -240,7 +239,6 @@ namespace BookCave.Controllers
             }
             return Ok();
         }
-
         public IActionResult RemoveCart(int cartId)
         {
             _accountService.RemoveCart(cartId);
@@ -251,17 +249,12 @@ namespace BookCave.Controllers
         {
             return View();
         }
-        
+
+        [Authorize(Roles = "User")]
         public IActionResult Cart()
         {
-            if(User.IsInRole("User"))
-            {
-                var cart = _accountService.GetCart(_userManager.GetUserId(User));
-                return View(cart);
-            }
-            else{
-            return Content("Þú þarft að vera innskráður til að fá aðgang að körfunni");
-            }
+            var cart = _accountService.GetCart(_userManager.GetUserId(User));
+            return View(cart);
         }
     }
 }
