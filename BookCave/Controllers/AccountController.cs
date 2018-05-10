@@ -232,7 +232,7 @@ namespace BookCave.Controllers
                     {
                         BookId = bookId,
                         DateCreated = DateTime.Now,
-                        UserId = _userManager.GetUserId(User),
+                        CustomerId = _userManager.GetUserId(User),
                         Quantity = 1
                     };
                     _accountService.AddToCart(cartItem);
@@ -240,6 +240,7 @@ namespace BookCave.Controllers
             }
             return Ok();
         }
+        
         public IActionResult Cart()
         {
             if(User.IsInRole("User"))
