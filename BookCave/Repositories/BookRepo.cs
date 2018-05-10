@@ -266,6 +266,7 @@ namespace BookCave.Repositories
                 Audio = book.Audio,
                 Minutes = book.Minutes,
                 Ebook = book.Ebook,
+                Discount = book.Discount,
                 YearPublished = book.YearPublished 
             };
             _db.Books.Add(newBook);
@@ -312,6 +313,7 @@ namespace BookCave.Repositories
             bookFromDb.Minutes = book.Minutes;
             bookFromDb.Ebook = book.Ebook;
             bookFromDb.YearPublished = book.YearPublished;
+            bookFromDb.Discount = book.Discount;
             
             _db.SaveChanges();
 
