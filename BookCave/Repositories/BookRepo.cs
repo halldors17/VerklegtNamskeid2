@@ -98,6 +98,7 @@ namespace BookCave.Repositories
             
             return books;
         }
+
         public List<BookListViewModel> GetDiscount()
         {
             var books = (from a in _db.Books
@@ -224,6 +225,10 @@ namespace BookCave.Repositories
                             Rating = c.Rating,
                             BookComment = c.BookComment
                         }).ToList();
+
+            //rating frá notendum
+            //var comments = GetCommentsForBook(id);
+           // double rating = GetAvgRatingForComments(comments);
           
             var book = (from a in _db.Books
                         where a.Id == id
@@ -246,6 +251,7 @@ namespace BookCave.Repositories
                             Minutes = a.Minutes,
                             BookComments = comments,
                             Rating = a.Rating
+                            //Rating = rating
                         }).First();
 
             return book;
@@ -350,6 +356,37 @@ namespace BookCave.Repositories
             _db.Books.Remove(bookFromDb);
 
             _db.SaveChanges();
+        }
+
+        public List<Comment> GetCommentsForBook(int id)
+        {
+            var comments = (from b in _db.Books
+                        join c in _db.Comments on b.Id equals c.BookId
+                        where b.Id == id
+                        select new Comment
+                        {
+                            Rating = c.Rating,
+                            BookComment = c.BookComment
+                        }).ToList();
+            
+            return comments;
+        }
+
+        public double GetAvgRatingForComments(List<Comment> comments)
+        {
+            double rating;
+            if(comments.Count != 0)
+            {
+                    var avgRating = (from c in comments
+                            select c.Rating).Average();
+                    //Stytta töluna
+                    rating = Math.Truncate(avgRating * 100) / 100;
+            }
+            else{
+                rating = 0;
+            }
+
+            return rating;
         }
     }
 }
