@@ -148,5 +148,21 @@ namespace BookCave.Repositories
             _db.Cart.Add(cart);
             _db.SaveChanges();
         }
+        public List<CartViewModel> GetCart(string userId)
+        {
+            var cart = (from a in _db.Cart
+            join b in _db.Books on a.BookId equals b.Id
+            where a.UserId == userId
+            select new CartViewModel
+            {
+                Title = b.Title,
+                Image = b.Image,
+                Price = b.Price,
+                Discount = b.Discount,
+                Quantity = a.Quantity,
+                
+            }).ToList();
+            return(cart);
+        }
     }
 }
