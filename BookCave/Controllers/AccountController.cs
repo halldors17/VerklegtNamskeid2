@@ -231,7 +231,7 @@ namespace BookCave.Controllers
                     {
                         BookId = bookId,
                         DateCreated = DateTime.Now,
-                        CustomerId = _userManager.GetUserId(User),
+                        UserId = _userManager.GetUserId(User),
                         Quantity = 1
                     };
                     _accountService.AddToCart(cartItem);
