@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using BookCave.Models.EntityModels;
 using BookCave.Models.InputModels;
 using BookCave.Models.ViewModels;
@@ -25,6 +26,16 @@ namespace BookCave.Services
         public void AddComment(Comment comment)
         {
             _accountRepo.AddComment(comment);
+        }
+
+        public List<OrderListViewModel> GetOrdersForUser(string userId)
+        {
+            return _accountRepo.GetOrdersForUser(userId);
+        }
+
+        public void AddOrder(Order order)
+        {
+            _accountRepo.AddOrder(order);
         }
 
         public bool CheckCartItem(int bookId, string userId)

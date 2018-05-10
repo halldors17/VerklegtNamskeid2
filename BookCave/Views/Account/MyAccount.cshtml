@@ -1,5 +1,9 @@
 @model BookCave.Models.ViewModels.AccountViewModel
 <h1>Notenda síða</h1>
+
+<h2>Fyrri pantanir</h2>
+<button class="btn btn-default"><a asp-controller="Account" asp-action="OrderHistory" asp-route-id="@Model.Id">Pöntunar saga</a></button>
+
 <h2>Persónulegt</h2>
 <div class="jumbotron">
     <a asp-controller="Account" asp-action="EditProfile">Breyta</a>
