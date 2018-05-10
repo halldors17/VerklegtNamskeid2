@@ -44,20 +44,17 @@
             <li><a asp-area="" asp-controller="Home" asp-action="Discount">Tilboð</a></li>
             <li><a asp-area="" asp-controller="Home" asp-action="Top10">Topp 10</a></li>
         </ul>
-        <!--<form method="POST" asp-controller="Book" asp-action="Search" class="navbar-form navbar-left">
+        <form method="POST" asp-controller="Book" asp-action="Search" class="navbar-form navbar-left">
+            <select class="selectBox" name="searchBy">
+                <option value="Title">Bók</option>
+                <option value="Author">Höfundur</option>
+                <option value="Category">Flokkur</option>
+            </select>
             <div class="form-group">
-            <input type="text" class="form-control" name="SearchString" placeholder="Leita hér..">
+                <input type="text" class="form-control" name="SearchString" placeholder="Leita hér..">
             </div>
             <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
-        </form>-->
-        @using (Html.BeginForm("Search", "Book", FormMethod.Post))
-        {
-            @Html.TextBox("SearchString");<input type="submit" value="Search" />
-             <b>Search by:</b>
-            @Html.RadioButton("searchBy", "Title", true)<text> Bók</text>
-            @Html.RadioButton("searchBy", "Author")<text> Höfundur</text>
-            @Html.RadioButton("searchBy", "Category")<text> Flokkur</text>
-        }
+        </form>
         <ul class="nav navbar-nav navbar-right">
             <li><a asp-area="" asp-controller="Home" asp-action="About">Um BookCave</a></li>
         </ul>
