@@ -14,7 +14,7 @@ namespace BookCave.Models.InputModels
         public int PostalCode { get; set; }
         public string Country { get; set; }
         public string SendingMethod { get; set; }
-        public ShippingInfo ShippingInfo { get; set; }
+        //public ShippingInfo ShippingInfo { get; set; }
         //public int CustomerId { get; set; }
         //public List<OrderItem> OrderItems { get; set; }
         //public int Price { get; set; }

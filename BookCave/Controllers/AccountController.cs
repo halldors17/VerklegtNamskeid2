@@ -195,22 +195,30 @@ namespace BookCave.Controllers
 
         [Authorize(Roles = "User")]
         [HttpGet]
-        public IActionResult Checkout()
+        public async Task<IActionResult> Checkout()
         {
             var orderModel = new InputOrderModel();
-           /* var shippingInfoFromDb = _accountService.GetShippingInfo(_userManager.GetUserId(User));
+            var shippingInfoFromDb = _accountService.GetShippingInfo(_userManager.GetUserId(User));
             var user = await _userManager.GetUserAsync(User);
+            
             if(shippingInfoFromDb.Street != null)
             {
-                //orderModel.shippingInfo.Id = shippingInfoFromDb.Id;
                 orderModel.Name = user.FirstName;
                 orderModel.Email = user.Email;
-                orderModel.ShippingInfo.Street = shippingInfoFromDb.Street;
-                orderModel.ShippingInfo.City = shippingInfoFromDb.City;
-                orderModel.ShippingInfo.PostalCode = shippingInfoFromDb.PostalCode;
-                orderModel.ShippingInfo.SendingMethod = shippingInfoFromDb.SendingMethod;
-            }*/
+                orderModel.Street = shippingInfoFromDb.Street;    
+                orderModel.Street = shippingInfoFromDb.Street;
+                orderModel.City = shippingInfoFromDb.City;
+                orderModel.PostalCode = shippingInfoFromDb.PostalCode;
+                orderModel.Country = shippingInfoFromDb.Country;
+                orderModel.SendingMethod = shippingInfoFromDb.SendingMethod;
+            }
             return View(orderModel);
+        }
+
+        [Authorize(Roles = "User")]
+        public IActionResult Confirmation()
+        {
+            return View();
         }
 
         [Authorize(Roles = "User")]
@@ -219,7 +227,7 @@ namespace BookCave.Controllers
         {
             _accountService.saveInputOrder(newOrder, _userManager.GetUserId(User));
 
-            return View(); //Ath
+            return RedirectToAction("Confirmation");
         }
 
         [Authorize(Roles = "User")]
@@ -240,6 +248,7 @@ namespace BookCave.Controllers
             _accountService.AddOrder(order);
         }
 
+        [Authorize(Roles = "User")]
         [HttpPost]
         public IActionResult AddToCart(int bookId)
         {
@@ -264,15 +273,19 @@ namespace BookCave.Controllers
             }
             return Ok();
         }
+
+        [Authorize(Roles = "User")]
         public IActionResult RemoveCart(int cartId)
         {
             _accountService.RemoveCart(cartId);
             return RedirectToAction("Cart", "Account");
         }
 
+        [Authorize(Roles = "User")]
         public IActionResult ReviewOrder()
         {
-            return View();
+            var cart = _accountService.GetCart(_userManager.GetUserId(User));
+            return View(cart);
         }
 
         [Authorize(Roles = "User")]
@@ -282,6 +295,7 @@ namespace BookCave.Controllers
             return View(cart);
         }
 
+        [Authorize(Roles = "User")]
         public void ChangeQuantity(int quantity)
         {
 

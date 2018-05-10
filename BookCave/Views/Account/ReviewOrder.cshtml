@@ -1,13 +1,34 @@
-
+@model List<BookCave.Models.ViewModels.CartViewModel>
 
 <h1>Yfirlit pöntunar</h1>
-<div class="jumbotron">
-
-</div>
+<div class="container">
+    <div class="row"></div>
+        <div class="col-lg-12 cl-md-6 col-sm-6 col-xs-6">
+            <table class="table table-striped table-hover">
+                <tr>
+                    <th>Mynd</th>
+                    <th>Titill</th>
+                    <th>Magn</th>
+                    <th>Afsláttur</th>
+                    <th>Verð</th>
+                </tr>
+                @foreach(var item in @Model)
+                {
+                    <tr>
+                        <td><img src="@item.Image"  height="200" width="120" /></td>
+                        <td>@item.Title</td>
+                        <td>@item.Quantity</td>
+                        <td>@item.Discount %</td>
+                        <td>@item.Price $</td>
+                    </tr>
+                }
+            </table>
+        </div>
+    </div>
 
 <div class="form-group">
-    <button class="btn btn-default"><a asp-controller="Account" asp-action="Checkout">Halda áfram</a></button>
+    <a asp-controller="Account" asp-action="Checkout"><button class="btn btn-default">Halda áfram</button></a>
 </div>
 <div class="form-group">
-    <button class="btn btn-default"><a asp-controller="Account" asp-action="Cart">Til baka</a></button>
+    <a asp-controller="Account" asp-action="Cart"><button class="btn btn-default">Til baka</button></a>
 </div>
