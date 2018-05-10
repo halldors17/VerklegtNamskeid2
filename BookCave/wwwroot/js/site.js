@@ -1,10 +1,9 @@
 ﻿
 $("#category-button").click( function() {
-    $.get("Category/GetCategories", function(data, status) {
+    $.get("/Category/GetCategories", function(data, status) {
         if(!$("#category-menu").hasClass("list-full")) {
             for(var i = 0; i < data.length; i++) {
-                var markup = "<li><a href='Category/Details/" + data[i].id + "'>" + data[i].name + "</a></li>";
-                //var markup = "<li>" + data.Name + "</li>";
+                var markup = "<li><a href='http://localhost:5000/Category/Details/" + data[i].id + "'>" + data[i].name + "</a></li>";
                 $("#category-menu").append(markup);
             }
             $("#category-menu").addClass("list-full");
