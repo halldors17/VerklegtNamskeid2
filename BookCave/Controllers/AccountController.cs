@@ -235,5 +235,16 @@ namespace BookCave.Controllers
             }
             return Ok();
         }
+        public IActionResult Cart()
+        {
+            if(User.IsInRole("User"))
+            {
+                _accountService.GetCart(_userManager.GetUserId(User));
+                return View();
+            }
+            else{
+            return Content("Þú þarft að vera innskráður til að fá aðgang að körfunni");
+            }
+        }
     }
 }

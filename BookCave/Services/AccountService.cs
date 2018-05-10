@@ -52,5 +52,11 @@ namespace BookCave.Services
         {
             _accountRepo.AddToCart(cart);
         }
+        public List<CartViewModel> GetCart(string userId)
+        {
+            var cart = _accountRepo.GetCart(userId);
+            return(cart);
+        }
+        
     }
 }
