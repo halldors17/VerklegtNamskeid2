@@ -111,6 +111,7 @@ namespace BookCave.Controllers
         {
             var user = await _userManager.GetUserAsync(User);
             var account = new AccountViewModel();
+            account.Id = _userManager.GetUserId(User);
             account.FirstName = user.FirstName;
             account.LastName = user.LastName;
             account.Email = user.Email;
@@ -192,6 +193,19 @@ namespace BookCave.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
+        public IActionResult OrderHistory()
+        {
+            var orders =_accountService.GetOrdersForUser(_userManager.GetUserId(User));
+
+            return View(orders);
+        }
+
+        public void AddOrder(Order order)
+        {
+            _accountService.AddOrder(order);
+        }
+
         [HttpPost]
         public IActionResult AddToCart(int bookId)
         {
