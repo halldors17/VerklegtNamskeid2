@@ -38,6 +38,11 @@ namespace BookCave.Services
             _accountRepo.AddOrder(order);
         }
 
+        public OrderDetailViewModel GetOrder(int orderId)
+        {
+            return _accountRepo.GetOrder(orderId);
+        }
+
         public bool CheckCartItem(int bookId, string userId)
         {
             return _accountRepo.CheckCartItem(bookId, userId);

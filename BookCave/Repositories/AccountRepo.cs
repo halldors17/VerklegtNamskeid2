@@ -99,6 +99,23 @@ namespace BookCave.Repositories
             _db.SaveChanges();
         }
 
+        public OrderDetailViewModel GetOrder(int orderId)
+        {
+            var orderItems = _db.OrderItem.Where(o => o.OrderId == orderId).ToList();
+            var order = _db.Orders.Find(orderId);
+
+            var orderDetail = new OrderDetailViewModel
+            {
+                Id = order.Id,
+                Total = order.Total,
+                PaidDate = order.PaidDate,
+                CustomerId = order.CustomerId,
+                OrderItems = orderItems
+            };
+
+            return orderDetail;
+        }
+
         public bool CheckCartItem(int bookId, string userId)
         {
             var item = (from c in _db.Cart

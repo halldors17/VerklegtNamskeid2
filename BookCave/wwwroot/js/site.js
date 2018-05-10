@@ -16,6 +16,17 @@ function addToCart(id) {
         dataType: "json",
     });
 };
+
+/*orderDetails(@order.Id)*/
+function orderDetails(id) {
+    $.ajax({
+        type: "POST",
+        url: "/Account/OrderDetails",
+        data: {orderId: id},
+        dataType: "json",
+    });
+}
+
 /*
             //var markup = "<li><a asp-controller='Category' asp-action='Details' asp-route-id='" + data.Id + "'>" + data.Name + "</a></li>";
             //var markup = "<li>" + data.Name + "</li>";
