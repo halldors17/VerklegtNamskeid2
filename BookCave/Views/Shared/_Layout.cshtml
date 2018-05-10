@@ -26,7 +26,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-        <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">BookCave</a>
+        <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand"> <img id="book-logo" src="http://icons.iconarchive.com/icons/paomedia/small-n-flat/24/book-icon.png" alt="book"> The BookCave</a>
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
@@ -47,12 +47,12 @@
             <li><a asp-area="" asp-controller="Home" asp-action="About">Um BookCave</a></li>
         </ul>
         <form method="POST" asp-controller="Book" asp-action="Search" class="navbar-form navbar-left">
-            <select class="selectBox" name="searchBy">
-                <option value="Title">Bók</option>
-                <option value="Author">Höfundur</option>
-                <option value="Category">Flokkur</option>
-            </select>
             <div class="form-group">
+                <select class="form-control" name="searchBy">
+                    <option value="Title">Bók</option>
+                    <option value="Author">Höfundur</option>
+                    <option value="Category">Flokkur</option>
+                </select>
                 <input type="text" class="form-control" name="SearchString" placeholder="Leita hér..">
             </div>
             <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
