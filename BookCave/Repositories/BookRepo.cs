@@ -217,18 +217,9 @@ namespace BookCave.Repositories
                             Name = c.Name
                         }).ToList();
 
-            var comments = (from b in _db.Books
-                        join c in _db.Comments on b.Id equals c.BookId
-                        where b.Id == id
-                        select new Comment
-                        {
-                            Rating = c.Rating,
-                            BookComment = c.BookComment
-                        }).ToList();
-
+            var comments = GetCommentsForBook(id);
             //rating frá notendum
-            //var comments = GetCommentsForBook(id);
-           // double rating = GetAvgRatingForComments(comments);
+            double usersRating = GetAvgRatingForComments(comments);
           
             var book = (from a in _db.Books
                         where a.Id == id
@@ -250,8 +241,8 @@ namespace BookCave.Repositories
                             Audio = a.Audio,
                             Minutes = a.Minutes,
                             BookComments = comments,
-                            Rating = a.Rating
-                            //Rating = rating
+                            Rating = a.Rating,
+                            UserAvgRating = usersRating
                         }).First();
 
             return book;

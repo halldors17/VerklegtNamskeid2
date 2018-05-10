@@ -194,6 +194,11 @@ namespace BookCave.Controllers
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
+        public IActionResult Checkout()
+        {
+            return View();
+        }
+
         public IActionResult OrderHistory()
         {
             var orders =_accountService.GetOrdersForUser(_userManager.GetUserId(User));
