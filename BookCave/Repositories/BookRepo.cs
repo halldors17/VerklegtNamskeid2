@@ -255,7 +255,6 @@ namespace BookCave.Repositories
                 Title = book.Title,
                 CategoryId = book.CategoryId,
                 Image = book.Image,
-                Price = book.Price,
                 Publisher = book.Publisher,
                 AuthorId = book.AuthorId,
                 Rating = book.Rating,
@@ -267,6 +266,7 @@ namespace BookCave.Repositories
                 Minutes = book.Minutes,
                 Ebook = book.Ebook,
                 Discount = book.Discount,
+                Price = (book.Price/100)*(100-book.Discount),
                 YearPublished = book.YearPublished 
             };
             _db.Books.Add(newBook);
@@ -301,7 +301,6 @@ namespace BookCave.Repositories
             bookFromDb.Title = book.Title;
             bookFromDb.CategoryId = book.CategoryId;
             bookFromDb.Image = book.Image;
-            bookFromDb.Price = book.Price;
             bookFromDb.Publisher = book.Publisher;
             bookFromDb.AuthorId = book.AuthorId;
             bookFromDb.Rating = book.Rating;
@@ -314,6 +313,7 @@ namespace BookCave.Repositories
             bookFromDb.Ebook = book.Ebook;
             bookFromDb.YearPublished = book.YearPublished;
             bookFromDb.Discount = book.Discount;
+            bookFromDb.Price = (book.Price/100)*(100-book.Discount);
             
             _db.SaveChanges();
 
