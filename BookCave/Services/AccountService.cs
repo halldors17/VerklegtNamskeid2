@@ -61,6 +61,11 @@ namespace BookCave.Services
         {
             return _accountRepo.GetCart(userId);
         }
+
+        public void RemoveCart(int cartId)
+        {
+            _accountRepo.RemoveCart(cartId);
+        }
         
     }
 }

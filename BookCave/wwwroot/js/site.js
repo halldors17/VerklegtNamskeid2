@@ -17,7 +17,7 @@ function addToCart(id) {
     });
 };
 
-/*orderDetails(@order.Id)*/
+//orderDetails(@order.Id)
 function orderDetails(id) {
     $.ajax({
         type: "POST",
@@ -25,6 +25,17 @@ function orderDetails(id) {
         data: {orderId: id},
         dataType: "json",
     });
+}
+
+//removeCart(@item.Id)
+function removeCart(id) {
+    $.ajax({
+        type: "POST",
+        url: "/Account/RemoveCart",
+        data: {cartId: id},
+        dataType: "json",
+    });
+    $(this).remove();
 }
 
 /*

@@ -23,7 +23,7 @@ namespace BookCave.Services
             var authors = _authorRepo.GetAuthorsByName(SearchString).ToList();
             return authors;
         }
-     public AuthorDetailsViewModel GetDetailsAuthor(int id)
+        public AuthorDetailsViewModel GetDetailsAuthor(int id)
         {
             var authors = _authorRepo.GetDetailsAuthor(id);
             return authors;
