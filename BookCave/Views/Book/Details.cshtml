@@ -7,7 +7,7 @@
             <img src="@Model.Image"  height="200" width="120" /><br>
             <a asp-controller="Book" asp-action="Details" asp-route-id="@Model.Id">@Model.Title</a><br>
             <p>@Model.Price $</p>
-            <p>Einkunn @Model.Rating</p>
+            <p>Einkunn: @Model.Rating</p>
             
             @foreach(var c in @Model.CategoryList)
             {
@@ -36,12 +36,15 @@
             <input type="button" class="btn btn-default" value="Setja í uppáhalds">
             <input type="button" class="btn btn-default" value="Setja á óskalist">
         </div>
-        <div class="col-lg-2 cl-md-2 col-sm-3 col-xs-6 text-center">
+        <div class="col-lg-4 cl-md-4 col-sm-3 col-xs-6 text-center">
             <h3>Umsagnir</h3>
+            <h4>Meðaltal einkunna frá notendum: @Model.UserAvgRating</h4>
             @foreach(var c in @Model.BookComments)
             {
-                <p>@c.Rating </p>
-                <p>@c.BookComment</p> <br>
+                <div>
+                    <p>@c.Rating </p>
+                    <p>@c.BookComment</p> <br>
+                </div>
             }
         </div>
     </div>
