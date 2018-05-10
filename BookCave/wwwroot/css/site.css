@@ -25,6 +25,9 @@
 }
 
 #book-logo {
-    position: relative;
     float: left;
+}
+
+#text-logo {
+    float: right;
 }
