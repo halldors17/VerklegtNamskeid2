@@ -1,0 +1,15 @@
+@model BookCave.Models.ViewModels.CartViewModel
+
+<div class="container">
+    <div class="row"></div>
+        @foreach(var book in @Model)
+        {
+            <div class="col-lg-2 cl-md-2 col-sm-3 col-xs-6 text-center" style="height: 325px; width: 200px">
+                <img src="@book.Image"  height="200" width="120" /><br>
+                @book.Title
+                @book.Discount
+                @book.Price $
+                @book.Quantity
+            </div>
+        }
+    </div>
