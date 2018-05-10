@@ -9,8 +9,8 @@
                 <img src="@book.Image"  height="200" width="120" /><br>
                 <a asp-controller="Book" asp-action="Details" asp-route-id="@book.Id">@book.Title</a><br>
                 <p id="price"> </p>
-                <p> @book.Price </p>
-                <div id="Total">$</div>
+                <p> @book.Price $</p>
+                <div id="Total"></div>
                 <script>
                 function totalFunction()
                 {
