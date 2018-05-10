@@ -9,7 +9,7 @@ namespace BookCave.Models.ViewModels
         public string Title { get; set; }
         public string Publisher { get; set; }
         public int YearPublished { get; set; }
-        public int Price { get; set; }
+        public double Price { get; set; }
         public int Pages { get; set; }
         public int Minutes { get; set; }
         public bool Audio { get; set; }
