@@ -35,7 +35,18 @@ function removeCart(id) {
         data: {cartId: id},
         dataType: "json",
     });
-    $(this).remove();
+}
+
+//changeQuantity()
+function changeQuantity() {
+    var quantity = document.getElementById("quantity").val();
+    alert(quantity);
+    $.ajax({
+        type: "POST",
+        url: "/Account/ChangeQuantity",
+        data: {quantity: quantity},
+        dataType: "json",
+    });
 }
 
 /*

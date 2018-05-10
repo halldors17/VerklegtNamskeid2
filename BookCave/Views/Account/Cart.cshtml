@@ -18,7 +18,7 @@
                     <tr>
                         <td><img src="@item.Image"  height="200" width="120" /></td>
                         <td>@item.Title</td>
-                        <td>Magn: @item.Quantity</td>
+                        <td><input type="text" asp-for="@item.Quantity" id="quantity"> <input type="button" class="btn btn-default" value="Uppfæra" onclick="changeQuantity()"></td>
                         <td>@item.Discount %</td>
                         <td>@item.Price $</td>
                         <td><input type="button" class="btn btn-default" value="Fjarlægja úr körfu" onclick="removeCart(@item.Id)"></td>
