@@ -155,6 +155,7 @@ namespace BookCave.Repositories
             where a.UserId == userId
             select new CartViewModel
             {
+                BookId = b.Id,
                 Title = b.Title,
                 Image = b.Image,
                 Price = b.Price,
@@ -162,7 +163,7 @@ namespace BookCave.Repositories
                 Quantity = a.Quantity,
                 
             }).ToList();
-            return(cart);
+            return cart;
         }
     }
 }

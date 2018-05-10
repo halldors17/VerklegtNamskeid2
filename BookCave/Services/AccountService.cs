@@ -59,8 +59,7 @@ namespace BookCave.Services
         }
         public List<CartViewModel> GetCart(string userId)
         {
-            var cart = _accountRepo.GetCart(userId);
-            return(cart);
+            return _accountRepo.GetCart(userId);
         }
         
     }
