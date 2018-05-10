@@ -6,17 +6,17 @@
         <div class="col-lg-2 cl-md-2 col-sm-3 col-xs-6 text-center">
             <img src="@Model.Image"  height="200" width="120" /><br>
             <a asp-controller="Book" asp-action="Details" asp-route-id="@Model.Id">@Model.Title</a><br>
-            <p>@Model.Price $</p>
+                @foreach(var a in @Model.AuthorList)
+            {
+                <a asp-controller="Author" asp-action="Details" asp-route-id="@a.Id">@a.Name</a> <br>
+            }
+            <p>Verð: @Model.Price $</p>
             <p>Einkunn: @Model.Rating</p>
             
             @foreach(var c in @Model.CategoryList)
             {
-                @c.Name <br>
-            }
-            
-            @foreach(var a in @Model.AuthorList)
-            {
-                <a asp-controller="Author" asp-action="Details" asp-route-id="@a.Id">@a.Name</a> <br>
+                <a asp-controller="Category" asp-action="Details" asp-route-id="@c.Id">@c.Name</a> <br>
+
             }
         </div>
         <div class="col-lg-2 cl-md-2 col-sm-3 col-xs-6 text-center">
@@ -39,6 +39,7 @@
         <div class="col-lg-4 cl-md-4 col-sm-3 col-xs-6 text-center">
             <h3>Umsagnir</h3>
             <h4>Meðaltal einkunna frá notendum: @Model.UserAvgRating</h4>
+            <div class="overflow">
             @foreach(var c in @Model.BookComments)
             {
                 <div>
@@ -46,6 +47,7 @@
                     <p>@c.BookComment</p> <br>
                 </div>
             }
+            </div>
         </div>
     </div>
     @if(User.IsInRole("User"))

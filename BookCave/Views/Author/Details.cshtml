@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 @model List<BookCave.Models.ViewModels.AuthorDetailsViewModel>
 <div>
         <div>
@@ -18,4 +19,23 @@
                 </ul>
             }
         </div>
+=======
+@model BookCave.Models.ViewModels.AuthorDetailsViewModel
+<div>
+    <div>
+        <p><img src="@Model.AImage" height="300" width="220"/></p>
+        <p>@Model.Name</p>
+        <p>@Model.Description</p>
+
+        <ul>
+            @foreach(var b in @Model.BookList)
+            {
+                <li>
+                    <p><img src="@b.Image" height="200" width="120"/></p>
+                    <p><a asp-controller="Book" asp-action="Details" asp-route-id="@b.Id">@b.Title</a></p>
+                </li>
+            }
+        </ul>
+    </div>
+>>>>>>> 38d677ff65c6016da9430210d5677d1f3e17f1da
 </div>

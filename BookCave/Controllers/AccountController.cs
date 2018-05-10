@@ -239,6 +239,17 @@ namespace BookCave.Controllers
             }
             return Ok();
         }
+        public IActionResult RemoveCart(int cartId)
+        {
+            _accountService.RemoveCart(cartId);
+            return RedirectToAction("Cart", "Account");
+        }
+
+        public IActionResult ReviewOrder()
+        {
+            return View();
+        }
+
         [Authorize(Roles = "User")]
         public IActionResult Cart()
         {
