@@ -182,15 +182,15 @@ namespace BookCave.Repositories
         public List<BookSalesViewModel> GetSalesBooksInfo()
         {     
             var books = (from b in _db.Books 
-                    join bId in _db.BookIdItem on b.Id equals bId.BookId
-                    join a in _db.Authors on bId.AuthorId equals a.Id
+                    //join bId in _db.BookIdItem on b.Id equals bId.BookId
+                    //join a in _db.Authors on bId.AuthorId equals a.Id
                     select new BookSalesViewModel
                     {
                         Id = b.Id,
                         Image = b.Image,
                         Title = b.Title,
                         Publisher = b.Publisher,
-                        Author = a.Name
+                        //Author = a.Name
                     }).ToList();
               
             return books;
