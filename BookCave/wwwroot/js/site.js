@@ -1,5 +1,4 @@
-﻿
-$("#category-button").click( function() {
+﻿$("#category-button").click( function() {
     $.get("/Category/GetCategories", function(data, status) {
         if(!$("#category-menu").hasClass("list-full")) {
             for(var i = 0; i < data.length; i++) {
