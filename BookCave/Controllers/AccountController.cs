@@ -130,7 +130,7 @@ namespace BookCave.Controllers
             ViewBag.Title = "Flutnings upplýsingar";
             var shippingInfo = new ShippingInfoInputModel();
             var shippingInfoView = _accountService.GetShippingInfo(_userManager.GetUserId(User));
-            if(shippingInfoView.Id != 0)
+            if(shippingInfoView != null)
             {
                 shippingInfo.Id = shippingInfoView.Id;
                 shippingInfo.Street = shippingInfoView.Street;
@@ -211,7 +211,7 @@ namespace BookCave.Controllers
             var shippingInfoFromDb = _accountService.GetShippingInfo(_userManager.GetUserId(User));
             var user = await _userManager.GetUserAsync(User);
             
-            if(shippingInfoFromDb.Id != 0)
+            if(shippingInfoFromDb != null)
             {
                 orderModel.Name = user.FirstName;
                 orderModel.Email = user.Email;
