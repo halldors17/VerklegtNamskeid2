@@ -15,10 +15,11 @@
                 </tr>
                 @foreach(var item in @Model)
                 {
+                    <p id="book-id">@item.BookId</p>
                     <tr>
                         <td><img src="@item.Image"  height="200" width="120" /></td>
                         <td>@item.Title</td>
-                        <td><input type="text" asp-for="@item.Quantity"><a asp-controller="Account" asp-action="ChangeQuantity" asp-route-quantity="@item.Id"><button class="btn btn-default">Uppfæra</button></a></td>
+                        <td><input id="quantity"type="text" asp-for="@item.Quantity"><button id="update-quantity-btn"class="btn btn-default">Uppfæra</button></td>
                         <td>@item.Discount %</td>
                         <td>@item.Price $</td>
                         <td><a asp-controller="Account" asp-action="RemoveCart" asp-route-id="@item.Id"><button class="btn btn-default">Fjarlægja út körfu</button></a></td>

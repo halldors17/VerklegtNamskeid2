@@ -71,5 +71,10 @@ namespace BookCave.Services
         {
             _accountRepo.saveInputOrder(newOrder, userId);
         }
+
+        public void ChangeQuantity(int quantity, int id, string userId)
+        {
+            _accountRepo.ChangeQuantity(quantity, id, userId);
+        }
     }
 }

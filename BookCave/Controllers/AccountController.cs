@@ -302,9 +302,9 @@ namespace BookCave.Controllers
         }
 
         [Authorize(Roles = "User")]
-        public IActionResult ChangeQuantity(int quantity)
+        public IActionResult ChangeQuantity(int quantity, int bookId)
         {
-            //_accountService.UpdateQuantity(quantity);
+            _accountService.ChangeQuantity(quantity, bookId, _userManager.GetUserId(User));
             return RedirectToAction("Cart");
         }
     }

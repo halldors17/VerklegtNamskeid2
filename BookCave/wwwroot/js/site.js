@@ -42,15 +42,20 @@ function removeCart(id) {
 
 //changeQuantity()
 function changeQuantity() {
-    var quantity = document.getElementById("quantity").val();
-    alert(quantity);
+    var quantity = $("#quantity").val();
+    var bookId = $("#book-id").text();
+    console.log(quantity);
+    console.log(bookId);
     $.ajax({
         type: "POST",
         url: "/Account/ChangeQuantity",
-        data: {quantity: quantity},
+        data: {quantity: quantity, bookId: bookId},
         dataType: "json",
     });
 }
+
+$("#update-quantity-btn").on("click", changeQuantity);
+
 
 /*
             //var markup = "<li><a asp-controller='Category' asp-action='Details' asp-route-id='" + data.Id + "'>" + data.Name + "</a></li>";

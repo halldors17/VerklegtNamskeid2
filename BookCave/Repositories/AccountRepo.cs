@@ -138,6 +138,14 @@ namespace BookCave.Repositories
             _db.SaveChanges();
         }
 
+        public void ChangeQuantity(int quantity, int id, string userId)
+        {
+            var bookFromDb = _db.Books.Find(id);
+            var cartFromDb = _db.Cart.Where(u => u.UserId == userId).Where(b => b.BookId == id).FirstOrDefault();
+            cartFromDb.Quantity = quantity;
+            _db.SaveChanges();
+        }
+
         public void AddToCart(Cart cart)
         {
             _db.Cart.Add(cart);
@@ -177,7 +185,10 @@ namespace BookCave.Repositories
 
             double totalPrice = (from c in cartItemsFromDb
                                 join b in _db.Books on c.BookId equals b.Id
+                                //quantity
                                 select b.Price).Sum();
+
+            
 
             //Save the order
             var shippingInfoFromDb = _db.ShippingInfo.Where(u => u.UserId == userId).FirstOrDefault();
