@@ -254,7 +254,8 @@ namespace BookCave.Repositories
                             Description = a.Description,
                             BookComments = comments,
                             Rating = a.Rating,
-                            UserAvgRating = usersRating
+                            UserAvgRating = usersRating,
+                            Discount = a.Discount
                         }).First();
 
             return book;
