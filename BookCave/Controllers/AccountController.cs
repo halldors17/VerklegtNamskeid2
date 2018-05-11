@@ -205,7 +205,7 @@ namespace BookCave.Controllers
         [HttpGet]
         public async Task<IActionResult> Checkout()
         {
-            ViewBag.Title = "Karfa";
+            ViewBag.Title = "Greiðslusíða";
             ViewBag.TotalPrice = _accountService.GetTotalForCart(_userManager.GetUserId(User));
             var orderModel = new InputOrderModel();
             var shippingInfoFromDb = _accountService.GetShippingInfo(_userManager.GetUserId(User));
@@ -228,7 +228,7 @@ namespace BookCave.Controllers
         [Authorize(Roles = "User")]
         public IActionResult Confirmation()
         {
-            ViewBag.Title = "Pöntunn móttekinn";
+            ViewBag.Title = "Staðfesting";
             return View();
         }
 
@@ -298,6 +298,7 @@ namespace BookCave.Controllers
         [Authorize(Roles = "User")]
         public IActionResult ReviewOrder()
         {
+            ViewBag.Title = "Yfirlit";
             ViewBag.TotalPrice = _accountService.GetTotalForCart(_userManager.GetUserId(User));
             var cart = _accountService.GetCart(_userManager.GetUserId(User));
             ViewBag.Title = "Pöntunn";
@@ -307,6 +308,7 @@ namespace BookCave.Controllers
         [Authorize(Roles = "User")]
         public IActionResult Cart()
         {
+            ViewBag.Title = "Karfa";
             ViewBag.TotalPrice = _accountService.GetTotalForCart(_userManager.GetUserId(User));
             var cart = _accountService.GetCart(_userManager.GetUserId(User));
             ViewBag.Title = "Karfa";
