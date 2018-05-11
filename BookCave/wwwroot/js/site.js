@@ -11,14 +11,26 @@ $("#category-button").click( function() {
     });
 });
 
-$("#author-button").click( function() {
-    $.get("/Author/Index", function(data, status) {
-        if(!$("#author-menu").hasClass("list-full")) {
+$(".category-list").click( function() {
+    $.get("/Category/GetCategories", function(data, status) {
+        if(!$(".category-list").hasClass("list-full")) {
             for(var i = 0; i < data.length; i++) {
-                var markup = "<li><a href='http://localhost:5000/Author/Details/" + data[i].id + "'>" + data[i].name + "</a></li>";
-                $("#author-menu").append(markup);
+                var markup = "<option value='" + data[i].id + "'>" + data[i].name + "</option>";
+                $(".category-list").append(markup);
             }
-            $("#author-menu").addClass("list-full");
+            $(".category-list").addClass("list-full");
+        }
+    });
+});
+
+$(".author-list").click( function() {
+    $.get("/Author/GetAuthors", function(data, status) {
+        if(!$(".author-list").hasClass("list-full")) {
+            for(var i = 0; i < data.length; i++) {
+                var markup = "<option value='" + data[i].id + "'>" + data[i].name + "</option>";
+                $(".author-list").append(markup);
+            }
+            $(".author-list").addClass("list-full");
         }
     });
 });
@@ -54,18 +66,16 @@ function removeCart(id) {
 
 //changeQuantity()
 function changeQuantity() {
-    var quantity = document.getElementById("quantity").val();
-    alert(quantity);
+    var quantity = $("#quantity").val();
+    var bookId = $("#book-id").text();
+    console.log(quantity);
+    console.log(bookId);
     $.ajax({
         type: "POST",
         url: "/Account/ChangeQuantity",
-        data: {quantity: quantity},
+        data: {quantity: quantity, bookId: bookId},
         dataType: "json",
     });
 }
 
-/*
-            //var markup = "<li><a asp-controller='Category' asp-action='Details' asp-route-id='" + data.Id + "'>" + data.Name + "</a></li>";
-            //var markup = "<li>" + data.Name + "</li>";
-            //$("#category-menu").append(markup);
-*/
+$("#update-quantity-btn").on("click", changeQuantity);
