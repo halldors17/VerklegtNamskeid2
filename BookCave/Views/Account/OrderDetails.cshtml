@@ -6,15 +6,16 @@
     <div class="row"></div>
             <div class="col-lg-4 cl-md-4 col-sm-3 col-xs-6">
                 <h3>Almennt</h3>
-                <p>Total price: @Model.Total</p>
-                <p>Paid date: @Model.PaidDate</p>
+                <p>Heildar verð: @Model.Total</p>
+                <p>Dagsetning borgað: @Model.PaidDate</p>
             </div>
             <div class="col-lg-4 cl-md-4 col-sm-3 col-xs-6">
                 <h3>Bækur</h3>
                 @foreach(var item in @Model.OrderItems)
                 {
-                    <p>Book Id: @item.BookId</p>
-                    <p>Price: @item.Price</p>
+                    <p>Bók Id: @item.BookId</p>
+                    <p>Verð: @item.Price</p>
+                    <p>Magn: @item.Quantity </p>
                 }
             </div>
     </div>

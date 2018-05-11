@@ -207,7 +207,7 @@ namespace BookCave.Controllers
             var shippingInfoFromDb = _accountService.GetShippingInfo(_userManager.GetUserId(User));
             var user = await _userManager.GetUserAsync(User);
             
-            if(shippingInfoFromDb.Street != null)
+            if(shippingInfoFromDb.Id != 0)
             {
                 orderModel.Name = user.FirstName;
                 orderModel.Email = user.Email;
