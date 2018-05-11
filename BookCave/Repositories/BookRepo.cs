@@ -210,6 +210,7 @@ namespace BookCave.Repositories
             }).FirstOrDefault();
             return book;
         }
+        
 
         public BookDetailViewModel GetBookDetails(int id)
         {
@@ -253,7 +254,8 @@ namespace BookCave.Repositories
                             Description = a.Description,
                             BookComments = comments,
                             Rating = a.Rating,
-                            UserAvgRating = usersRating
+                            UserAvgRating = usersRating,
+                            Discount = a.Discount
                         }).First();
 
             return book;
@@ -321,12 +323,16 @@ namespace BookCave.Repositories
 
             //Tengja höfund og bók samann
             var bookAuthorItemDb = _db.BookIdItem.Where(b => b.BookId == bookFromDb.Id).FirstOrDefault();
-            bookAuthorItemDb.AuthorId = bookFromDb.AuthorId;
-
+            if(bookFromDb.AuthorId != 0)
+            {
+                bookAuthorItemDb.AuthorId = bookFromDb.AuthorId;
+            }
             //Tengja flokk og bók saman
             var bookCategoryItemDb = _db.CategoryIdItem.Where(b => b.BookId == bookFromDb.Id).FirstOrDefault();
-            bookCategoryItemDb.CategoryId = bookFromDb.CategoryId;
-
+            if(bookFromDb.CategoryId != 0)
+            {
+                bookCategoryItemDb.CategoryId = bookFromDb.CategoryId;
+            }
             _db.SaveChanges();
         }
 
@@ -383,5 +389,99 @@ namespace BookCave.Repositories
 
             return rating;
         }
+        public double GetTotalForBookSales(int id)
+        {
+            var bookItemsFromDb = _db.OrderItem.Where(u => u.BookId == id).ToList();
+            double totalPrice = 0;
+
+            foreach(var item in bookItemsFromDb)
+            {
+                var itemPrice = (from b in _db.Books
+                            where item.BookId == b.Id
+                            select b.Price).FirstOrDefault();
+                
+                totalPrice += itemPrice * item.Quantity;
+            }
+
+            return totalPrice;
+        }
+        public double GetTotalQuantityForBook(int id)
+        {
+            var bookItemsFromDb = _db.OrderItem.Where(u => u.BookId == id).ToList();
+            double totalAmount = 0;
+
+            foreach(var item in bookItemsFromDb)
+            {
+                var itemPrice = (from b in _db.OrderItem
+                            where item.BookId == id
+                            select b.Quantity).FirstOrDefault();
+                
+                totalAmount += totalAmount + item.Quantity;
+            }
+
+            return totalAmount;
+        }
+        public double GetAllBookSales()
+        {
+            var bookItemsFromDb = _db.OrderItem.ToList();
+            double totalPrice = 0;
+
+            foreach(var item in bookItemsFromDb)
+            {
+                var itemPrice = (from b in _db.Books
+                            where item.BookId == b.Id
+                            select b.Price).FirstOrDefault();
+                
+                totalPrice += itemPrice * item.Quantity;
+            }
+
+            return totalPrice;
+        }
+        public double GetAmountAllBooks()
+        {
+            var bookItemsFromDb = _db.OrderItem.ToList();
+            double totalAmount = 0;
+
+            foreach(var item in bookItemsFromDb)
+            {
+                
+                totalAmount += item.Quantity;
+                
+            }
+            return totalAmount;     
+        }
+        public double GetTotalSalesForAuthor(int id)
+        {
+            var bookItemsFromDb = _db.OrderItem.Where(u => u.AuthorId == id).ToList();
+            double totalPrice = 0;
+
+            foreach(var item in bookItemsFromDb)
+            {
+                var itemPrice = (from b in _db.Books
+                            where item.BookId == b.Id
+                            select b.Price).FirstOrDefault();
+                
+                totalPrice += itemPrice * item.Quantity;
+            }
+
+            return totalPrice;
+        }
+        public double GetTotalAmountForAuthor(int id)
+        {
+            var bookItemsFromDb = _db.OrderItem.Where(u => u.AuthorId == id).ToList();
+            double totalAmount = 0;
+
+            foreach(var item in bookItemsFromDb)
+            {
+                var itemPrice = (from b in _db.OrderItem
+                            where item.BookId == id
+                            select b.Quantity).FirstOrDefault();
+                
+                totalAmount += item.Quantity;
+            }
+
+            return totalAmount;
+        }
+        }
     }
-}
+

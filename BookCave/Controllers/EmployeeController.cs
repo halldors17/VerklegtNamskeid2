@@ -73,7 +73,8 @@ namespace BookCave.Controllers
                 Rating = book.Rating,
                 Pages = book.Pages,
                 Description = book.Description,
-                YearPublished = book.YearPublished 
+                YearPublished = book.YearPublished,
+                Discount = book.Discount
             };
 
             return View(inputBook);
@@ -158,10 +159,12 @@ namespace BookCave.Controllers
 
         public IActionResult SalesBook(int id)
         {
+            ViewBag.TotalPrice = _bookService.GetTotalForBookSales(id);
+            ViewBag.TotalAmount = _bookService.GetTotalQuantityForBook(id);
             var salesBook = _bookService.GetSalesForBook(id);
             if(salesBook == null)
             {
-                return View();
+                RedirectToAction("Books");
             }
             ViewBag.Title = "Innranet sala";
             return View(salesBook);
@@ -169,13 +172,21 @@ namespace BookCave.Controllers
 
        public IActionResult SalesAuthor(int id)
         {
+            ViewBag.TotalPrice = _bookService.GetTotalSalesForAuthor(id);
+            ViewBag.TotalAmount = _bookService.GetTotalAmountForAuthor(id);
             var salesAuthor = _authorService.GetSalesForAuthor(id);
             if(salesAuthor == null)
             {
-                return View("Not Found");
+                RedirectToAction("Authors");
             }
             ViewBag.Title = "Innranet sala";
             return View(salesAuthor);
+        }
+        public IActionResult Sales()
+        {
+            ViewBag.TotalPrice = _bookService.GetAllBookSales();
+            ViewBag.TotalAmount = _bookService.GetAmountAllBooks();
+            return View();
         }
 
         [HttpGet]
