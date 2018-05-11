@@ -31,6 +31,7 @@ namespace BookCave.Controllers
         public IActionResult Search(string SearchBy, string SearchString)
         {
             var books = _bookService.GetBooksBySearch(SearchBy, SearchString);
+            ViewBag.Title = "Leit";
             if(books.Equals(0))
             {
                 return RedirectToAction("NothingFound");
@@ -51,6 +52,7 @@ namespace BookCave.Controllers
             {
                 return Content("Not Found");
             }
+            ViewBag.Title = books.Title;
             return View(books);
         }
         [HttpPost]

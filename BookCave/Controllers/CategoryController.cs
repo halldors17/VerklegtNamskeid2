@@ -25,7 +25,9 @@ namespace BookCave.Controllers
 
         public IActionResult Details(int id)
         {
-            ViewBag.Category = _categorieService.GetCategory(id).Name;
+            var name = _categorieService.GetCategory(id).Name;
+            ViewBag.Category = name;
+            ViewBag.Title = name;
 
             var result = _categorieService.GetCategoryDetails(id);
 
@@ -33,7 +35,8 @@ namespace BookCave.Controllers
             {
                 return View("NotFound");
             }
-            else{
+            else
+            {
                 return View(result);
             }
         }
