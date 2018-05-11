@@ -10,7 +10,6 @@ namespace BookCave.Models.EntityModels
         public string Publisher { get; set; }
         public int YearPublished { get; set; }
         public double Price { get; set; }
-        public List<LanguageItem> LanguageList { get; set; }
         public int Pages { get; set; }
         public List<CategoryIdItem> CategoryIdList { get; set; }
         public string Description { get; set; }

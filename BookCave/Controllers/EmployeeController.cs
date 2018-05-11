@@ -11,7 +11,6 @@ namespace BookCave.Controllers
     [Authorize(Roles = "Employee")]
     public class EmployeeController : Controller
     {
-        private EmployeeService _employeeService;
         private BookService _bookService;
         private CategoryService _categoryService;
         private AuthorService _authorService;
@@ -19,7 +18,6 @@ namespace BookCave.Controllers
         public EmployeeController() 
         {
             _bookService = new BookService();
-            _employeeService = new EmployeeService();
             _categoryService = new CategoryService();
             _authorService = new AuthorService();
 
