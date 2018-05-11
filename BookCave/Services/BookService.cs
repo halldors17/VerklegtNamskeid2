@@ -89,6 +89,30 @@ namespace BookCave.Services
         {
             _bookRepo.RemoveBook(id);
         }
+        public double GetTotalForBookSales(int id)
+        {
+            return _bookRepo.GetTotalForBookSales(id);
+        }
+        public double GetTotalQuantityForBook(int id)
+        {
+            return _bookRepo.GetTotalQuantityForBook(id);
+        }
+        public double GetAllBookSales()
+        {
+            return _bookRepo.GetAllBookSales();
+        }
+        public double GetAmountAllBooks()
+        {
+            return _bookRepo.GetAmountAllBooks();
+        }
+         public double GetTotalSalesForAuthor(int id)
+         {
+             return _bookRepo.GetTotalSalesForAuthor(id);
+         }
+          public double GetTotalAmountForAuthor(int id)
+          {
+              return _bookRepo.GetTotalAmountForAuthor(id);
+          }
+    }
 
     }
-}
