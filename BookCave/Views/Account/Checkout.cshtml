@@ -1,5 +1,6 @@
 @model BookCave.Models.InputModels.InputOrderModel
 
+@ViewBag.Title
 <h1>Greiðslusíða</h1>
 <div class="jumbotron">
     <div class="container">
@@ -300,7 +301,7 @@
                     @if(@ViewBag.TotalPrice > 0)
                     {
                         <div class="form-group">
-                            <h3>Heildarverð: @ViewBag.TotalPrice</h3>
+                            <h3>Heildarverð: @ViewBag.TotalPrice $</h3>
                             <button type="submit" class="btn btn-default">Greiða</button>
                         </div>
                     }

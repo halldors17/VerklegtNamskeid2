@@ -288,6 +288,7 @@ namespace BookCave.Repositories
             };
             _db.BookIdItem.Add(newBookAuthorItem);
 
+           
             //Tengja flokk og bók saman
             var newBookCategoryItem = new CategoryIdItem
             {
@@ -295,6 +296,7 @@ namespace BookCave.Repositories
                 CategoryId = bookFromDb.CategoryId
             };
             _db.CategoryIdItem.Add(newBookCategoryItem);
+        
 
             _db.SaveChanges();
         }

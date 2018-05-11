@@ -46,6 +46,7 @@ namespace BookCave.Controllers
         [HttpGet]
         public IActionResult Details(int id)
         {
+            ViewBag.Title = "Nánar";
             var books = _bookService.GetBookDetails(id);
             if(books == null)
             {

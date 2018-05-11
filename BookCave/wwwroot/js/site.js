@@ -41,28 +41,8 @@ function addToCart(id) {
         data: {id: id},
         dataType: "json",
     });
+    alert("Bókinni hefur verið bætt í körfuna");
 };
-
-//orderDetails(@order.Id)
-function orderDetails(id) {
-    $.ajax({
-        type: "POST",
-        url: "/Account/OrderDetails",
-        data: {orderId: id},
-        dataType: "json",
-    });
-}
-
-//removeCart(@item.Id)
-function removeCart(id) {
-    $.ajax({
-        type: "POST",
-        url: "/Account/RemoveCart",
-        data: {id: id},
-        dataType: "json",
-    });
-}
-
 
 $(".update-quantity-btn").on("click", function () {
     var quantity = $(this).prev().val();
