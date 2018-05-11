@@ -203,6 +203,7 @@ namespace BookCave.Controllers
         [HttpGet]
         public async Task<IActionResult> Checkout()
         {
+            ViewBag.TotalPrice = _accountService.GetTotalForCart(_userManager.GetUserId(User));
             var orderModel = new InputOrderModel();
             var shippingInfoFromDb = _accountService.GetShippingInfo(_userManager.GetUserId(User));
             var user = await _userManager.GetUserAsync(User);
@@ -290,6 +291,7 @@ namespace BookCave.Controllers
         [Authorize(Roles = "User")]
         public IActionResult ReviewOrder()
         {
+            ViewBag.TotalPrice = _accountService.GetTotalForCart(_userManager.GetUserId(User));
             var cart = _accountService.GetCart(_userManager.GetUserId(User));
             return View(cart);
         }
@@ -297,7 +299,7 @@ namespace BookCave.Controllers
         [Authorize(Roles = "User")]
         public IActionResult Cart()
         {
-            //ViewBag.TotalPrice = _accountService.GetTotalForCart();
+            ViewBag.TotalPrice = _accountService.GetTotalForCart(_userManager.GetUserId(User));
             var cart = _accountService.GetCart(_userManager.GetUserId(User));
             return View(cart);
         }

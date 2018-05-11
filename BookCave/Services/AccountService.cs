@@ -76,5 +76,10 @@ namespace BookCave.Services
         {
             _accountRepo.ChangeQuantity(quantity, id, userId);
         }
+
+        public double GetTotalForCart(string userId)
+        {
+            return _accountRepo.GetTotalForCart(userId);
+        }
     }
 }
