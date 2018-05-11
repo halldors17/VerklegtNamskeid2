@@ -13,7 +13,7 @@
                 <h3>Bækur</h3>
                 @foreach(var item in @Model.OrderItems)
                 {
-                    <p>Bók Id: @item.BookId</p>
+                    <p>Bók: @item.Title</p>
                     <p>Verð: @item.Price</p>
                     <p>Magn: @item.Quantity </p>
                 }
