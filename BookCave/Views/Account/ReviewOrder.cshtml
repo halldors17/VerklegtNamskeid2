@@ -26,10 +26,12 @@
             <h3>Heildarverð: @ViewBag.TotalPrice</h3>
         </div>
     </div>
-
+@if(@Model.Count > 0)
+{
+    <div class="form-group">
+        <a asp-controller="Account" asp-action="Checkout"><button class="btn btn-info">Halda áfram</button></a>
+    </div>
+}
 <div class="form-group">
-    <a asp-controller="Account" asp-action="Checkout"><button class="btn btn-default">Halda áfram</button></a>
-</div>
-<div class="form-group">
-    <a asp-controller="Account" asp-action="Cart"><button class="btn btn-default">Til baka</button></a>
+    <a asp-controller="Account" asp-action="Cart"><button class="btn btn-info">Til baka</button></a>
 </div>
