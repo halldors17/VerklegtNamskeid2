@@ -180,17 +180,7 @@ namespace BookCave.Repositories
 
         public void saveInputOrder(InputOrderModel newOrder, string userId)
         {
-            var cartItemsFromDb = _db.Cart.Where(u => u.UserId == userId).ToList();
-            double totalPrice = 0;
-
-            foreach(var item in cartItemsFromDb)
-            {
-                var itemPrice = (from b in _db.Books
-                            where item.BookId == b.Id
-                            select b.Price).FirstOrDefault();
-                
-                totalPrice += itemPrice * item.Quantity;
-            }
+            double totalPrice = GetTotalForCart(userId);
 
             //Save the order
             var shippingInfoFromDb = _db.ShippingInfo.Where(u => u.UserId == userId).FirstOrDefault();
@@ -209,7 +199,7 @@ namespace BookCave.Repositories
 
             //Get the orderId
             var orderFromDb = _db.Orders.Where(p => p.PaidDate == order.PaidDate).FirstOrDefault();
-
+            var cartItemsFromDb = _db.Cart.Where(u => u.UserId == userId).ToList();
             foreach(var item in cartItemsFromDb)
             {
                 var bookFromDb = _db.Books.Where(b => b.Id == item.BookId).FirstOrDefault();
@@ -233,6 +223,23 @@ namespace BookCave.Repositories
             }
 
             _db.SaveChanges();
+        }
+
+        public double GetTotalForCart(string userId)
+        {
+            var cartItemsFromDb = _db.Cart.Where(u => u.UserId == userId).ToList();
+            double totalPrice = 0;
+
+            foreach(var item in cartItemsFromDb)
+            {
+                var itemPrice = (from b in _db.Books
+                            where item.BookId == b.Id
+                            select b.Price).FirstOrDefault();
+                
+                totalPrice += itemPrice * item.Quantity;
+            }
+
+            return totalPrice;
         }
     }
 }
