@@ -11,6 +11,5 @@ namespace BookCave.Models.ViewModels
         public List<BookListViewModel> BookList { get; set; }
         public string AImage { get; set; }
         public string BImage { get; set; }
-        //public string Title { get; set; }
      }
  }
