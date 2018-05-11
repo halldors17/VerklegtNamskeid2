@@ -5,13 +5,10 @@ namespace BookCave.Data
 {
     public class DataContext : DbContext
     {
-        public DbSet<Employee> Employees { get; set; }
         public DbSet<Author> Authors { get; set; }
         public DbSet<Book> Books { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Order> Orders { get; set; }
-        public DbSet<Account> Accounts { get; set; }
-        public DbSet<Customer> Customers { get; set; }
         public DbSet<CategoryIdItem> CategoryIdItem { get; set; }
         public DbSet<BookIdItem> BookIdItem { get; set; }
         public DbSet<ShippingInfo> ShippingInfo { get; set;}
