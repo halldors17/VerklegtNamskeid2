@@ -210,7 +210,8 @@ namespace BookCave.Repositories
                     OrderId = orderFromDb.Id,
                     Price = bookFromDb.Price,
                     Quantity = item.Quantity,
-                    AuthorId = bookFromDb.AuthorId
+                    AuthorId = bookFromDb.AuthorId,
+                    Title = bookFromDb.Title
                 };
 
                 _db.OrderItem.Add(orderItem);

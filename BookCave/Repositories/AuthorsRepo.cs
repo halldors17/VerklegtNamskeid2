@@ -104,13 +104,20 @@ namespace BookCave.Repositories
         }
          public void RemoveAuthor(int id)
         {
+            //Fjarlægja bækur
+            var booksByAuthorDb = _db.Books.Where(b => b.AuthorId == id).ToList();
+            foreach(var b in booksByAuthorDb)
+            {
+                _db.Books.Remove(b);
+            }
+
             //Fjarlægja tenginu við bækur
             var authorBookItemDb = _db.BookIdItem.Where(b => b.AuthorId == id).ToList();
             foreach(var ba in authorBookItemDb)
             {
                 _db.BookIdItem.Remove(ba);
             }
-            //Fjarlægja bókina
+            //Fjarlægja höfundinn
             var authorFromDb = _db.Authors.Find(id);
             _db.Authors.Remove(authorFromDb);
 
