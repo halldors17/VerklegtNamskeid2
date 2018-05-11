@@ -11,6 +11,18 @@ $("#category-button").click( function() {
     });
 });
 
+$("#author-button").click( function() {
+    $.get("/Author/Index", function(data, status) {
+        if(!$("#author-menu").hasClass("list-full")) {
+            for(var i = 0; i < data.length; i++) {
+                var markup = "<li><a href='http://localhost:5000/Author/Details/" + data[i].id + "'>" + data[i].name + "</a></li>";
+                $("#author-menu").append(markup);
+            }
+            $("#author-menu").addClass("list-full");
+        }
+    });
+});
+
 function addToCart(id) {
     $.ajax({
         type: "POST",
