@@ -22,9 +22,18 @@
         <p>Lýsing: @Model.Description</p>
         <p>Blaðsíðutal: @Model.Pages</p>
     </div>
-    <div>
-        <input type="button" class="btn btn-info" value="Setja í körfu" onclick="addToCart(@Model.Id)">
-    </div>
+    @if(User.IsInRole("User"))
+    {
+        <div>
+            <input type="button" class="btn btn-info" value="Setja í körfu" onclick="addToCart(@Model.Id)">
+        </div>
+    }
+    else
+    {
+        <div>
+            <input type="button" class="btn btn-info" value="Setja í körfu" onclick="notAdded()">
+        </div>
+    }
 </div>
 @if(User.IsInRole("User"))
 {

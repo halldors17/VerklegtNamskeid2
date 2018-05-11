@@ -44,6 +44,10 @@ function addToCart(id) {
     alert("Bókinni hefur verið bætt í körfuna");
 };
 
+function notAdded() {
+    alert("Bara Innskráðir notendur geta sett í körfu");
+};
+
 $(".update-quantity-btn").on("click", function () {
     var quantity = $(this).prev().val();
     var bookId = $(this).data('bookid');
