@@ -31,10 +31,18 @@ namespace BookCave.Controllers
         public IActionResult Search(string SearchBy, string SearchString)
         {
             var books = _bookService.GetBooksBySearch(SearchBy, SearchString);
+            if(books.Equals(0))
+            {
+                return RedirectToAction("NothingFound");
+            }
             return View(books);
         }
 
-        
+        public IActionResult NothingFound()
+        {
+            return View();
+        }
+
         [HttpGet]
         public IActionResult Details(int id)
         {
