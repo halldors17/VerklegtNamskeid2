@@ -251,11 +251,6 @@ namespace BookCave.Repositories
                             YearPublished = a.YearPublished,
                             Pages = a.Pages,
                             Description = a.Description,
-                            Stock = a.Stock,
-                            Paperback = a.Paperback,
-                            Ebook = a.Ebook,
-                            Audio = a.Audio,
-                            Minutes = a.Minutes,
                             BookComments = comments,
                             Rating = a.Rating,
                             UserAvgRating = usersRating
@@ -276,7 +271,6 @@ namespace BookCave.Repositories
                 Rating = book.Rating,
                 Pages = book.Pages,
                 Description = book.Description,
-                Discount = book.Discount,
                 Price = (book.Price/100)*(100-book.Discount),
                 YearPublished = book.YearPublished 
             };
