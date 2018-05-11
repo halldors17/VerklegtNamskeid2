@@ -277,7 +277,7 @@ namespace BookCave.Controllers
                     _accountService.AddToCart(cartItem);
                 }
             }
-            return Ok();
+            return RedirectToAction("Cart");
         }
 
         [Authorize(Roles = "User")]
