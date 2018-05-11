@@ -73,7 +73,8 @@ namespace BookCave.Controllers
                 Rating = book.Rating,
                 Pages = book.Pages,
                 Description = book.Description,
-                YearPublished = book.YearPublished 
+                YearPublished = book.YearPublished,
+                Discount = book.Discount
             };
 
             return View(inputBook);

@@ -319,12 +319,16 @@ namespace BookCave.Repositories
 
             //Tengja höfund og bók samann
             var bookAuthorItemDb = _db.BookIdItem.Where(b => b.BookId == bookFromDb.Id).FirstOrDefault();
-            bookAuthorItemDb.AuthorId = bookFromDb.AuthorId;
-
+            if(bookFromDb.AuthorId != 0)
+            {
+                bookAuthorItemDb.AuthorId = bookFromDb.AuthorId;
+            }
             //Tengja flokk og bók saman
             var bookCategoryItemDb = _db.CategoryIdItem.Where(b => b.BookId == bookFromDb.Id).FirstOrDefault();
-            bookCategoryItemDb.CategoryId = bookFromDb.CategoryId;
-
+            if(bookFromDb.CategoryId != 0)
+            {
+                bookCategoryItemDb.CategoryId = bookFromDb.CategoryId;
+            }
             _db.SaveChanges();
         }
 
