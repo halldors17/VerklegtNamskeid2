@@ -15,7 +15,5 @@ namespace BookCave.Models.ViewModels
         public string FavBook { get; set; }
         public ShippingInfoViewModel Shipping { get; set; }
         public List<CartViewModel> Cart { get; set; }
-
-
     }
 }

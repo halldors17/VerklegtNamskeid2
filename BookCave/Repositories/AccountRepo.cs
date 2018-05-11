@@ -182,15 +182,33 @@ namespace BookCave.Repositories
         {
             double totalPrice = GetTotalForCart(userId);
 
-            //Save the order
-            var shippingInfoFromDb = _db.ShippingInfo.Where(u => u.UserId == userId).FirstOrDefault();
+            var checkShippingInfoFromDb = _db.ShippingInfo.Where(u => u.UserId == userId).FirstOrDefault();
+            
+            if(checkShippingInfoFromDb == null)
+            {
+                var newShippingInfo = new ShippingInfo
+                {
+                    UserId = userId,
+                    Street = newOrder.Street,
+                    City = newOrder.City,
+                    PostalCode = newOrder.PostalCode,
+                    Country = newOrder.Country,
+                    SendingMethod = newOrder.SendingMethod
+                };
+
+                //save and update
+                _db.ShippingInfo.Add(newShippingInfo);
+                _db.SaveChanges();
+            }
+
+            var shippingInfoDb = _db.ShippingInfo.Where(u => u.UserId == userId).FirstOrDefault();
 
             var order = new Order 
             {
                 CustomerId = userId,
                 PaidDate = DateTime.Now,
                 Total = totalPrice,
-                ShippingInfoId = shippingInfoFromDb.Id,
+                ShippingInfoId = shippingInfoDb.Id,
                 Status = "Paid"
             };
 
