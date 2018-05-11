@@ -18,15 +18,7 @@ namespace BookCave.Models.InputModels
         [Required]
         public int Pages { get; set; }
         [Required]
-        public int Minutes { get; set; }
-        
-        public bool Audio { get; set; }
-        public bool Ebook { get; set; }
-        public bool Paperback { get; set; }
-
-        [Required]
         public string Description { get; set; }
-        public int Stock { get; set; }
         [Required]
         public string Image { get; set; }
         [Required]
@@ -37,7 +29,6 @@ namespace BookCave.Models.InputModels
         public int CategoryId { get; set; }
         [Required]
         public int Discount { get; set; }
-
         public List<Author> AuthorList { get; set; }
         public List<Category> CategoryList { get; set; }
     }

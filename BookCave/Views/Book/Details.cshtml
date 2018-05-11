@@ -18,84 +18,12 @@
             }
         </p>
         <p>Verð: @Model.Price $</p>
+        <p>Lýsing: @Model.Description</p>
     </div>
-    <!--
-    <div class="btn-group btn-primary" data-toggle="buttons">
-        @if(@Model.Paperback)
-        {
-            <label class="btn btn-secondary active">
-                <input type="radio" name="type" value="Kilja" autocomplete="off" checked>Kilja
-            </label>
-        }
-        @if(@Model.Ebook)
-        {
-            <label class="btn btn-secondary active">
-                <input type="radio" name="type" value="Rafbók" autocomplete="off" checked>Rafbók
-            </label>
-        }
-        @if(@Model.Audio)
-        {
-            <label class="btn btn-secondary active">
-                <input type="radio" name="type" value="Hljóðbók" autocomplete="off" checked>Hljóðbók
-            </label>
-        }
-    </div>
-    -->
     <div>
         <input type="button" class="btn btn-info" value="Setja í körfu" onclick="addToCart(@Model.Id)">
     </div>
 </div>
-<!--
-<div class="container">
-    <div class="row"></div>
-        <div class="col-lg-2 cl-md-2 col-sm-3 col-xs-6 text-center">
-            <img src="@Model.Image"  height="200" width="120" /><br>
-            <a asp-controller="Book" asp-action="Details" asp-route-id="@Model.Id">@Model.Title</a><br>
-                @foreach(var a in @Model.AuthorList)
-            {
-                <a asp-controller="Author" asp-action="Details" asp-route-id="@a.Id">@a.Name</a> <br>
-            }
-            <p>Verð: @Model.Price $</p>
-            <p>Einkunn: @Model.Rating</p>
-            
-            @foreach(var c in @Model.CategoryList)
-            {
-                <a asp-controller="Category" asp-action="Details" asp-route-id="@c.Id">@c.Name</a> <br>
-
-            }
-        </div>
-        <div class="col-lg-2 cl-md-2 col-sm-3 col-xs-6 text-center">
-            @if(@Model.Paperback)
-            {
-                <button class="btn btn-default">Kilja</button>
-            }
-            @if(@Model.Ebook)
-            {
-                <button class="btn btn-default">Rafbók</button>
-            }
-            @if(@Model.Audio)
-            {
-                <button class="btn btn-default">Hljóðbók</button>
-            }
-            <input type="button" class="btn btn-primary" value="Setja í körfu" onclick="addToCart(@Model.Id)">
-            <input type="button" class="btn btn-default" value="Setja í uppáhalds">
-            <input type="button" class="btn btn-default" value="Setja á óskalist">
-        </div>
-        <div class="col-lg-4 cl-md-4 col-sm-3 col-xs-6 text-center">
-            <h3>Umsagnir</h3>
-            <h4>Meðaltal einkunna frá notendum: @Model.UserAvgRating</h4>
-            <div class="overflow">
-            @foreach(var c in @Model.BookComments)
-            {
-                <div>
-                    <p>@c.Rating </p>
-                    <p>@c.BookComment</p> <br>
-                </div>
-            }
-            </div>
-        </div>
-    </div>
-    -->
 @if(User.IsInRole("User"))
 {
 <h3>Skrifa umsögn</h3>

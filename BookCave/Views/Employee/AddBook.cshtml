@@ -9,8 +9,8 @@
             <span asp-validation-for="Title"></span>
         </div>
         <div class="form-group">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" id="author-button" aria-expanded="false">Flokkar <span class="caret"></span></a>
-            <ul class="dropdown-menu" id="author-menu">
+            <label asp-for="AuthorId">Höfundur</label>
+            <select asp-for="AuthorId" class="author-list"></select>
         </div>
         <div class="form-group">
             <label asp-for="Image">Mynd</label>
@@ -33,29 +33,13 @@
             <span asp-validation-for="Publisher"></span>
         </div>
         <div class="form-group">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" id="category-button" aria-expanded="false">Flokkar <span class="caret"></span></a>
-            <ul class="dropdown-menu" id="category-menu">
-            </select>
-        </div>
-
-        <input type="checkbox" asp-for="Paperback"> Kilja
-        <input type="checkbox" asp-for="Ebook"> Rafbók
-        <input type="checkbox" asp-for="Audio"> Hljóðbók
-
-        <div class="form-group">
-            <label asp-for="Stock">Magn</label>
-            <input asp-for="Stock" class="form-control">
-            <span asp-validation-for="Stock"></span>
+            <label asp-for="CategoryId">Flokkur</label>
+            <select asp-for="CategoryId" class="category-list"></select>
         </div>
         <div class="form-group">
             <label asp-for="Pages">Blaðsíðutal</label>
             <input asp-for="Pages" class="form-control">
             <span asp-validation-for="Pages"></span>
-        </div>
-        <div class="form-group">
-            <label asp-for="Minutes">Mínútur</label>
-            <input asp-for="Minutes" class="form-control">
-            <span asp-validation-for="Minutes"></span>
         </div>
         <div class="form-group">
             <label asp-for="Description">Lýsing</label>
@@ -73,7 +57,7 @@
             <span asp-validation-for="Discount"></span>
         </div>
         <div class="form-group">
-            <button type="submit" class="btn btn-default">Vista breytingar</button>
+            <button type="submit" class="btn btn-info">Vista breytingar</button>
         </div>
     </form>
 </div>
