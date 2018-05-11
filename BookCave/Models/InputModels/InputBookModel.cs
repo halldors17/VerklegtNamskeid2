@@ -7,9 +7,9 @@ namespace BookCave.Models.InputModels
     public class InputBookModel
     {
         public int Id { get; set; }
-        [Required, Display(Name = "Titill")]
+        [Required (ErrorMessage="Nauðsynlegt að fylla út Titill")]
         public string Title { get; set; }
-        [Required]
+        [Required (ErrorMessage="Nauðsynlegt að fylla út Útgefandi")]
         public string Publisher { get; set; }
         [Required]
         public int YearPublished { get; set; }
