@@ -236,10 +236,14 @@ namespace BookCave.Controllers
         [HttpPost]
         public IActionResult Checkout(InputOrderModel newOrder)
         {
+            ViewBag.TotalPrice = _accountService.GetTotalForCart(_userManager.GetUserId(User));
             ViewBag.Title = "Karfa";
-            _accountService.saveInputOrder(newOrder, _userManager.GetUserId(User));
-
-            return RedirectToAction("Confirmation");
+            if(ModelState.IsValid)
+            {
+                _accountService.saveInputOrder(newOrder, _userManager.GetUserId(User));
+                return RedirectToAction("Confirmation");
+            }
+            return View(newOrder);
         }
 
         [Authorize(Roles = "User")]
