@@ -1,4 +1,6 @@
 @model BookCave.Models.ViewModels.BookSalesInfoViewModel
 <h1>@Model.Title</h1>
-<p>Magn selt: @Model.Quantity</p>
-<p>Heildarsölutölur: @Model.Price</p>
+<p>Magn selt: @ViewBag.TotalAmount</p>
+<p>Heildarsölutölur: @ViewBag.TotalPrice $</p>
+<a asp-controller="Employee" asp-action="Books"><button class="btn btn-info">Til baka</button></a>
+
