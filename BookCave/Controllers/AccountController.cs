@@ -136,6 +136,8 @@ namespace BookCave.Controllers
                 shippingInfo.Street = shippingInfoView.Street;
                 shippingInfo.City = shippingInfoView.City;
                 shippingInfo.PostalCode = shippingInfoView.PostalCode;
+                shippingInfo.SendingMethod = shippingInfoView.SendingMethod;
+                shippingInfo.Country = shippingInfoView.Country;
             }
             return View(shippingInfo);
         }
