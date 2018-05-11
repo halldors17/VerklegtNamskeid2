@@ -160,11 +160,11 @@ namespace BookCave.Controllers
             ViewBag.TotalPrice = _bookService.GetTotalForBookSales(id);
             ViewBag.TotalAmount = _bookService.GetTotalQuantityForBook(id);
             var salesBook = _bookService.GetSalesForBook(id);
+            ViewBag.Title = "Innranet sala";
             if(salesBook == null)
             {
-                RedirectToAction("Books");
+                return RedirectToAction("Books", "Employee");
             }
-            ViewBag.Title = "Innranet sala";
             return View(salesBook);
         }
 

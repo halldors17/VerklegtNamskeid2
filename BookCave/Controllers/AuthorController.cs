@@ -26,6 +26,7 @@ namespace BookCave.Controllers
         [HttpPost]
         public IActionResult Index(string SearchString)
         {
+            ViewBag.Title = "Leit";
             var authors = _authorService.GetAuthorsByName(SearchString);
             return View(authors);
         }
@@ -37,6 +38,7 @@ namespace BookCave.Controllers
         public IActionResult Details(int id)
         {
             var authors = _authorService.GetDetailsAuthor(id);
+            ViewBag.Title = authors.Name;
             return View(authors);
         }
     }

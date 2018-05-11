@@ -236,6 +236,7 @@ namespace BookCave.Controllers
         [HttpPost]
         public IActionResult Checkout(InputOrderModel newOrder)
         {
+            ViewBag.Title = "Karfa";
             _accountService.saveInputOrder(newOrder, _userManager.GetUserId(User));
 
             return RedirectToAction("Confirmation");
@@ -244,12 +245,14 @@ namespace BookCave.Controllers
         [Authorize(Roles = "User")]
         public IActionResult OrderHistory()
         {
+            ViewBag.Title = "Gamlar pantanir";
             var orders =_accountService.GetOrdersForUser(_userManager.GetUserId(User));
             return View(orders);
         }
         [Authorize(Roles = "User")]
         public IActionResult OrderDetails(int id)
         {
+            ViewBag.Title = "Pöntunn";
             var order = _accountService.GetOrder(id);
             return View(order);
         }
@@ -282,7 +285,7 @@ namespace BookCave.Controllers
                     _accountService.AddToCart(cartItem);
                 }
             }
-            return RedirectToAction("Cart");
+            return Ok();
         }
 
         [Authorize(Roles = "User")]
@@ -298,6 +301,7 @@ namespace BookCave.Controllers
             ViewBag.Title = "Yfirlit";
             ViewBag.TotalPrice = _accountService.GetTotalForCart(_userManager.GetUserId(User));
             var cart = _accountService.GetCart(_userManager.GetUserId(User));
+            ViewBag.Title = "Pöntunn";
             return View(cart);
         }
 
@@ -307,6 +311,7 @@ namespace BookCave.Controllers
             ViewBag.Title = "Karfa";
             ViewBag.TotalPrice = _accountService.GetTotalForCart(_userManager.GetUserId(User));
             var cart = _accountService.GetCart(_userManager.GetUserId(User));
+            ViewBag.Title = "Karfa";
             return View(cart);
         }
 
