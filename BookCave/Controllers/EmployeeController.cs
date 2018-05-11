@@ -72,11 +72,6 @@ namespace BookCave.Controllers
                 Rating = book.Rating,
                 Pages = book.Pages,
                 Description = book.Description,
-                Stock = book.Stock,
-                Paperback = book.Paperback,
-                Audio = book.Audio,
-                Minutes = book.Minutes,
-                Ebook = book.Ebook,
                 YearPublished = book.YearPublished 
             };
 
