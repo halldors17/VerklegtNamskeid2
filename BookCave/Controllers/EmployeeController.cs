@@ -58,6 +58,7 @@ namespace BookCave.Controllers
         [HttpGet]
         public IActionResult ChangeBook(int id)
         {
+            ViewBag.Title = "Breyta bók";
             var book = _bookService.GetBookDetails(id);
 
             var inputBook = new InputBookModel 
@@ -91,7 +92,6 @@ namespace BookCave.Controllers
 
         public IActionResult RemoveBook(int id)
         {
-            //Spurja aftur hvort notandi vilji fjarlægja bók
             _bookService.RemoveBook(id);
             return RedirectToAction("Books");
         }
@@ -121,6 +121,7 @@ namespace BookCave.Controllers
         [HttpGet]
         public IActionResult ChangeAuthor(int id)
         {
+            ViewBag.Title = "Breyta höfund";
             var author = _authorService.GetDetailsAuthor(id);
 
             var inputAuthor = new AuthorInputModel 
@@ -182,6 +183,7 @@ namespace BookCave.Controllers
         }
         public IActionResult Sales()
         {
+            ViewBag.Title = "Sölutölur";
             ViewBag.TotalPrice = _bookService.GetAllBookSales();
             ViewBag.TotalAmount = _bookService.GetAmountAllBooks();
             return View();
@@ -190,6 +192,7 @@ namespace BookCave.Controllers
         [HttpGet]
         public IActionResult ChangeCategory(int id)
         {
+            ViewBag.Title = "Breyta flokki";
             var category = _categoryService.GetCategory(id);
 
             var inputCategory = new InputCategoryModel 
@@ -220,7 +223,7 @@ namespace BookCave.Controllers
         [HttpGet]
         public IActionResult AddCategory()
         {
-            ViewBag.Title = "Innranet bækur";
+            ViewBag.Title = "Innranet flokkar";
             return View();
         }
 
