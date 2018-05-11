@@ -64,10 +64,10 @@ function removeCart(id) {
     });
 }
 
-//changeQuantity()
-function changeQuantity() {
-    var quantity = $("#quantity").val();
-    var bookId = $("#book-id").text();
+
+$(".update-quantity-btn").on("click", function () {
+    var quantity = $(this).prev().val();
+    var bookId = $(this).data('bookid');
     console.log(quantity);
     console.log(bookId);
     $.ajax({
@@ -76,6 +76,4 @@ function changeQuantity() {
         data: {quantity: quantity, bookId: bookId},
         dataType: "json",
     });
-}
-
-$("#update-quantity-btn").on("click", changeQuantity);
+});
