@@ -180,14 +180,7 @@ namespace BookCave.Repositories
 
         public void saveInputOrder(InputOrderModel newOrder, string userId)
         {
-            //Save the items
             var cartItemsFromDb = _db.Cart.Where(u => u.UserId == userId).ToList();
-/* 
-            double totalPrice = (from c in cartItemsFromDb
-                                join b in _db.Books on c.BookId equals b.Id
-                                //quantity
-                                select b.Price).Sum();
-*/
             double totalPrice = 0;
 
             foreach(var item in cartItemsFromDb)
