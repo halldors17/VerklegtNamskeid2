@@ -136,6 +136,8 @@ namespace BookCave.Controllers
                 shippingInfo.Street = shippingInfoView.Street;
                 shippingInfo.City = shippingInfoView.City;
                 shippingInfo.PostalCode = shippingInfoView.PostalCode;
+                shippingInfo.SendingMethod = shippingInfoView.SendingMethod;
+                shippingInfo.Country = shippingInfoView.Country;
             }
             return View(shippingInfo);
         }
@@ -278,7 +280,7 @@ namespace BookCave.Controllers
                     _accountService.AddToCart(cartItem);
                 }
             }
-            return Ok();
+            return RedirectToAction("Cart");
         }
 
         [Authorize(Roles = "User")]
