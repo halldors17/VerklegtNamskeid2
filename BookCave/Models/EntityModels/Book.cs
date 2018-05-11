@@ -12,13 +12,8 @@ namespace BookCave.Models.EntityModels
         public double Price { get; set; }
         public List<LanguageItem> LanguageList { get; set; }
         public int Pages { get; set; }
-        public int Minutes { get; set; }
-        public bool Audio { get; set; }
-        public bool Ebook { get; set; }
-        public bool Paperback { get; set; }
         public List<CategoryIdItem> CategoryIdList { get; set; }
         public string Description { get; set; }
-        public int Stock { get; set; }
         public string Image { get; set; }
         public double Rating { get; set; }
         public int Discount { get; set; }

@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Authorization;
 using BookCave.Models.InputModels;
 using BookCave.Models.EntityModels;
 using BookCave.Models.ViewModels;
+using System;
 
 namespace BookCave.Controllers
 {
@@ -155,10 +156,26 @@ namespace BookCave.Controllers
             return View(categories);
         }
 
-        public IActionResult Sales()
+        public IActionResult SalesBook(int id)
         {
+            var salesBook = _bookService.GetSalesForBook(id);
+            if(salesBook == null)
+            {
+                return View();
+            }
             ViewBag.Title = "Innranet sala";
-            return View();
+            return View(salesBook);
+        }
+
+       public IActionResult SalesAuthor(int id)
+        {
+            var salesAuthor = _authorService.GetSalesForAuthor(id);
+            if(salesAuthor == null)
+            {
+                return View("Not Found");
+            }
+            ViewBag.Title = "Innranet sala";
+            return View(salesAuthor);
         }
 
         [HttpGet]
