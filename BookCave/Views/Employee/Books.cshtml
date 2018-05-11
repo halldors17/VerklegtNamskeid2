@@ -12,7 +12,7 @@
                 <h4>@book.Title<br></h4>
                 <p>@book.Author</p>
                 <p>@book.Publisher</p>
-                <p>---Sölutölur hér---</p>
+                <a asp-controller="Employee" asp-action="SalesBook" asp-route-id="@book.Id"><button class="btn btn-default">Sjá sölutölur</button></a>
                 <a asp-controller="Employee" asp-action="ChangeBook" asp-route-id="@book.Id"><button class="btn btn-default">Breyta</button></a>
                 <a asp-controller="Employee" asp-action="RemoveBook" asp-route-id="@book.Id"><button class="btn btn-default">Fjarlægja</button></a>
             </div>

@@ -40,5 +40,10 @@ namespace BookCave.Services
         {
             _authorRepo.RemoveAuthor(id);
         }
+        public AuthorSalesInfoViewModel GetSalesForAuthor(int id)
+        {
+            var authors = _authorRepo.GetSalesForAuthor(id);
+            return authors;
+        }
     }
 }

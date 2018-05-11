@@ -1,0 +1,15 @@
+@model BookCave.Models.ViewModels.AuthorSalesInfoViewModel
+<h1>@Model.Name</h1>
+<div class="jumbotron">
+    <p><img src="@Model.Image" height="300" width="220"/></p>
+    <h3>Sjá sölutölur fyrir</h3>
+    <ul class="list-group list-group-flush">
+        @foreach(var b in @Model.BookList)
+        {
+            <li class="list-group-item">
+                <p><a asp-controller="Employee" asp-action="SalesBook" asp-route-id="@b.Id">@b.Title</a></p>
+                <p><a asp-controller="Employee" asp-action="SalesBook" asp-route-id="@b.Id"><img src="@b.Image" height="200" width="120"/></a></p>
+            </li>
+        }
+    </ul>
+</div>

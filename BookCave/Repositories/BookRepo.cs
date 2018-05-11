@@ -180,11 +180,11 @@ namespace BookCave.Repositories
         }
 
         public List<BookSalesViewModel> GetSalesBooksInfo()
-        {
+        {     
             var books = (from b in _db.Books 
                     join bId in _db.BookIdItem on b.Id equals bId.BookId
                     join a in _db.Authors on bId.AuthorId equals a.Id
-                    select new BookSalesViewModel 
+                    select new BookSalesViewModel
                     {
                         Id = b.Id,
                         Image = b.Image,
@@ -192,7 +192,23 @@ namespace BookCave.Repositories
                         Publisher = b.Publisher,
                         Author = a.Name
                     }).ToList();
+              
             return books;
+        }
+        public BookSalesInfoViewModel GetSalesForBook(int Id)
+        {
+            var book = (from b in _db.Books
+            join c in _db.OrderItem on b.Id equals c.BookId
+            where Id == b.Id
+            select new BookSalesInfoViewModel
+            {
+                Title = b.Title,
+                Image = b.Image,
+                Quantity = c.Quantity,
+                Price = c.Price
+
+            }).FirstOrDefault();
+            return book;
         }
 
         public BookDetailViewModel GetBookDetails(int id)

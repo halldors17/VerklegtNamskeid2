@@ -116,5 +116,30 @@ namespace BookCave.Repositories
 
             _db.SaveChanges();
         }
+        public AuthorSalesInfoViewModel GetSalesForAuthor(int id)
+        { 
+           var books = (from a in _db.Authors
+                    join bId in _db.BookIdItem on a.Id equals bId.AuthorId
+                    join b in _db.Books on bId.BookId equals b.Id
+                    where a.Id == id
+                    select new BookSalesInfoViewModel
+                    {
+                        Id = b.Id,
+                        Title = b.Title,
+                        Image = b.Image,
+                        Price = b.Price
+                    }).ToList();
+
+            var authors = (from a in _db.Authors 
+                    where a.Id == id
+                    select new AuthorSalesInfoViewModel
+                    {
+                        Name = a.Name,
+                        Image = a.Image,
+                        BookList = books
+                    }).FirstOrDefault();
+            return authors;
+            
+        }
     }
 }
